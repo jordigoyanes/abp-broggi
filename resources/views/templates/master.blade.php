@@ -13,20 +13,39 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 </head>
+
+<style>
+  #signup{
+    padding-left:45px;
+    font-weight: bold; 
+    padding-right:45px;
+    border-radius:30px; 
+    border:none; 
+    color:white; 
+    background-color:#FCC536;
+  }
+
+</style>
+
 <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent border-bottom">
-        <img src="./img/logo.png" style="width:80px;height:80px;"  alt="">
-                
-        <div class="collapse navbar-collapse" id="navbarColor03">
+        
+      <nav class="navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
+        <a class="navbar-brand" href="#"><img src="./img/logo.png" class="ml-5" style="width:60px;height:60px;"  alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-           
+                        
           </ul>
-          <form class="form-inline my-2 my-lg-0 m-4">           
-            <button class="btn btn-danger my-2 my-sm-0" style="border-radius:30px;" type="submit">SIGN UP</button>
+          <form class="form-inline my-2 my-lg-0">            
+            <button id="signup" class=" my-2 my-sm-0 btn-lg mr-5" type="submit">SIGN UP</button>
           </form>
         </div>
       </nav>
+
+
 
 
 </body>
