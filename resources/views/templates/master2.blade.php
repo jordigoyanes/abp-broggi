@@ -6,26 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('titulo')</title>
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
+    
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 </head>
 
-<style>
-  #signup{
-    padding-left:45px;
-    font-weight: bold; 
-    padding-right:45px;
-    border-radius:30px; 
-    border:none; 
-    color:white; 
-    background-color:#FCC536;
-  }
 
-</style>
 
 <body>
         
@@ -38,19 +27,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
                         
-          </ul>
-          <form class="form-inline my-2 my-lg-0">            
-            <button id="signup" class=" my-2 my-sm-0 btn-lg mr-5" type="submit">SIGN UP</button>
-          </form>
+          </ul>          
         </div>
       </nav>
+
+
+
+
+</body>
 
 <div class="container">
     @yield('principal')
 </div>
 
-<footer class="d-flex justify-content-center p-1">
-    <p class="copyright mb-0 p-1">&copy; <script>document.write(new Date().getFullYear())</script> Institut Moisès Broggi</p>
-</footer>
-</body>
 </html>
