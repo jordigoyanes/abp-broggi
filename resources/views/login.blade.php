@@ -17,6 +17,7 @@
     background-color:#1CADC3;
         
 }
+
 input::-webkit-input-placeholder{
     color:#B09B27;
 }
@@ -27,6 +28,7 @@ input:-moz-placeholder {
     color: #B09B27;
   
 }
+
 </style>
 
 <div class="container">

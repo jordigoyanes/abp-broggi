@@ -40,7 +40,7 @@
                         
           </ul>
           <form class="form-inline my-2 my-lg-0">   
-            <a href=" {{ route('login') }} " style="text-decoration: none;" type="button" id="signup" class=" my-2 my-sm-0 btn-lg mr-5" >SIGN UP</a>         
+            <a href=" {{ url('./login') }} " style="text-decoration: none;" type="button" id="signup" class=" my-2 my-sm-0 btn-lg mr-5" >SIGN UP</a>         
             
           </form>
         </div>
