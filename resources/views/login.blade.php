@@ -45,7 +45,7 @@ input:-moz-placeholder {
                     
                         <input style="border:none;background:#FEF1D0;color:#B09B27;padding:20px;" type="password" id="userPassword" class="form-control input-sm chat-input mt-4" placeholder="Password" />
                         
-                        <button id="login" type="submit" class="btn mt-5">LOGIN</button>
+                        <button id="login"  class="btn mt-5">LOGIN</button>
                         
 
                     </form>

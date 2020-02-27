@@ -23,8 +23,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
               
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ">
+        <div class="collapse navbar-collapse mr-5" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link" href="#">INCIDENCIES ACTIVES</a>
               </li>
