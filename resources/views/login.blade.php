@@ -18,7 +18,7 @@
         
 }
 
-input::-webkit-input-placeholder{
+/* input::-webkit-input-placeholder{
     color:#B09B27;
 }
 input:-moz-placeholder {
@@ -27,7 +27,7 @@ input:-moz-placeholder {
 ::placeholder {
     color: #B09B27;
   
-}
+} */
 
 </style>
 
