@@ -31,7 +31,7 @@ input:-moz-placeholder {
 
 </style>
 
-<div class="container">
+
 
     <div class="row mt-5">
         <div class="col-md-4 offset-md-4">
@@ -57,7 +57,7 @@ input:-moz-placeholder {
             </div>
         </div>
     </div>
-</div>
+
 
 
 
