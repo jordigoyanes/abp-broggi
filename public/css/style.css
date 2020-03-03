@@ -10,6 +10,21 @@ body{
     height:60px;
 }
 
+h1{
+    font-weight:bold;
+}
+
+#login{
+    padding-left:80px;
+    font-weight: bold; 
+    padding-right:80px;
+    border-radius:20px; 
+    border:none; 
+    color:white; 
+    background-color:#1CADC3;
+        
+}
+
 #signup{
     padding-left:45px;
     font-weight: bold; 
@@ -19,6 +34,28 @@ body{
     color:white; 
     background-color:#FCC536;
   }
+
+#userName{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#userPassword{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#cuenta{
+    color:#1C687D;
+}
+
+#registrarse{
+    color:#1C687D;
+}
 
 footer{
     border-top: 1px solid rgba(161, 171, 190, 0.25);
