@@ -5,9 +5,4 @@
 @endsection
 
 @section('principal')
-
-
-
-
-
 @endsection
