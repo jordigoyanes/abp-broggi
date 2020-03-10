@@ -43,8 +43,8 @@
                   ALTRES
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">OPCIO 1</a>
-                  <a class="dropdown-item" href="#">OPCIO 2</a>                  
+                  <a class="dropdown-item" href="#">FORMACIO</a>
+                  <a class="dropdown-item" href="#">USUARI</a>                  
                   <a class="dropdown-item" href="#">SORTIR</a>
                 </div>
               </li>
@@ -58,7 +58,8 @@
 
 </body>
 
-<div class="container">
+<div class="container flex-column h-100 d-flex align-items-start">
+  
     @yield('principal')
 </div>
 

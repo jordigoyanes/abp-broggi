@@ -23,3 +23,5 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
+Route::resource('incidencia','IncidenciaController');
+

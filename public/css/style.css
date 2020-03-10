@@ -25,6 +25,19 @@ h1{
         
 }
 
+
+#novaIncidencia{
+    padding-left:45px;
+    font-weight: bold; 
+    padding-right:45px;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-radius:60px; 
+    border:none; 
+    color:white; 
+    background-color:#DD177A;
+  }
+
 #signup{
     padding-left:45px;
     font-weight: bold; 
