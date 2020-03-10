@@ -24,4 +24,6 @@ Route::get('/signup', function () {
 })->name('signup');
 
 Route::resource('incidencia','IncidenciaController');
+Route::resource('alertant','AlertantController');
+
 

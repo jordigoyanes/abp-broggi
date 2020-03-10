@@ -17,7 +17,7 @@
 
 <body>
         
-      <nav class="navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
+      <nav class="mb-3 navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
         <a class="navbar-brand" href="#"><img id="logo" src="./img/logo.png" class="ml-5" alt=""></a>
         
       
@@ -31,8 +31,6 @@
 
 
 
-</body>
-
 <div class="container">
     @yield('principal')
 </div>
@@ -41,5 +39,7 @@
 <footer class="d-flex justify-content-center p-1">
   <p class="copyright mb-0 p-1">&copy; <script>document.write(new Date().getFullYear())</script> Institut Moisès Broggi</p>
 </footer>
+</body>
+
 
 </html>
