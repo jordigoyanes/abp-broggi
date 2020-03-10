@@ -5,6 +5,93 @@ body{
     justify-content: space-between;
 }
 
+#logo{
+    width:60px;
+    height:60px;
+}
+
+h1{
+    font-weight:bold;
+}
+
+#login{
+    padding-left:80px;
+    font-weight: bold; 
+    padding-right:80px;
+    border-radius:20px; 
+    border:none; 
+    color:white; 
+    background-color:#1CADC3;
+        
+}
+
+
+#novaIncidencia{
+    padding-left:45px;
+    font-weight: bold; 
+    padding-right:45px;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-radius:60px; 
+    border:none; 
+    color:white; 
+    background-color:#DD177A;
+  }
+
+#signup{
+    padding-left:45px;
+    font-weight: bold; 
+    padding-right:45px;
+    border-radius:30px; 
+    border:none; 
+    color:white; 
+    background-color:#FCC536;
+  }
+
+#userName{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#userPassword{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#userEmail{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#userType{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#userConfirmPassword{
+    border:none;
+    background:#FEF1D0;
+    color:#B09B27;
+    padding:20px;
+}
+
+#cuenta{
+    color:#1C687D;
+    font-weight: bold;
+}
+
+#registrarse{
+    color:#1C687D;
+}
+
 footer{
     border-top: 1px solid rgba(161, 171, 190, 0.25);
 }
@@ -12,3 +99,4 @@ footer{
 footer p{
     color: #657386;
 }
+

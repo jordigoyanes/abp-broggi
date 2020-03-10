@@ -15,23 +15,10 @@
  
 </head>
 
-<style>
-  #signup{
-    padding-left:45px;
-    font-weight: bold; 
-    padding-right:45px;
-    border-radius:30px; 
-    border:none; 
-    color:white; 
-    background-color:#FCC536;
-  }
-
-</style>
-
 <body>
         
       <nav class="navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
-        <a class="navbar-brand" href=""><img src="./img/logo.png" class="ml-5" style="width:60px;height:60px;"  alt=""></a>
+        <a class="navbar-brand" href=""><img id="logo" src="./img/logo.png" class="ml-5" alt=""></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

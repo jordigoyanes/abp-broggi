@@ -1,3 +1,6 @@
+CREATE DATABASE  IF NOT EXISTS `broggiv2` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `broggiv2`;
+
 -- MariaDB dump 10.17  Distrib 10.4.6-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: broggiv3

@@ -1,7 +1,7 @@
 @extends('templates.master2')
 
 @section('titulo')
-    LOGIN
+    SIGN UP
 @endsection
 
 @section('principal')
@@ -11,19 +11,25 @@
             <div class="card text-center card  bg-default mb-3" style="border:none;">
             
                 <div class="card-body" >
-                    <h1>LOGIN</h1>
+                    <h1>SIGN UP</h1>
 
                     <form action="" method="post">
                         <input type="text" id="userName" class="form-control input-sm chat-input mt-5" placeholder="Username" />
                     
+                        <input type="password" id="userEmail" class="form-control input-sm chat-input mt-4" placeholder="Email" />
+
+                        <input type="password" id="userType" class="form-control input-sm chat-input mt-4" placeholder="UserType" />
+
                         <input type="password" id="userPassword" class="form-control input-sm chat-input mt-4" placeholder="Password" />
+
+                        <input type="password" id="userConfirmPassword" class="form-control input-sm chat-input mt-4" placeholder="Confirm Password" />
                         
-                        <button id="login"  class="btn mt-5">LOGIN</button>
+                        <button id="login"  class="btn mt-5">SIGN UP</button>
                         
 
                     </form>
                     
-                    <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ route('signup') }} ">Regístrate</a></p>
+                    <p id="cuenta" class="mt-4">Ya tienes cuenta? <a id="registrarse" href="#">Entra</a></p>
                     
                 </div>
                  
