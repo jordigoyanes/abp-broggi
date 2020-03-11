@@ -26,4 +26,21 @@ Route::get('/signup', function () {
 Route::resource('incidencia','IncidenciaController');
 Route::resource('alertant','AlertantController');
 
+Route::get('/alertant', function () {
+    return view('alertants');
+})->name('alertants');
+
+
+Route::get('/principal', function () {
+    return view('taulaIncidencies');
+})->name('principal');
+
+Route::get('/historial', function () {
+    return view('historial');
+})->name('historial');
+
+Route::get('/incidencia', function () {
+    return view('incidencia');
+})->name('incidencia');
+
 
