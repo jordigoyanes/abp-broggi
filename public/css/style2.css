@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+/* --------------------FORMULARI----------------------------- */
+.card {
+  border: none;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 1em;
+}
+.card .card-header {
+  background-color: #1C687D;
+  border-radius: 1em 1em 0em 0em;
+  display: flex;
+  align-items: center;
+  padding: 14px 30px;
+}
+.card .card-header h2 {
+  color: white;
+  font-weight: 600;
+  font-size: 26px;
+  padding: 0px;
+  margin: 0px;
+}
+.card .card-body {
+  padding: 0px;
+}
+.card .card-body .card-subheader {
+  border-top: 1px solid #1C687D;
+  border-bottom: 1px solid #1C687D;
+  display: flex;
+  align-items: center;
+  padding: 14px 30px;
+}
+.card .card-body .card-subheader h3 {
+  color: #1C687D;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+.card .card-body .card-subbody {
+  background-color: #eee;
+  padding: 14px 30px;
+}
+.card .card-body .card-subbody p {
+  font-size: 14px;
+  line-height: 22px;
+  color: #1C2230;
+}
+
+/*# sourceMappingURL=style2.css.map */
