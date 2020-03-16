@@ -1,14 +1,14 @@
 @extends('templates.master3')
 
 @section('titulo')
-    HISTORIAL
+HISTORIAL
 @endsection
 
 @section('principal')
 
-<div class="content">
+<div class="historial d-flex row flex-row w-100 flex-wrap">
 
-    <table class="table table-bordered" id="tabla-principal">
+    <table class="table col-6 table-bordered">
         <thead style="background-color: #1CADC3; color:white;">
             <tr>
                 <th>ID</th>
@@ -30,36 +30,34 @@
             </tr>
         </tbody>
     </table>
-
-    <div class="historial">
-
+    <div class="col-6">
         <div class="filtro_historial">
             <form action="">
                 <input type="search" name="buscarIncidencia" id="buscarIncidencia" placeholder="Buscar Incidencia...">
-                <button type="submit" class="botonBuscar" >Lupa</button>
+                <button type="submit" class="botonBuscar">Lupa</button>
             </form>
         </div>
 
         <div class="formFiltros">
 
-            <form action=""  style="padding:15px; background-color:#D7F0F4;">
+            <form action="" class="p-3" style="background-color:#D7F0F4;">
 
-                <legend style="font-size: 14px; font-weight:bold;">FILTRES</legend>
+                <legend>FILTRES</legend>
 
-                <fieldset class="boxFiltroHistorial" style="padding:15px;">
+                <fieldset class="boxFiltroHistorial">
                     <div class="form-group">
                         <label for="data"> Data</label>
-                        <input type="date" name="data" id="data" style="margin-left:10px; width:150px;">
-                        <input type="date" name="data" id="data" style="margin-left:10px; width:150px;">
+                        <input type="date" name="data" id="data">
+                        <input type="date" name="data" id="data">
                     </div>
                     <div class="form-group">
                         <label for="hora">Hora</label>
-                        <input type="time" name="hora" id="hora" style="margin-left:10px; width:75px;">
-                        <input type="time" name="hora" id="hora" style="margin-left:10px; width:75px;">
+                        <input type="time" name="hora" id="hora">
+                        <input type="time" name="hora" id="hora">
                     </div>
                     <div class="form-group">
                         <label for="provincia">Provincia</label>
-                        <select name="provincia" id="provincia" style="margin-left:10px;">
+                        <select name="provincia" id="provincia">
                             <option value="barcelona">Barcelona</option>
                             <option value="girona">Girona</option>
                             <option value="lleida">Lleida</option>
@@ -69,10 +67,10 @@
                     <!-- FALTA POSAR ELS MUNICIPIS SEGONS LA PROVINCIA -->
                     <div class="form-group">
                         <label for="municipi">Municipi</label>
-                        <select name="municipi" id="municipi" style="margin-left:10px;">
+                        <select name="municipi" id="municipi">
                             <option value="Mataro">Mataro</option>
                             <option value="Arenys de Mar">Arenys de Mar</option>
-                            <option value="Badalona	">Badalona	</option>
+                            <option value="Badalona	">Badalona </option>
                             <option value="Calella">Calella</option>
                             <option value="Gavà">Gavà</option>
                             <option value="L'Hospitalet de Llobregat">L'Hospitalet de Llobregat</option>
@@ -81,10 +79,10 @@
                     </div>
                 </fieldset>
 
-                <fieldset class="boxFiltroHistorial" style="padding:15px;">
+                <fieldset class="boxFiltroHistorial">
                     <div class="form-group">
                         <label for="tipusAlertant">Tipus d'Alertant</label>
-                        <select name="tipusAlertant" id="tipusAlertant" style="margin-left:10px;">
+                        <select name="tipusAlertant" id="tipusAlertant">
                             <option value="VIP">VIP</option>
                             <option value="nou">NOU</option>
                         </select>
@@ -92,14 +90,14 @@
 
                     <div class="form-group">
                         <label for="alertant">Alertant</label>
-                        <select name="alertant" id="alertant" style="margin-left:10px;">
+                        <select name="alertant" id="alertant">
                             <option value="santpau">Hospital de Sant Pau</option>
                             <option value="valldhebron">Hospital Vall d'Hebrón</option>
                         </select>
                     </div>
                 </fieldset>
 
-                <fieldset class="boxFiltroHistorial" style="padding:15px;">
+                <fieldset class="boxFiltroHistorial">
 
                     <div class="form-group">
                         <label for="edat">Edat</label>
@@ -110,42 +108,42 @@
                     <div class="form-group">
                         <label for="sexo">Sexo</label>
 
-                        <input type="radio" name="home" id="home" value="home" style="margin-left:10px;">
+                        <input type="radio" name="home" id="home" value="home">
                         <label for="home">Home</label>
 
 
-                        <input type="radio" name="dona" id="dona" value="dona" style="margin-left:10px;">
+                        <input type="radio" name="dona" id="dona" value="dona">
                         <label for="dona">Dona</label>
 
                     </div>
                 </fieldset>
 
-                <fieldset class="boxFiltroHistorial" style="padding: 15px;">
+                <fieldset class="boxFiltroHistorial">
                     <div class="form-group">
                         <label for="recursMobil">Tipus de Recurs Mòbil</label>
-                        <select name="recursMobil" id="recursMobil" style="margin-left:10px;">
+                        <select name="recursMobil" id="recursMobil">
                             <option value="Ambulància">Ambulància</option>
                             <option value="Helicòpter">Helicòpter</option>
                         </select>
                     </div>
                 </fieldset>
 
-                <fieldset class="boxFiltroHistorial" style="padding: 15px;">
+                <fieldset class="boxFiltroHistorial">
                     <div class="form-group">
 
                         <div class="row" style="margin-left: 10px;">
-                            <input type="checkbox" name="exemple1" id="exemple1" style="margin-right: 10px; margin-top:5px;">
+                            <input type="checkbox" name="exemple1" id="exemple1">
                             <label for="exemple1">Exemple 1</label>
 
-                            <input type="checkbox" name="exemple2" id="exemple2" style="margin-right: 10px; margin-top:5px;  margin-left:50px;">
+                            <input type="checkbox" name="exemple2" id="exemple2">
                             <label for="exemple2">Exemple 2</label>
                         </div>
 
                         <div class="row" style="margin-left: 10px;">
-                            <input type="checkbox" name="exemple3" id="exemple3" style="margin-right: 10px; margin-top:5px;">
+                            <input type="checkbox" name="exemple3" id="exemple3">
                             <label for="exemple3">Exemple 3</label>
 
-                            <input type="checkbox" name="exemple4" id="exemple4" style="margin-right: 10px; margin-top:5px; margin-left:50px;">
+                            <input type="checkbox" name="exemple4" id="exemple4">
                             <label for="exemple4">Exemple 4</label>
                         </div>
 
@@ -157,10 +155,11 @@
 
             </form>
         </div>
-
     </div>
+
 
 </div>
 
 
-    @endsection
+
+@endsection

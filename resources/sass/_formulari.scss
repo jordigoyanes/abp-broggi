@@ -1,49 +1,51 @@
 /* --------------------FORMULARI----------------------------- */
 
-.card{
+.card-formulari {
     border: none;
     background: #FFFFFF;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     border-radius: 1em;
 
-    .card-header{
+    .card-header-formulari {
         background-color: $marine;
         border-radius: 1em 1em 0em 0em;
         display: flex;
         align-items: center;
         padding: 14px 30px;
 
-        h2{
+        h2 {
             color: white;
             font-weight: 600;
             font-size: 26px;
-            padding:0px;
-            margin:0px;
+            padding: 0px;
+            margin: 0px;
         }
     }
-    .card-body{
-        padding:0px;
 
-        .card-subheader{
+    .card-body-formulari {
+        padding: 0px;
+
+        .card-subheader-formulari {
             border-top: 1px solid $marine;
             border-bottom: 1px solid $marine;
             display: flex;
             align-items: center;
             padding: 14px 30px;
 
-            h3{
+            h3 {
                 color: $marine;
                 font-weight: 400;
                 font-size: 20px;
-                padding:0px;
-                margin:0px;
+                padding: 0px;
+                margin: 0px;
             }
         }
-        .card-subbody{
+
+        .card-subbody-formulari {
             background-color: $light;
             padding: 14px 30px;
 
-            p{
+            p {
                 font-size: 14px;
                 line-height: 22px;
                 color: $dark;
@@ -52,7 +54,3 @@
     }
 
 }
-
-
-
-

@@ -1,119 +1,120 @@
 html,
 body {
-    height: 100%;
+    min-height: 100vh;
 }
 
-#logo{
-    width:60px;
-    height:60px;
+#logo {
+    width: 60px;
+    height: 60px;
 }
 
-h1{
-    font-weight:bold;
-}
-
-#login{
-    padding-left:80px;
-    font-weight: bold;
-    padding-right:80px;
-    border-radius:20px;
-    border:none;
-    color:white;
-    background-color:#1CADC3;
-
-}
-
-
-#novaIncidencia{
-    padding-left:45px;
-    font-weight: bold;
-    padding-right:45px;
-    padding-top:20px;
-    padding-bottom:20px;
-    border-radius:60px;
-    border:none;
-    color:white;
-    background-color:#DD177A;
-  }
-
-#signup{
-    padding-left:45px;
-    font-weight: bold;
-    padding-right:45px;
-    border-radius:30px;
-    border:none;
-    color:white;
-    background-color:#FCC536;
-  }
-
-#userName{
-    border:none;
-    background:#FEF1D0;
-    color:#B09B27;
-    padding:20px;
-}
-
-#userPassword{
-    border:none;
-    background:#FEF1D0;
-    color:#B09B27;
-    padding:20px;
-}
-
-#userEmail{
-    border:none;
-    background:#FEF1D0;
-    color:#B09B27;
-    padding:20px;
-}
-
-#userType{
-    border:none;
-    background:#FEF1D0;
-    color:#B09B27;
-    padding:20px;
-}
-
-#userConfirmPassword{
-    border:none;
-    background:#FEF1D0;
-    color:#B09B27;
-    padding:20px;
-}
-
-#cuenta{
-    color:#1C687D;
+h1 {
     font-weight: bold;
 }
 
-#registrarse{
-    color:#1C687D;
+#login {
+    padding-left: 80px;
+    font-weight: bold;
+    padding-right: 80px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: #1CADC3;
+
 }
 
-footer{
+
+#novaIncidencia {
+    padding-left: 45px;
+    font-weight: bold;
+    padding-right: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 60px;
+    border: none;
+    color: white;
+    background-color: #DD177A;
+}
+
+#signup {
+    padding-left: 45px;
+    font-weight: bold;
+    padding-right: 45px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    background-color: #FCC536;
+}
+
+#userName {
+    border: none;
+    background: #FEF1D0;
+    color: #B09B27;
+    padding: 20px;
+}
+
+#userPassword {
+    border: none;
+    background: #FEF1D0;
+    color: #B09B27;
+    padding: 20px;
+}
+
+#userEmail {
+    border: none;
+    background: #FEF1D0;
+    color: #B09B27;
+    padding: 20px;
+}
+
+#userType {
+    border: none;
+    background: #FEF1D0;
+    color: #B09B27;
+    padding: 20px;
+}
+
+#userConfirmPassword {
+    border: none;
+    background: #FEF1D0;
+    color: #B09B27;
+    padding: 20px;
+}
+
+#cuenta {
+    color: #1C687D;
+    font-weight: bold;
+}
+
+#registrarse {
+    color: #1C687D;
+}
+
+footer {
     border-top: 1px solid rgba(161, 171, 190, 0.25);
 }
 
-footer p{
+footer p {
     color: #657386;
 }
 
 /* -------------------------------------------PAGINA PRINCIPAL----------------------------------------- */
 
-.bodyPrincipal{
+.bodyPrincipal {
 
     margin-top: 20px;
     font-size: 14px;
     margin-left: 50px;
 }
 
-.bodyPrincipal > h2{
+.bodyPrincipal>h2 {
 
     font-weight: bold;
 
 }
 
-.queFem, .quiSom{
+.queFem,
+.quiSom {
     display: flex;
 }
 
@@ -121,18 +122,19 @@ footer p{
 
 /* -------------QUE FEM------------------ */
 
-.bodyPrincipal > .queFem > img{
+.bodyPrincipal>.queFem>img {
 
     width: 400px;
     margin-left: 60px;
 }
 
-.bodyPrincipal > .queFem > .text{
+.bodyPrincipal>.queFem>.text {
 
     margin-top: 20px;
     width: 600px;
 }
-.bodyPrincipal > .queFem > .text > p{
+
+.bodyPrincipal>.queFem>.text>p {
 
     margin-top: 20px;
 }
@@ -140,19 +142,20 @@ footer p{
 
 /* -------------QUI SOM------------------ */
 
-.bodyPrincipal > .quiSom > img{
+.bodyPrincipal>.quiSom>img {
 
     width: 430px;
     height: 350px;
     margin-bottom: 20px;
 }
 
-.bodyPrincipal > .quiSom > .text{
+.bodyPrincipal>.quiSom>.text {
 
     margin-top: 40px;
     width: 600px;
 }
-.bodyPrincipal > .quiSom > .text > p{
+
+.bodyPrincipal>.quiSom>.text>p {
 
     margin-top: 20px;
 
@@ -161,24 +164,24 @@ footer p{
 
 /* -------------------------------------------------PRINCIPAL-------------------------------- */
 
-.nuevaIncidencia{
+.nuevaIncidencia {
 
     /* padding: 20px; */
     background-color: #DD177A;
     border-radius: 30px;
-    color:white;
+    color: white;
     font-weight: bold;
     width: 200px;
     height: 84px;
     margin-left: 900px;
 }
 
-#tabla-principal{
+#tabla-principal {
 
     margin-top: 20px;
 }
 
-/* --------------------------------HISTORIAL------------------------------------ */
+/* --------------------------------HISTORIAL------------------------------------ 
 .content{
     display: flex;
     flex-direction: row-reverse;
@@ -231,18 +234,19 @@ input, select{
 
 }
 
+*/
 
 /* --------------------NOVA INCIDENCIA----------------------------- */
 
-.card-title{
+.card-title {
     background-color: #1C687D;
     height: 50px;
-    border-top-left-radius:10px ;
+    border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
 }
 
-.card-title > p{
+.card-title>p {
 
     color: white;
     font-weight: bold;
@@ -250,7 +254,8 @@ input, select{
     margin-top: 5px;
     margin-left: 30px;
 }
-#accordion > button{
+
+#accordion>button {
 
     text-decoration: none;
 }
