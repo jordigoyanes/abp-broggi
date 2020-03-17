@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="d-flex flex-column justify-content-between">
+<body>
 
     <nav class="mb-3 navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
         <a class="navbar-brand" href="#"><img id="logo" src="./img/logo.png" class="ml-5" alt=""></a>
