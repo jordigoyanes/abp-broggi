@@ -1,6 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `broggiv2` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `broggiv2`;
-
 -- MariaDB dump 10.17  Distrib 10.4.6-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: broggiv3
@@ -145,13 +142,15 @@ DROP TABLE IF EXISTS `incidencies`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `incidencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `localitzacio` varchar(50) NOT NULL,
   `num_incidencia` int(11) NOT NULL,
   `telefon_alertant` int(15) NOT NULL,
   `data` date NOT NULL,
   `hora` time NOT NULL,
+  `ciutat` varchar(50) NOT NULL,
   `adreca` varchar(150) NOT NULL,
-  `complement_adreca` varchar(150) DEFAULT NULL,
   `descripcio` varchar(256) DEFAULT NULL,
+  `complement_adreca` varchar(150) DEFAULT NULL,  
   `municipis_id` int(11) NOT NULL,
   `tipus_incident_id` int(11) NOT NULL,
   `estats_incidencia_id` int(11) NOT NULL,
