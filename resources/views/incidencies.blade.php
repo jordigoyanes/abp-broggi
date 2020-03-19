@@ -33,7 +33,7 @@
             </thead>
             <tbody>
             @foreach ($incidencies as $incidencia)
-                <tr>
+                <tr> 
                     <td> {{ $incidencia->id }} </td>
                     <td> {{ $incidencia->complement_adreca }} </td>
                     <td> {{ $incidencia->hora }} </td>

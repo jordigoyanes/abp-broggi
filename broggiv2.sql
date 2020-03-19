@@ -1,6 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `broggiv2` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `broggiv2`;
-
 -- MariaDB dump 10.17  Distrib 10.4.6-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: broggiv3
@@ -21,6 +18,8 @@ USE `broggiv2`;
 --
 -- Table structure for table `afectats`
 --
+CREATE DATABASE  IF NOT EXISTS `broggi` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE broggi;
 
 DROP TABLE IF EXISTS `afectats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -143,13 +142,15 @@ DROP TABLE IF EXISTS `incidencies`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `incidencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `localitzacio` varchar(50) NOT NULL,
   `num_incidencia` int(11) NOT NULL,
   `telefon_alertant` int(15) NOT NULL,
   `data` date NOT NULL,
   `hora` time NOT NULL,
+  `ciutat` varchar(50) NOT NULL,
   `adreca` varchar(150) NOT NULL,
-  `complement_adreca` varchar(150) DEFAULT NULL,
   `descripcio` varchar(256) DEFAULT NULL,
+  `complement_adreca` varchar(150) DEFAULT NULL,  
   `municipis_id` int(11) NOT NULL,
   `tipus_incident_id` int(11) NOT NULL,
   `estats_incidencia_id` int(11) NOT NULL,
@@ -330,9 +331,11 @@ CREATE TABLE `recursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codi` varchar(45) DEFAULT NULL,
   `tipus_recurs_id` int(11) NOT NULL,
+  `id_usuario` int(11),
   PRIMARY KEY (`id`),
   KEY `fk_recursos_tipus_recurs1_idx` (`tipus_recurs_id`),
-  CONSTRAINT `fk_recursos_tipus_recurs1` FOREIGN KEY (`tipus_recurs_id`) REFERENCES `tipus_recurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_recursos_tipus_recurs1` FOREIGN KEY (`tipus_recurs_id`) REFERENCES `tipus_recurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recursos_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuaris` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -452,7 +455,7 @@ CREATE TABLE `usuaris` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codi` varchar(45) DEFAULT NULL,
   `nom` varchar(45) DEFAULT NULL,
-  `contrasenya` varchar(45) DEFAULT NULL,
+  `contrasenya` varchar(256) DEFAULT NULL,
   `rols_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuaris_rols1_idx` (`rols_id`),
