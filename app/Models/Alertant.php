@@ -17,5 +17,14 @@ class Alertant extends Model
     {
         return $this->belongsToMany('App\Models\Incidencia','id');
     }
+    public function tipus()
+    {
+        return $this->belongsTo('App\Models\TipusAlertant','tipus_alertant_id');
+    }
+/*
+    public function municipi(){
+        return $this->hasMany('App\Models\Municipi','id');
+    }
+*/
 
 }
