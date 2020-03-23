@@ -12,10 +12,20 @@ class AlertantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('alertants');
+        if($request->has('search')){
+            $search= $request->input('search');
+            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->paginate(5);
+        }else{
+            $search='';
+            $alertants = Alertant::orderby('nom')->paginate(5);
+        }
+        $data['alertants'] = $alertants;
+        $data['search'] = $search;
+
+        return view('alertant.index', $data);
     }
 
     /**
