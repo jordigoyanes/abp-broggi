@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($incidencies as $incidencia)
+            @foreach ($incidencies as $incidencia)
                 <tr>
                     <td> {{ $incidencia->id }} </td>
                     <td> {{ $incidencia->complement_adreca }} </td>
@@ -33,7 +33,7 @@
                     <td> {{ $incidencia->descripcio }} </td>
                     <td> {{ $incidencia->data }} </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 
