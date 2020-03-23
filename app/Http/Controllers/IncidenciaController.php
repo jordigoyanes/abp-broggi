@@ -18,7 +18,7 @@ class IncidenciaController extends Controller
 
         $datos['incidencies'] = $incidencies;
 
-        return view('Incidencies', $datos);
+        return view('incidencia.index', $datos);
     }
 
     /**

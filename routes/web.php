@@ -23,8 +23,8 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-Route::resource('incidencia','IncidenciaController');
-Route::resource('alertant','AlertantController');
+Route::resource('/incidencia','IncidenciaController');
+Route::resource('/alertant','AlertantController');
 
 
 Route::get('/principal', function () {
@@ -39,6 +39,6 @@ Route::get('/Incidencia', function () {
     return view('Incidencia');
 })->name('Incidencia');
 
-Route::get('/Incidencies', function () {
-    return view('Incidencies');
-})->name('Incidencies');
+// Route::get('/Incidencies', function () {
+//     return view('Incidencies');
+// })->name('Incidencies');

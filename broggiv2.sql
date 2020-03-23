@@ -142,19 +142,17 @@ DROP TABLE IF EXISTS `incidencies`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `incidencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `localitzacio` varchar(50) NOT NULL,
-  `hora` time NOT NULL,
-  `tipus_incident_id` int(11) NOT NULL,
-  `ciutat` varchar(50) NOT NULL,
-  `adreca` varchar(150) NOT NULL,
-  `descripcio` varchar(256) DEFAULT NULL,
-  `estats_incidencia_id` int(11) NOT NULL,
-  
+  `localitzacio` varchar(250) NOT NULL,
   `num_incidencia` int(11) NOT NULL,
   `telefon_alertant` int(15) NOT NULL,
-  `data` date NOT NULL,  
-  `complement_adreca` varchar(150) DEFAULT NULL,  
-  `municipis_id` int(11) NOT NULL,    
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
+  `adreca` varchar(150) NOT NULL,
+  `complement_adreca` varchar(150) DEFAULT NULL,
+  `descripcio` varchar(256) DEFAULT NULL,
+  `municipis_id` int(11) NOT NULL,
+  `tipus_incident_id` int(11) NOT NULL,
+  `estats_incidencia_id` int(11) NOT NULL,
   `tipus_alertant_id` int(11) NOT NULL,
   `alertants_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -177,7 +175,7 @@ CREATE TABLE `incidencies` (
 
 LOCK TABLES `incidencies` WRITE;
 /*!40000 ALTER TABLE `incidencies` DISABLE KEYS */;
-INSERT INTO `incidencies` VALUES (1,'H. de Sant Pau','12:30',1,'Barcelona','C/Sicilia 115','Dona salta del terrat i cau sobre un nen de 15 anys',null,1,'12/4/2020','dddd',1,1,1);
+
 /*!40000 ALTER TABLE `incidencies` ENABLE KEYS */;
 UNLOCK TABLES;
 

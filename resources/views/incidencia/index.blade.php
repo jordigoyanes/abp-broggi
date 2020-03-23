@@ -28,11 +28,11 @@
                     <td> {{ $incidencia->id }} </td>
                     <td> {{ $incidencia->complement_adreca }} </td>
                     <td> {{ $incidencia->hora }} </td>
-                    <td> {{ $incidencia->TipusIncident }}fsdfdddf </td>
+                    <td> {{ $incidencia->telefon_alertant }} </td>
                     <td> {{ $incidencia->telefon }} </td>
                     <td> {{ $incidencia->adreca }} </td>
                     <td> {{ $incidencia->descripcio }} </td>
-                    <td> {{ $incidencia->estat->estat }}fdfs </td>
+                    <td> {{ $incidencia->data }} </td>
                 </tr>
             @endforeach
         </tbody>
