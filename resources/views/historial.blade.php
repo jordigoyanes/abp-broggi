@@ -14,13 +14,10 @@ HISTORIAL
             <form action="" class="form-inline">
                 <input type="search" class="form-control" name="buscarIncidencia" id="buscarIncidencia"
                     placeholder="Buscar Incidencia...">
-                <button class="ml-2 btn btn-primary" type="submit" class="botonBuscar">Lupa</button>
+                <button class="ml-2 btn btn-primary" type="submit" class="botonBuscar">Buscar</button>
             </form>
         </div>
-
         <div class="formFiltros">
-
-
             <form action="" class="p-3" style="background-color:#D7F0F4;">
                 <div class="d-flex flex-row justify-content-between flex-wrap">
                     <fieldset class="boxFiltroHistorial">
