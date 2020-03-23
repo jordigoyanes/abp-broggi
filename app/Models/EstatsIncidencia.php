@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EstatsIncidencia extends Model
 {
-    protected $table = 'estat_incidencies';
+    protected $table = 'estats_incidencia';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int'; 

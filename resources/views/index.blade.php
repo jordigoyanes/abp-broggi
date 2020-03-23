@@ -7,7 +7,7 @@
 @section('principal')
 
 <div class="bodyPrincipal">
-
+    <a href=" {{ url("/incidencia") }} ">Incidencies</a>
     <div class="queFem">
         <div class="text">
             <h2>Que Fem?</h2>

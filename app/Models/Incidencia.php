@@ -19,7 +19,7 @@ class Incidencia extends Model
     }
 
 
-    public function EstatIncidencia()
+    public function estat()
     {
         return $this->belongsTo('App\Models\EstatsIncidencia', 'id');
     }
