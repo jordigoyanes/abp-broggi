@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080/abp-broggi/public/principal",
+            "url": "http://localhost:8080/ABP-Broggi/public/",
             "webRoot": "${workspaceFolder}"
         }
     ]

@@ -39,8 +39,12 @@ Route::get('/historial', function () {
     return view('historial');
 })->name('historial');
 
-Route::get('/incidencia', function () {
-    return view('incidencia');
-})->name('incidencia');
+Route::get('/Incidencia', function () {
+    return view('Incidencia');
+})->name('Incidencia');
+
+Route::get('/Incidencies', function () {
+    return view('Incidencies');
+})->name('Incidencies');
 
 
