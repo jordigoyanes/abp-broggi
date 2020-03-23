@@ -26,13 +26,13 @@
             @foreach ($incidencies as $incidencia)
                 <tr>
                     <td> {{ $incidencia->id }} </td>
-                    <td> {{ $incidencia->complement_adreca }} </td>
+                    <td> {{ $incidencia->localitzacio }} </td>
                     <td> {{ $incidencia->hora }} </td>
-                    <td> {{ $incidencia->telefon_alertant }} </td>
-                    <td> {{ $incidencia->telefon }} </td>
+                    <td> {{ $incidencia->TipusIncident->tipus }} </td>
+                    <td> {{ $incidencia->municipi->nom }} </td>
                     <td> {{ $incidencia->adreca }} </td>
                     <td> {{ $incidencia->descripcio }} </td>
-                    <td> {{ $incidencia->data }} </td>
+                    <td> {{ $incidencia->estat->estat }} </td>
                 </tr>
             @endforeach
         </tbody>
