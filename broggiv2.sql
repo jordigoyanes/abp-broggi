@@ -130,6 +130,8 @@ CREATE TABLE `estats_incidencia` (
 
 LOCK TABLES `estats_incidencia` WRITE;
 /*!40000 ALTER TABLE `estats_incidencia` DISABLE KEYS */;
+INSERT INTO estats_incidencia(id,estat) VALUES(1,'Activa');
+INSERT INTO estats_incidencia(id,estat) VALUES(2,'No Activa');
 /*!40000 ALTER TABLE `estats_incidencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +278,7 @@ DROP TABLE IF EXISTS `municipis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `municipis` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `comarques_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -403,7 +405,7 @@ DROP TABLE IF EXISTS `tipus_incident`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipus_incident` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `tipus` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tipus_UNIQUE` (`tipus`)
