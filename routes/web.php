@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('/login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('/login','Auth\LoginController@login');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
-Route::get('/home', 'HomeController@index');
+
 
 Route::get('/signup', function () {
     return view('signup');
@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
 
     Route::resource('/alertant','AlertantController');
-    
+
     Route::get('/historial', function () {
         return view('historial');
     })->name('historial');
