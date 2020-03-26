@@ -13,14 +13,17 @@ LOGIN
             <div class="card-body">
                 <h1>LOGIN</h1>
 
-                <form action="" method="post">
-                    <input type="text" id="userName" class="form-control input-sm chat-input mt-5"
-                        placeholder="Username" />
+                <form action="{{ action('Auth\LoginController@login')}}" method="post">
+                    @csrf
+                    
+                    <input type="text" id="nom" name="nom" class="form-control input-sm chat-input mt-5"
+                        placeholder="Username">
 
-                    <input type="password" id="userPassword" class="form-control input-sm chat-input mt-4"
-                        placeholder="Password" />
+                   
+                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-4"
+                        placeholder="Password">
 
-                    <button id="login" class="btn mt-5">LOGIN</button>
+                    <button id="login" type="submit" class="btn mt-5">LOGIN</button>
 
 
                 </form>

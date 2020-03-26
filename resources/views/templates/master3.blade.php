@@ -49,7 +49,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">FORMACIO</a>
                         <a class="dropdown-item" href="#">USUARI</a>
-                        <a class="dropdown-item" href="{{ url('/index') }}">SORTIR</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">SORTIR</a>
                     </div>
                 </li>
             </ul>

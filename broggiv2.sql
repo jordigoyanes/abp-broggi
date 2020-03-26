@@ -370,6 +370,7 @@ CREATE TABLE `rols` (
 
 LOCK TABLES `rols` WRITE;
 /*!40000 ALTER TABLE `rols` DISABLE KEYS */;
+INSERT INTO `rols` VALUES (1,'recurs movil'),(2,'gestor de dades');
 /*!40000 ALTER TABLE `rols` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,10 +456,11 @@ DROP TABLE IF EXISTS `usuaris`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuaris` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `codi` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   `nom` varchar(45) DEFAULT NULL,
-  `contrasenya` varchar(256) DEFAULT NULL,
+  `contrasenya` text DEFAULT NULL,
   `rols_id` int(11) NOT NULL,
+  `remember_token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuaris_rols1_idx` (`rols_id`),
   CONSTRAINT `fk_usuaris_rols1` FOREIGN KEY (`rols_id`) REFERENCES `rols` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -471,6 +473,7 @@ CREATE TABLE `usuaris` (
 
 LOCK TABLES `usuaris` WRITE;
 /*!40000 ALTER TABLE `usuaris` DISABLE KEYS */;
+INSERT INTO `usuaris` VALUES (1,'admin@gmail.com','admin','$2y$10$hWGjxDG.doH/eVOV75FpGu3uwmfA.PvXinPeC9fOk0sQcecCiBGlW',2,'hLH9K7EEipMVWfYwbawEeujoWubPeixkigUMa4QwDZKAvJ80dTqeySfKBm0q');
 /*!40000 ALTER TABLE `usuaris` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

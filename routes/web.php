@@ -15,17 +15,24 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-  
+Route::get('/login', 'Auth\LoginController@showLogin')->name('login');
+Route::post('/login','Auth\LoginController@login');
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+Route::get('/home', 'HomeController@index');
+
 Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-Route::resource('/incidencia','IncidenciaController');
-Route::resource('/alertant','AlertantController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/incidencia','IncidenciaController');
 
-Route::get('/historial', function () {
-    return view('historial');
-})->name('historial');
+    Route::resource('/alertant','AlertantController');
+    
+    Route::get('/historial', function () {
+        return view('historial');
+    })->name('historial');
+});
+
+
+
