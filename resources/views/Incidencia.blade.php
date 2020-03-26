@@ -88,8 +88,5 @@
         <button class="btn btn-primary">Guardar</button>
         <button class="btn btn-primary">Cancelar</button>
     </div>
-
 </div>
-
-
 @endsection
