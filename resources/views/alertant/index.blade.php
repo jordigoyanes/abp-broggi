@@ -19,22 +19,30 @@ Alertants
         </form>
     </div>
 </div>
-<div id="alertants" class="row rows-col-3 row-cols-md-2 ">
-@foreach ($alertants as $alertant)
-    <div class="alertant mr-3 mb-3 col-4 border p-4 d-flex flex-column w-40">
-        <div class="d-flex pb-3 justify-content-between ">
-            <img src="" alt="">
-            <div class="d-flex  flex-column">
-                <div><strong>{{$alertant->nom}}</strong></div>
-                <div>{{$alertant->tipus->tipus}}</div>
+
+    @if(count($alertants)==0)
+        <div class="alert alert-info" role="alert">
+            No hi ha cap alertant
+        </div>
+    @else
+    <div id="alertants" class="row rows-col-3 row-cols-md-2 ">
+        @foreach ($alertants as $alertant)
+            <div class="alertant mr-3 mb-3 col-4 border p-4 d-flex flex-column w-40">
+                <div class="d-flex pb-3 justify-content-between ">
+                    <img src="" alt="">
+                    <div class="d-flex  flex-column">
+                        <div><strong>{{$alertant->nom}}</strong></div>
+                        <div>{{$alertant->tipus->tipus}}</div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary">Veure perfil</button>
+                    <button class="btn btn-secondary">Canviar dades</button>
+                </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-primary">Veure perfil</button>
-            <button class="btn btn-secondary">Canviar dades</button>
-        </div>
+        @endforeach
     </div>
-@endforeach
-</div>
+    @endif
+
 {{ $alertants->appends(['search'=>$search])->links() }}
 @endsection

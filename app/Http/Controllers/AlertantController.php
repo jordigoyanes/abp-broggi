@@ -55,9 +55,11 @@ class AlertantController extends Controller
      * @param  \App\Models\Alertant  $alertant
      * @return \Illuminate\Http\Response
      */
-    public function show(Alertant $alertant)
+    public function show($id_alertant)
     {
-        //
+        $alertant = Alertant::find($id_alertant);
+        $data['alertant'] = $alertant;
+        return view('alertant.show', $data);
     }
 
     /**
@@ -66,9 +68,11 @@ class AlertantController extends Controller
      * @param  \App\Models\Alertant  $alertant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alertant $alertant)
+    public function edit($id_alertant)
     {
-        //
+        $alertant = Alertant::find($id_alertant);
+        $data['alertant'] = $alertant;
+        return view('alertant.edit', $data);
     }
 
     /**
