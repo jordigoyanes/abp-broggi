@@ -9,9 +9,9 @@ HISTORIAL
 <div class="historial d-flex flex-column w-100">
 
     <div class="w-100">
-        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+        <div class="d-flex flex-row flex-wrap align-items-center justify-content-between mb-2">
             <h5>Historial</h5>
-            <form action="" class="form-inline">
+            <form action="" class="d-flex flex-row">
                 <input type="search" class="form-control" name="buscarIncidencia" id="buscarIncidencia"
                     placeholder="Buscar Incidencia...">
                 <button class="ml-2 btn btn-primary" type="submit" class="botonBuscar">Buscar</button>

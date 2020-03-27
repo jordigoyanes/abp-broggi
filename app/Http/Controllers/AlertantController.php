@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alertant;
+use App\Models\TipusAlertant;
+
 use Illuminate\Http\Request;
 
 class AlertantController extends Controller
@@ -15,15 +17,19 @@ class AlertantController extends Controller
     public function index(Request $request)
     {
         //
+        $tipus_selected = $request->input('tipus_selected');
         if($request->has('search')){
             $search= $request->input('search');
-            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->paginate(5);
+            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);
         }else{
             $search='';
-            $alertants = Alertant::orderby('nom')->paginate(5);
+            $alertants = Alertant::orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);
         }
+        
+        $data['tipus_selected'] = $tipus_selected;
         $data['alertants'] = $alertants;
         $data['search'] = $search;
+        $data['tipus_list'] = TipusAlertant::all();
 
         return view('alertant.index', $data);
     }

@@ -5,31 +5,33 @@ Alertants
 @endsection
 
 @section('principal')
-<div id="filtros-alertants" class="mb-3 w-100 d-flex flex-wrap justify-content-between">
-    <select name="tipus_alertants" id="tipus_alertants">
-        <option value="0">Tots els alertants</option>
-        <option value="0"></option>
-        <option value="0"></option>
+<form id="filtros-alertants" action="{{action('AlertantController@index')}}" method="get" class="mb-3 w-100 d-flex flex-wrap justify-content-between">
+    <select class="form-control col-4" name="tipus_selected" id="tipus_selected">
+        @foreach ($tipus_list as $tipus)
+        @if($tipus->id == $tipus_selected)
+            <option selected value="{{$tipus->id}}">{{$tipus->tipus}}</option>
+        @else
+            <option  value="{{$tipus->id}}">{{$tipus->tipus}}</option>
+        @endif
+        @endforeach
 
     </select>
     <div id="buscador-alertants" class="d-flex">
-        <form action="{{action('AlertantController@index')}}" method="get">
-            <input value="{{$search}}" type="text" name="search" placeholder="introduce ID o nombre de alertante">
-            <button type="submit" class="ml-3 btn btn-primary ">BUSCAR</button>
-        </form>
+            <input class="form-control" value="{{$search}}" type="text" name="search" placeholder="introduce ID o nombre de alertante">
+            <button type="submit" class="ml-3 btn btn-primary ">BUSCAR</button>  
     </div>
-</div>
+</form>
 
     @if(count($alertants)==0)
         <div class="alert alert-info" role="alert">
             No hi ha cap alertant
         </div>
     @else
-    <div id="alertants" class="row rows-col-3 row-cols-md-2 ">
+    <div id="alertants" class="container row rows-col-3 row-cols-md-2 ">
         @foreach ($alertants as $alertant)
             <div class="alertant mr-3 mb-3 col-4 border p-4 d-flex flex-column w-40">
                 <div class="d-flex pb-3 justify-content-between ">
-                    <img src="" alt="">
+                    <img class="mr-2" width="50em" src="{{asset('img/hospital.svg')}}" alt="">
                     <div class="d-flex  flex-column">
                         <div><strong>{{$alertant->nom}}</strong></div>
                         <div>{{$alertant->tipus->tipus}}</div>
@@ -44,5 +46,11 @@ Alertants
     </div>
     @endif
 
-{{ $alertants->appends(['search'=>$search])->links() }}
+{{ $alertants->appends(['search'=>$search, 'tipus_selected'=>$tipus_selected])->links() }}
+
+<script>
+    $(document).on('change', 'select#tipus_selected', function (e) {
+        $(this).closest('form').submit();
+    });
+</script>
 @endsection
