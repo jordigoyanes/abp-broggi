@@ -19,10 +19,10 @@ Route::get('/login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('/login','Auth\LoginController@login');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
+Route::get('/register', 'Auth\RegisterController@showRegister')->name('register');
+Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
         return view('historial');
     })->name('historial');
 });
+
+Route::resource('/usuario', 'UsuarioController');
 
 
 
