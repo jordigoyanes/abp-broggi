@@ -7,7 +7,7 @@
 
 @section('principal')
 
-    <button class="nuevaIncidencia"> <a href="{{ url('/incidencia') }}">NOVA INCIDENCIA +</a> </button>
+    <button class="nuevaIncidencia"> <a href="{{ url('/novaIncidencia') }}">NOVA INCIDENCIA +</a> </button>
     <table class="table table-bordered" id="tabla-principal">
         <thead style="background-color: #1CADC3; color:white;">
             <tr>
@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-           
+
             @foreach ($incidencies as $incidencia)
                 <tr>
                     <td> {{ $incidencia->id }} </td>
@@ -37,5 +37,5 @@
             @endforeach
         </tbody>
     </table>
- 
+
 @endsection
