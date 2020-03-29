@@ -21,7 +21,7 @@ Alertants
         </select>
     </div>
     <div id="buscador-alertants" class="d-flex">
-            <input class="form-control" value="{{$search}}" type="text" name="search" placeholder="ID o nom d'alertant">
+            <input class="form-control" value="{{$search}}" type="text" name="search" placeholder="Nom de l'alertant">
             <button type="submit" class="ml-3 btn btn-primary ">CERCA</button>  
     </div>
 </form>
