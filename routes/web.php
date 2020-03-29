@@ -34,5 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('historial');
 });
 
-
+Route::get('/novaIncidencia', function(){
+    return view('Incidencia');
+});
 
