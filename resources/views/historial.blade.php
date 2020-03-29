@@ -21,7 +21,7 @@ Historial
             <form action="" class="p-3" style="background-color:#D7F0F4;">
                 <div class="d-flex flex-row justify-content-between flex-wrap">
                     <fieldset class="boxFiltroHistorial">
-                        
+
                         <label for="data">Data</label>
                         <div class="form-inline justify-content-between">
                             <label for="data_desde">Desde</label>

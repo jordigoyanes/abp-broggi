@@ -17,12 +17,92 @@
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-subbody card-subbody-formulari">
-                    <p>Lorem, ipsum.</p>
-                    <p>Lorem, ipsum.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti veritatis corrupti quasi
-                        incidunt, esse quis animi accusamus consequuntur voluptatum tempora hic mollitia ratione facere
-                        modi maiores, iusto libero fugit nesciunt sapiente commodi assumenda, illo beatae? Voluptates
-                        voluptatum, quam facere nulla optio vitae saepe odio pariatur commodi, modi et quaerat quia.</p>
+
+
+                    {{-- DATA --}}
+                    <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="data">Data</label>
+                            <input type="date" name="data" id="data">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4 form-inline">
+                            <input type="radio" name="B" id="B" value="Barcelona">
+                                <label for="B">B</label><br>
+
+                                <input type="radio" name="G" id="G" value="Girona">
+                                <label for="G">G</label><br>
+
+                                <input type="radio" name="L" id="L" value="Lleida">
+                                <label for="L">L</label><br>
+
+                                <input type="radio" name="t" id="T" value="Tarragona">
+                                <label for="T">T</label><br>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="descripcio">Descripcio</label>
+                            <textarea name="descripcio" id="descripcio" cols="30" rows="10"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="hora">Hora</label>
+                            <input type="time" name="hora" id="hora">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="comarca">Comarca</label>
+                            <select name="comarca" id="comarca">
+                                <option value="exemple 1">Exemple 1</option>
+                                <option value="exemple 2">Exemple 2</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="tipus">Tipus</label>
+                            <select name="tipus" id="tipus">
+                                <option value="Accident1">Accident 1</option>
+                                <option value="Accident2">Accident 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="municipi">Municpi</label>
+                            <select name="municipi" id="municipi">
+                                <option value="municipi1">Municipi 1</option>
+                                <option value="municipi2">Minicipi 2</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="adreça">Adreça</label>
+                            <input type="text" name="adreça" id="adreça">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
