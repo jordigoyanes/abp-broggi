@@ -28,13 +28,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
 
     Route::resource('/alertant','AlertantController');
+    
+    Route::resource('/rmobils','RecursMobilController');
+
 
     Route::get('/historial', function () {
         return view('historial');
     })->name('historial');
+    
+    Route::get('/novaIncidencia', function(){
+        return view('Incidencia');
+    });
+    
 });
-
-Route::get('/novaIncidencia', function(){
-    return view('Incidencia');
-});
-

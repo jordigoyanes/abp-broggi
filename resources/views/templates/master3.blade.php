@@ -39,7 +39,7 @@
                     <a class="nav-link" href="{{ url('/alertant') }}">ALERTANTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">RECURSOS MOBILS</a>
+                    <a class="nav-link" href="{{ url('/rmobils') }}">RECURSOS MÒBILS</a>
                 </li>
 
                 <li class="nav-item dropdown">
