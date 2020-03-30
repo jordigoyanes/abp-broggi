@@ -22,21 +22,21 @@
                         {{-- DATA --}}
                         <div class="form-group col-md-6 col-sm-4">
                             <label for="data">Data</label>
-                            <input type="date" name="data" id="data">
+                            <input type="date" name="data" id="data" style="border-radius:10px; margin-left:100px;">
                         </div>
                         {{-- PROVINCIA --}}
                         <div class="form-group col-md-6 col-sm-4 form-inline">
-                            <input type="radio" name="B" id="B" value="Barcelona">
-                                <label for="B">B</label><br>
+                            <input type="radio" name="B" id="B" value="Barcelona" style="margin-right:15px;">
+                            <label for="B" style="margin-right:25px;">B</label><br>
 
-                                <input type="radio" name="G" id="G" value="Girona">
-                                <label for="G">G</label><br>
+                            <input type="radio" name="G" id="G" value="Girona" style="margin-right:15px;">
+                            <label for="G" style="margin-right:25px;">G</label><br>
 
-                                <input type="radio" name="L" id="L" value="Lleida">
-                                <label for="L">L</label><br>
+                            <input type="radio" name="L" id="L" value="Lleida" style="margin-right:15px;">
+                            <label for="L" style="margin-right:25px;">L</label><br>
 
-                                <input type="radio" name="t" id="T" value="Tarragona">
-                                <label for="T">T</label><br>
+                            <input type="radio" name="t" id="T" value="Tarragona" style="margin-right:15px;">
+                            <label for="T" style="margin-right:25px;">T</label><br>
                         </div>
 
                     </div>
@@ -44,12 +44,12 @@
                         {{-- HORA --}}
                         <div class="form-group col-md-6 col-sm-4">
                             <label for="hora">Hora</label>
-                            <input type="time" name="hora" id="hora">
+                            <input type="time" name="hora" id="hora" style="border-radius:10px; margin-left:100px;">
                         </div>
                         {{-- COMARCA --}}
                         <div class="form-group col-md-6 col-sm-4">
                             <label for="comarca">Comarca</label>
-                            <select name="comarca" id="comarca">
+                            <select name="comarca" id="comarca" style="border-radius:10px; margin-left:94px;">
                                 <option value="exemple 1">Exemple 1</option>
                                 <option value="exemple 2">Exemple 2</option>
                             </select>
@@ -60,7 +60,7 @@
                         <div class="form-group col-md-6 col-sm-4">
                             {{-- TIPUS --}}
                             <label for="tipus">Tipus</label>
-                            <select name="tipus" id="tipus">
+                            <select name="tipus" id="tipus" style="border-radius:10px; margin-left:95px;">
                                 <option value="Accident1">Accident 1</option>
                                 <option value="Accident2">Accident 2</option>
                             </select>
@@ -68,7 +68,7 @@
                         <div class="form-group col-md-6 col-sm-4">
                             {{-- MUNICIPI --}}
                             <label for="municipi">Municpi</label>
-                            <select name="municipi" id="municipi">
+                            <select name="municipi" id="municipi" style="border-radius:10px; margin-left:100px;">
                                 <option value="municipi1">Municipi 1</option>
                                 <option value="municipi2">Minicipi 2</option>
                             </select>
@@ -79,14 +79,14 @@
                         {{-- ADREÇA --}}
                         <div class="form-group col-md-8">
                             <label for="adreça">Adreça</label>
-                            <input type="text" name="adreça" id="adreça">
+                            <input type="text" name="adreça" id="adreça" style="border-radius:10px; margin-left:85px;">
                         </div>
                     </div>
                     <div class="form-row">
                         {{-- DESCRIPCIO --}}
                         <div class="form-group col-md-4 col-sm-4">
                             <label for="descripcio">Descripcio</label>
-                            <textarea name="descripcio" id="descripcio" cols="100" rows="2"></textarea>
+                            <textarea name="descripcio" id="descripcio" cols="150" rows="2" style="border-radius:10px;"></textarea>
                         </div>
                     </div>
 
@@ -269,28 +269,84 @@
             <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
                 <div class="card-subbody card-subbody-formulari">
 
+                    {{-- TIPUS I CODI DE RECURS MOBIL --}}
+                    <div class="form-row">
+
+                        <div class="form-group col-md-4">
+                            <label for="tipusRecurs">Tipus</label>
+                            <select name="tipusRecurs" id="tipusRecurs">
+                                <option value="Accident1">Helicòpter</option>
+                                <option value="Accident2">Ambulància</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="CodiRecurs">Codi</label>
+                            <select name="CodiRecurs" id="CodiRecurs">
+                                <option value="Codi1">Codi1</option>
+                                <option value="Codi2">Codi2</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-row">
 
                     </div>
 
+                    {{-- HORES DEL RECURS MOBIL --}}
 
+                    <div class="form-row">
 
+                        <div class="form-group col-md-4">
+                            <label for="hActivacio">Hora d'Activació</label>
+                            <input type="time" name="hActivacio" id="hActivacio">
+                        </div>
 
+                        <div class="form-group col-md-4">
+                            <label for="hMovilitzacio">Hora de Movilització</label>
+                            <input type="time" name="hMovilitzacio" id="hMovilitzacio">
+                        </div>
 
+                        <div class="form-group col-md-4">
+                            <label for="hAssistencia">Hora d'Assistencia</label>
+                            <input type="time" name="hAssistencia" id="hAssistencia">
+                        </div>
 
+                    </div>
 
+                    <div class="form-row">
 
+                        <div class="form-group col-md-4">
+                            <label for="hTransport">Hora de Transport</label>
+                            <input type="time" name="hTransport" id="hTransport">
+                        </div>
 
+                        <div class="form-group col-md-4">
+                            <label for="hArribada">Hora d'Arribada al Hospital</label>
+                            <input type="time" name="hArribada" id="hArribada">
+                        </div>
 
+                        <div class="form-group col-md-4">
+                            <label for="hTransferencia">Hora de Transferencia</label>
+                            <input type="time" name="hTransferencia" id="hTransferencia">
+                        </div>
 
+                    </div>
 
+                    <div class="form-row">
 
+                        <div class="form-group col-md-4">
+                            <label for="hFinalització">Hora de Finalització</label>
+                            <input type="time" name="hFinalització" id="hFinalització">
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer text-muted text-center">
         <button class="btn btn-primary">Guardar</button>
         <button class="btn btn-primary">Cancelar</button>
     </div>
