@@ -19,10 +19,10 @@ Route::get('/login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('/login','Auth\LoginController@login');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
+Route::get('/register', 'Auth\RegisterController@showRegister')->name('register');
+Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
@@ -35,9 +35,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/historial', function () {
         return view('historial');
     })->name('historial');
+<<<<<<< HEAD
+});
+
+Route::resource('/usuario', 'UsuarioController');
+
+
+
+=======
     
     Route::get('/novaIncidencia', function(){
         return view('Incidencia');
     });
     
 });
+>>>>>>> 56fb94d0bdf748f82a7d3010b567d8bdcd35bb14

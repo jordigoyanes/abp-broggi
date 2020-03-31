@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'login';
 
     /**
      * Create a new controller instance.
@@ -69,4 +73,23 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showRegister(){
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $email = $request->input('email');
+        $nom = $request->input('nom');        
+        $contrasenya = $request->input('contrasenya');
+        $rols_id = '1';
+        $contrasenya = Hash::make($contrasenya);
+
+        DB::insert('insert into usuaris(id, email, nom, contrasenya, rols_id, remember_token) values(?, ?, ?, ?, ?, ?)', [null, $email, $nom, $contrasenya,  $rols_id, null]);
+        
+        return redirect('login');
+    }
+
+
 }

@@ -14,10 +14,14 @@ class Usuario extends Authenticatable
     use Notifiable;
 
     protected $table = 'usuaris';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'int'; 
+    public $timestamps = false;
 
-    public function rol()
+    public function rols()
     {
-        return $this->belongsTo('App\Rol', 'rol_id');
+        return $this->belongsTo('App\Models\Rol','id');
     }
 
 }
