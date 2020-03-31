@@ -35,18 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/historial', function () {
         return view('historial');
     })->name('historial');
-<<<<<<< HEAD
-});
-
-Route::resource('/usuario', 'UsuarioController');
-
-
-
-=======
-    
     Route::get('/novaIncidencia', function(){
         return view('Incidencia');
     });
-    
 });
->>>>>>> 56fb94d0bdf748f82a7d3010b567d8bdcd35bb14
+
+Route::resource('/usuario', 'UsuarioController');
