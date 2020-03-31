@@ -18,12 +18,14 @@ class Incidencia extends Model
         return $this->belongsToMany('App\Models\Alertant', 'alertants_id');
     }
 
-
+    public function recursosMobils(){
+        return $this->belongsToMany('App\Models\RecursMobil', 'id', 'id');
+    }
+    
     public function estat()
     {
         return $this->belongsTo('App\Models\EstatsIncidencia', 'id');
     }
-
 
     public function TipusIncident()
     {

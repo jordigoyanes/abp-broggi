@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comarca extends Model
 {
-    protected $table = 'comarca';
+    protected $table = 'comarques';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int'; 

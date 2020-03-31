@@ -1,7 +1,7 @@
 @extends('templates.master3')
 
 @section('titulo')
-HISTORIAL
+Historial
 @endsection
 
 @section('principal')

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="icon" href="{{asset('img/logo.png')}}" type="image/png" sizes="16x16">
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -20,7 +21,7 @@
 <body>
 
     <nav class="mb-3 navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
-        <a class="navbar-brand" href="#"><img id="logo" src="./img/logo.png" class="ml-5" alt=""></a>
+        <a class="navbar-brand" href="#"><img id="logo" src="{{asset('img/logo.png')}}" class="ml-5" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +30,7 @@
         <div class="collapse navbar-collapse mr-5" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">INCIDENCIES ACTIVES</a>
+                    <a class="nav-link" href="{{ url('/incidencia') }}">INCIDENCIES ACTIVES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/historial') }}">HISTORIAL</a>
@@ -38,7 +39,7 @@
                     <a class="nav-link" href="{{ url('/alertant') }}">ALERTANTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">RECURSOS MOBILS</a>
+                    <a class="nav-link" href="{{ url('/rmobils') }}">RECURSOS MÒBILS</a>
                 </li>
 
                 <li class="nav-item dropdown">

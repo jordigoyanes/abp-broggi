@@ -28,13 +28,25 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
 
     Route::resource('/alertant','AlertantController');
+    
+    Route::resource('/rmobils','RecursMobilController');
+
 
     Route::get('/historial', function () {
         return view('historial');
     })->name('historial');
+<<<<<<< HEAD
 });
 
 Route::resource('/usuario', 'UsuarioController');
 
 
 
+=======
+    
+    Route::get('/novaIncidencia', function(){
+        return view('Incidencia');
+    });
+    
+});
+>>>>>>> 56fb94d0bdf748f82a7d3010b567d8bdcd35bb14

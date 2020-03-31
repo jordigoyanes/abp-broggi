@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comarca;
+use App\Models\RecursMobil;
 use Illuminate\Http\Request;
 
-class ComarcaController extends Controller
+class RecursMobilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ComarcaController extends Controller
      */
     public function index()
     {
-        //
+        return view('rmobils.index');
     }
 
     /**
@@ -41,10 +41,10 @@ class ComarcaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comarca  $comarca
+     * @param  \App\Models\RecursMobil  $recursMobil
      * @return \Illuminate\Http\Response
      */
-    public function show(Comarca $comarca)
+    public function show(RecursMobil $recursMobil)
     {
         //
     }
@@ -52,10 +52,10 @@ class ComarcaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comarca  $comarca
+     * @param  \App\Models\RecursMobil  $recursMobil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comarca $comarca)
+    public function edit(RecursMobil $recursMobil)
     {
         //
     }
@@ -64,10 +64,10 @@ class ComarcaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comarca  $comarca
+     * @param  \App\Models\RecursMobil  $recursMobil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comarca $comarca)
+    public function update(Request $request, RecursMobil $recursMobil)
     {
         //
     }
@@ -75,10 +75,10 @@ class ComarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comarca P $comarca
+     * @param  \App\Models\RecursMobil  $recursMobil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comarca $comarca)
+    public function destroy(RecursMobil $recursMobil)
     {
         //
     }

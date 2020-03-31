@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Alertant;
 use App\Models\TipusAlertant;
+use App\Models\Provincia;
+use App\Models\Comarca;
+use App\Models\Municipi;
+
 
 use Illuminate\Http\Request;
 
@@ -16,8 +20,11 @@ class AlertantController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $tipus_selected = $request->input('tipus_selected');
+        if($request->has('tipus_selected')){
+            $tipus_selected = $request->input('tipus_selected');
+        }else{
+            $tipus_selected = 1;
+        }
         if($request->has('search')){
             $search= $request->input('search');
             $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);
@@ -25,7 +32,6 @@ class AlertantController extends Controller
             $search='';
             $alertants = Alertant::orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);
         }
-        
         $data['tipus_selected'] = $tipus_selected;
         $data['alertants'] = $alertants;
         $data['search'] = $search;
@@ -64,8 +70,20 @@ class AlertantController extends Controller
     public function show($id_alertant)
     {
         $alertant = Alertant::find($id_alertant);
+        if($alertant == null){
+            return abort(404);
+        }
+        $provincias = Provincia::all();
+        $municipis = Municipi::all();
+        $comarcas = Comarca::all();
+        
         $data['alertant'] = $alertant;
-        return view('alertant.show', $data);
+        $data['provincias'] = $provincias;
+        $data['municipis'] = $municipis;
+        $data['comarcas'] = $comarcas;
+        $data['all_tipus'] = TipusAlertant::all();
+
+        return view('alertant.edit', $data);
     }
 
     /**
