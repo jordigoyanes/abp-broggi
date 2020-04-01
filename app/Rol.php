@@ -8,20 +8,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Authenticatable
+class Rol extends Authenticatable
 {
-    
+
     use Notifiable;
 
-    protected $table = 'usuaris';
+    protected $table = 'rols';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int'; 
     public $timestamps = false;
 
-    public function rols()
+    public function usuaris()
     {
-        return $this->belongsTo('App\Rol','rols_id');
+        return $this->hasMany('App\Usuario','id');
     }
-
 }

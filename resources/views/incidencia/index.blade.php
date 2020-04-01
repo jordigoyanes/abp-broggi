@@ -25,17 +25,20 @@
 
             @foreach ($incidencies as $incidencia)
                 <tr>
-                    <td> {{ $incidencia->id }} </td>
+                    <td> #{{ $incidencia->id }} </td>
                     <td> {{ $incidencia->localitzacio }} </td>
                     <td> {{ $incidencia->hora }} </td>
                     <td> {{ $incidencia->TipusIncident->tipus }} </td>
                     <td> {{ $incidencia->municipi->nom }} </td>
                     <td> {{ $incidencia->adreca }} </td>
                     <td> {{ $incidencia->descripcio }} </td>
-                    <td> {{ $incidencia->estat->estat }} </td>
-                </tr>
+                    <td> {{ $incidencia->EstatIncidencia->estat }} </td>                    
+                </tr>                
             @endforeach
+           
         </tbody>
     </table>
+    
+    <div class="d-flex justify-content-center">{{ $incidencies->links() }}</div>
 
 @endsection

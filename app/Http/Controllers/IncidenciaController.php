@@ -12,14 +12,27 @@ class IncidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    // public function index()
+    // {
+    //     $incidencies = Incidencia::all();
+
+    //     $datos['incidencies'] = $incidencies;
+
+    //     return view('incidencia.index', $datos);
+    // }
+
+    public function index(Request $request)
     {
-        $incidencies = Incidencia::all();
+      
+
+        $incidencies = Incidencia::paginate(5);
 
         $datos['incidencies'] = $incidencies;
 
         return view('incidencia.index', $datos);
     }
+
 
     /**
      * Show the form for creating a new resource.

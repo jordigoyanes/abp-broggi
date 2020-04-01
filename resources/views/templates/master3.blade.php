@@ -52,7 +52,13 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">FORMACIO</a>
-                        <a class="dropdown-item" href="#">USUARI</a>
+                        @if (Auth::check())
+                            <a class="dropdown-item" href="#">{{ Auth::user()->nom }}</a>                                
+                           
+                        @else
+                            <a class="dropdown-item" href="#">USUARI</a>
+                        @endif
+                        
                         <a class="dropdown-item" href="{{ route('logout') }}">SORTIR</a>
                     </div>
                 </li>

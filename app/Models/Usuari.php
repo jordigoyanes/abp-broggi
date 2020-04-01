@@ -13,6 +13,6 @@ class Usuari extends Model
     public $timestamps = false;
     
     public function rols(){
-        return $this->belongsTo('App\Models\Rol','id');
+        return $this->belongsTo('App\Models\Rol','rols_id');
     }
 }

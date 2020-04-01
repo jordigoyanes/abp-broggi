@@ -177,7 +177,7 @@ CREATE TABLE `incidencies` (
 
 LOCK TABLES `incidencies` WRITE;
 /*!40000 ALTER TABLE `incidencies` DISABLE KEYS */;
-
+INSERT INTO incidencies VALUES (1,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(2,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(3,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(4,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(5,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(6,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(7,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(8,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(9,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(10,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1);
 /*!40000 ALTER TABLE `incidencies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ DROP TABLE IF EXISTS `municipis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `municipis` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) NOT NULL,
   `comarques_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -406,7 +406,7 @@ DROP TABLE IF EXISTS `tipus_incident`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipus_incident` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipus` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tipus_UNIQUE` (`tipus`)

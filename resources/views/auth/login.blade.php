@@ -29,7 +29,7 @@ LOGIN
                 </form>
 
                 <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ url('/register') }} ">Regístrate</a></p>
-                <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ action('UsuarioController@create') }} ">Regístrate</a></p>
+                {{-- <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ action('UsuarioController@create') }} ">Regístrate</a></p> --}}
             </div>
 
         </div>

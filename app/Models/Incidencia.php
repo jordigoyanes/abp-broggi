@@ -22,19 +22,19 @@ class Incidencia extends Model
         return $this->belongsToMany('App\Models\RecursMobil', 'id', 'id');
     }
     
-    public function estat()
+    public function EstatIncidencia()
     {
-        return $this->belongsTo('App\Models\EstatsIncidencia', 'id');
+        return $this->belongsTo('App\Models\EstatsIncidencia', 'estats_incidencia_id');
     }
 
     public function TipusIncident()
     {
-        return $this->belongsTo('App\Models\TipusIncident', 'id');
+        return $this->belongsTo('App\Models\TipusIncident', 'tipus_incident_id');
     }
 
     public function municipi()
     {
-        return $this->belongsTo('App\Models\Municipi', 'id');
+        return $this->belongsTo('App\Models\Municipi', 'municipis_id');
     }
 
 }
