@@ -50,35 +50,35 @@ h1 {
     border: none;
     background: #FEF1D0;
     color: #B09B27;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 #contrasenya {
     border: none;
     background: #FEF1D0;
     color: #B09B27;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 #userEmail {
     border: none;
     background: #FEF1D0;
     color: #B09B27;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 #userType {
     border: none;
     background: #FEF1D0;
-    color: #B09B27;
-    padding: 20px;
+    /* color: #B09B27; */
+    padding-left: 20px;
 }
 
 #userConfirmPassword {
     border: none;
     background: #FEF1D0;
     color: #B09B27;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 #cuenta {

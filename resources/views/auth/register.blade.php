@@ -21,8 +21,16 @@ SIGN UP
                     <input type="text" id="userEmail" name="email" class="form-control input-sm chat-input mt-4"
                         placeholder="Email" />
 
-                    <input type="number" id="userType" name="rol" class="form-control input-sm chat-input mt-4"
-                        placeholder="UserType" min="1" max="2" />
+                    {{-- <input type="number" id="userType" name="rol" class="form-control input-sm chat-input mt-4"
+                        placeholder="UserType" min="1" max="2" /> --}}
+
+                        <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-4">                       
+                                <option value="1" >recurs movil</option>                         
+                                <option value="2">getor de dades</option>                           
+
+                        </select>  
+                        
+                          
 
                     {{-- <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-4">
                         @foreach ($rols as $rol)

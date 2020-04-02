@@ -83,7 +83,7 @@ class RegisterController extends Controller
         $email = $request->input('email');
         $nom = $request->input('nom');        
         $contrasenya = $request->input('contrasenya');
-        $rols_id = '1';
+        $rols_id = $request->input('rol');
         $contrasenya = Hash::make($contrasenya);
 
         DB::insert('insert into usuaris(id, email, nom, contrasenya, rols_id, remember_token) values(?, ?, ?, ?, ?, ?)', [null, $email, $nom, $contrasenya,  $rols_id, null]);
