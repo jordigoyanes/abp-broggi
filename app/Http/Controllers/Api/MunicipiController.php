@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Municipi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MunicipiController extends Controller
 {
@@ -15,16 +16,7 @@ class MunicipiController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Municipi::all();
     }
 
     /**
@@ -45,17 +37,6 @@ class MunicipiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Municipi $municipi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Municipi  $municipi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Municipi $municipi)
     {
         //
     }

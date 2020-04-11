@@ -15,7 +15,7 @@
                 <th>LOCALITZACIÓ</th>
                 <th>HORA</th>
                 <th>TIPUS</th>
-                <th>CIUTAT</th>
+                <th>MUNICIPI</th>
                 <th>ADREÇA</th>
                 <th>DESCRIPCIÓ</th>
                 <th>ESTAT</th>

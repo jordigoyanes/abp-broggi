@@ -15,7 +15,7 @@ class Incidencia extends Model
 
     public function alertant()
     {
-        return $this->belongsToMany('App\Models\Alertant', 'alertants_id');
+        return $this->belongsTo('App\Models\Alertant', 'alertants_id');
     }
 
     public function recursosMobils(){
