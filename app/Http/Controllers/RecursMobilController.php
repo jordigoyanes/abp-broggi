@@ -12,9 +12,13 @@ class RecursMobilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('rmobils.index');
+        $recursMobils = RecursMobil::all();
+
+        $datos['recursMobils'] = $recursMobils;
+
+        return view('rmobils.index', $datos);
     }
 
     /**

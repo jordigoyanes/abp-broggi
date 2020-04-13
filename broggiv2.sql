@@ -131,7 +131,8 @@ CREATE TABLE `estats_incidencia` (
 LOCK TABLES `estats_incidencia` WRITE;
 /*!40000 ALTER TABLE `estats_incidencia` DISABLE KEYS */;
 INSERT INTO estats_incidencia(id,estat) VALUES(1,'Activa');
-INSERT INTO estats_incidencia(id,estat) VALUES(2,'No Activa');
+INSERT INTO estats_incidencia(id,estat) VALUES(2,'En Espera');
+INSERT INTO estats_incidencia(id,estat) VALUES(3,'Inactiva');
 /*!40000 ALTER TABLE `estats_incidencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,6 +348,7 @@ CREATE TABLE `recursos` (
 
 LOCK TABLES `recursos` WRITE;
 /*!40000 ALTER TABLE `recursos` DISABLE KEYS */;
+INSERT into `recursos` values (1,'AMB2456',1,1),(2,'AMB2456',1,1),(3,'AMB2456',1,1),(4,'AMB2456',1,1),(5,'AMB2456',1,1),(6,'AMB2456',1,1);
 /*!40000 ALTER TABLE `recursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
