@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Municipi;
+use App\Models\Comarca;
+use App\Models\TipusIncident;
+use App\Models\TipusAlertant;
+use App\Models\TipusRecurs;
+
+
+
+
 use App\Models\Incidencia;
 use Illuminate\Http\Request;
 
@@ -24,7 +33,7 @@ class IncidenciaController extends Controller
 
     public function index(Request $request)
     {
-      
+
 
         $incidencies = Incidencia::paginate(5);
 
@@ -41,7 +50,20 @@ class IncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        $municipis = Municipi::all();
+        $comarques = Comarca::all();
+        $tipusIncident = TipusIncident::all();
+        $tipusAlertant = TipusAlertant::all();
+        $tipusRecurs = TipusRecurs::all();
+
+        $data['municipis'] = $municipis;
+        $data['comarques'] = $comarques;
+        $data['tipusIncident'] = $tipusIncident;
+        $data['tipusAlertant'] = $tipusAlertant;
+        $data['tipusRecurs'] = $tipusRecurs;
+
+
+        return view('Incidencia', $data);
     }
 
     /**
@@ -52,7 +74,24 @@ class IncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $incidencia = new Incidencia();
+
+        $incidencia->id = $request->input('id');
+        // $incidencia->localitzacio = $request->input('id'); FALTA
+        // $incidencia->num_incidencia = $request->input('id'); FALTA
+        $incidencia->telefon_alertant = $request->input('TelefonAlertant');
+        $incidencia->data = $request->input('data');
+        $incidencia->hora = $request->input('hora');
+        $incidencia->adreca = $request->input('adreça');
+        // $incidencia->complement_adreca = $request->input('id'); FALTA
+        $incidencia->descripcio = $request->input('descripcio');
+        $incidencia->municipis_id = $request->input('municipi');
+        $incidencia->tipus_incident_id = $request->input('tipus');
+        // $incidencia->estats_incidencia_id = $request->input('id'); FALTA
+        $incidencia->tipus_alertant_id = $request->input('tipusAlertant');
+        // $incidencia->alertants_id = $request->input('id'); FALTA
+
     }
 
     /**

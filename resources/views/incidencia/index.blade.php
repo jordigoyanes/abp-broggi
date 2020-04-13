@@ -7,7 +7,7 @@
 
 @section('principal')
 
-    <button class="nuevaIncidencia"> <a href="{{ url('/novaIncidencia') }}">NOVA INCIDENCIA +</a> </button>
+    <button class="nuevaIncidencia"> <a href="{{ action('IncidenciaController@create') }}">NOVA INCIDENCIA +</a> </button>
     <table class="table table-bordered" id="tabla-principal">
         <thead style="background-color: #1CADC3; color:white;">
             <tr>
@@ -32,13 +32,13 @@
                     <td> {{ $incidencia->municipi->nom }} </td>
                     <td> {{ $incidencia->adreca }} </td>
                     <td> {{ $incidencia->descripcio }} </td>
-                    <td> {{ $incidencia->EstatIncidencia->estat }} </td>                    
-                </tr>                
+                    <td> {{ $incidencia->EstatIncidencia->estat }} </td>
+                </tr>
             @endforeach
-           
+
         </tbody>
     </table>
-    
+
     <div class="d-flex justify-content-center">{{ $incidencies->links() }}</div>
 
 @endsection

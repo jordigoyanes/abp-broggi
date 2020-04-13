@@ -9,7 +9,7 @@ class TipusIncident extends Model
     protected $table = 'tipus_incident';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
     public $timestamps = false;
 

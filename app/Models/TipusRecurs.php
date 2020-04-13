@@ -9,7 +9,7 @@ class TipusRecurs extends Model
     protected $table = 'tipus_recurs';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
     public $timestamps = false;
 
