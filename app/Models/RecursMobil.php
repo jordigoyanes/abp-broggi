@@ -9,7 +9,7 @@ class RecursMobil extends Model
     protected $table = 'recursos';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
     public $timestamps = false;
 

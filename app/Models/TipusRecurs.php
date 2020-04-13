@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipusIncident extends Model
+class TipusRecurs extends Model
 {
-    protected $table = 'tipus_incident';
+    protected $table = 'tipus_recurs';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
@@ -15,7 +15,7 @@ class TipusIncident extends Model
 
     public function incidencies()
     {
-        return $this->hasMany('App\Models\Incidencia', 'id');
+        return $this->hasMany('App\Models\Recursos', 'id');
     }
 
 }

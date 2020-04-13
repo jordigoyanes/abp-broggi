@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Municipi;
+use App\Models\Comarca;
+use App\Models\TipusIncident;
+use App\Models\TipusAlertant;
+use App\Models\TipusRecurs;
+
+
+
+
 use App\Models\Incidencia;
 use Illuminate\Http\Request;
 
@@ -24,7 +33,7 @@ class IncidenciaController extends Controller
 
     public function index(Request $request)
     {
-      
+
 
         $incidencies = Incidencia::paginate(5);
 
@@ -41,7 +50,20 @@ class IncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        $municipis = Municipi::all();
+        $comarques = Comarca::all();
+        $tipusIncident = TipusIncident::all();
+        $tipusAlertant = TipusAlertant::all();
+        $tipusRecurs = TipusRecurs::all();
+
+        $data['municipis'] = $municipis;
+        $data['comarques'] = $comarques;
+        $data['tipusIncident'] = $tipusIncident;
+        $data['tipusAlertant'] = $tipusAlertant;
+        $data['tipusRecurs'] = $tipusRecurs;
+
+
+        return view('Incidencia', $data);
     }
 
     /**
