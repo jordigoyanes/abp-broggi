@@ -6,7 +6,13 @@
     <div class="card-header card-header-formulari ">
         <h2>INCIDENCIA</h2>
     </div>
+
+    <form action="{{ action('IncidenciaController@store')}}" method="post">
+    @csrf
+
     <div id="accordion" class="card-body card-body-formulari">
+
+
 
         {{-- **************Dades incidencia******************** --}}
         <div>
@@ -429,8 +435,10 @@
         </div>
     </div>
     <div class="card-footer text-muted text-center">
-        <button class="btn btn-primary">Guardar</button>
-        <button class="btn btn-primary">Cancelar</button>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <button class="btn btn-primary" href="{{ url('/incidencia') }}" >Cancelar</button>
     </div>
+
+    </form>
 </div>
 @endsection
