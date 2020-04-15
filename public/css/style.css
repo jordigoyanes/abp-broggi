@@ -164,21 +164,33 @@ footer p {
 /* -------------------------------------------------PRINCIPAL-------------------------------- */
 
 .nuevaIncidencia {
-
-    /* padding: 20px; */
     background-color: #DD177A;
-    border-radius: 30px;
+    border-radius: 35px;
     color: white;
     font-weight: bold;
-    width: 200px;
-    height: 84px;
-    margin-left: 900px;
+    padding: 3px 25px;
 }
 
-#tabla-principal {
-
-    margin-top: 20px;
+#tabla-principal th{
+    font-weight: normal;
 }
+
+.paginacion-tabla ul{
+    margin-bottom:0;
+}
+
+@media (max-width: 992px) {
+    .esconder-sm{
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .esconder-xs {
+        display: none;
+    }
+  }
 
 /* --------------------------------HISTORIAL------------------------------------
 .content{
@@ -263,12 +275,12 @@ input, select{
     background: #FCC536;
     border-radius: 23px;
     border:none;
-    
+
     font-weight: bold;
     width: 200px;
     height: 34px;
-    
-   
+
+
 }
 
 .nourecurs a{

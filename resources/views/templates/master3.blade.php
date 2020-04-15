@@ -81,8 +81,8 @@
     </nav>
 
 
-    <div class="flex-column d-flex justify-content-between mb-5" style="min-height: 100%">
-        <div class="container" >
+    <div class="flex-column d-flex justify-content-between mb-5">
+        <div class="container">
             @yield('principal')
         </div>
 
