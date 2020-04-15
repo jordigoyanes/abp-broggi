@@ -1,6 +1,6 @@
 <template>
   <div id="historial" class="historial d-flex flex-column w-100">
-    <div class="w-100">
+    <div class="w-100 mb-2">
       <div class="d-flex flex-row flex-wrap align-items-center justify-content-between mb-2">
         <h5>Historial</h5>
         <form action class="d-flex flex-row">
@@ -9,10 +9,10 @@
             class="form-control"
             name="buscarIncidencia"
             id="buscarIncidencia"
-            placeholder="Buscar Incidencia..."
+            placeholder="ID del incident..."
             v-model="search"
           />
-          <button class="btn btn-primary ml-1" type="submit">Buscar</button>
+          <button class="btn btn-primary ml-1" type="submit">Cerca</button>
         </form>
       </div>
       <div class="formFiltros">
@@ -64,6 +64,33 @@
             </fieldset>
             <fieldset class="boxFiltroHistorial col-4">
               <div class="form-group">
+                <label for="tipus_incidencia">Tipus d'incidència</label>
+                <select
+                  class="form-control"
+                  v-model="tipus_incident"
+                  name="tipus_incidencia"
+                  id="tipus_incidencia"
+                >
+                  <option
+                    v-for="(tipus_incident, index) in all_tipus_incident"
+                    :key="index"
+                    :value="tipus_incident.id"
+                  >{{tipus_incident.tipus}}</option>
+                </select>
+              </div>
+              <div class="form-group m-0">
+                <label for="municipi">Municipi</label>
+                <select class="form-control" v-model="municipi" name="municipi" id="municipi">
+                  <option
+                    v-for="(municipi, index) in municipis"
+                    :key="index"
+                    :value="municipi.id"
+                  >{{municipi.nom}}</option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset class="boxFiltroHistorial col-4">
+              <div class="form-group">
                 <label for="tipusAlertant">Tipus d'alertant</label>
                 <select
                   class="form-control"
@@ -90,89 +117,9 @@
                   >{{alertant.nom}}</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="tipus_incidencia">Tipus d'incidència</label>
-                <select
-                  class="form-control"
-                  v-model="tipus_incident"
-                  name="tipus_incidencia"
-                  id="tipus_incidencia"
-                >
-                  <option
-                    v-for="(tipus_incident, index) in all_tipus_incident"
-                    :key="index"
-                    :value="tipus_incident.id"
-                  >{{tipus_incident.tipus}}</option>
-                </select>
-              </div>
-            </fieldset>
-            <fieldset class="boxFiltroHistorial col-4">
-              <div class="form-group">
-                <label for="edat">Edat</label>
-                <div class="form-inline justify-content-between mb-1">
-                  <label for="edat">Desde</label>
-                  <input
-                    class="form-control ml-1"
-                    min="0"
-                    max="200"
-                    type="number"
-                    name="edat"
-                    id="edat"
-                    v-model="edat_desde"
-                  />
-                </div>
-                <div class="form-inline justify-content-between mb-1">
-                  <label for="edat">Fins</label>
-
-                  <input
-                    class="form-control ml-1"
-                    min="0"
-                    max="200"
-                    type="number"
-                    name="edat"
-                    id="edat"
-                    v-model="edat_fins"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="sexo"
-                    id="sexo_home"
-                    v-model="sexo_home"
-                    value="home"
-                  />
-                  <label class="form-check-label" for="sexo_home">Home</label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="sexo"
-                    id="sexo_dona"
-                    v-model="sexo_dona"
-                    value="dona"
-                  />
-                  <label class="form-check-label" for="sexo_dona">Dona</label>
-                </div>
-              </div>
             </fieldset>
           </div>
-          <div class="d-flex justify-content-between flex-row align-items-end">
-            <div class="form-group col-4 m-0">
-              <label for="municipi">Municipi</label>
-              <select class="form-control" v-model="municipi" name="municipi" id="municipi">
-                <option
-                  v-for="(municipi, index) in municipis"
-                  :key="index"
-                  :value="municipi.id"
-                >{{municipi.nom}}</option>
-              </select>
-            </div>
+          <div class="d-flex justify-content-end flex-row align-items-end">
             <div class="actions">
               <button type="reset" @click.prevent="reset" class="btn btn-secondary">RESET</button>
               <button type="submit" @click.prevent="filtrar" class="btn btn-primary ml-2">FILTRAR</button>
@@ -216,12 +163,7 @@
     <nav aria-label="...">
       <ul class="pagination">
         <li aria-label="« Previous" :class="{disabled: current_page == 1 }" class="page-item">
-          <a
-            class="page-link"
-            href="#"
-            tabindex="-1"
-            @click.prevent="getIncidencias(current_page - 1)"
-          >‹</a>
+          <a class="page-link" href="#" tabindex="-1" @click.prevent="filtrar(current_page - 1)">‹</a>
         </li>
         <li
           v-for="(page, index) in last_page"
@@ -229,14 +171,14 @@
           :class="{active: index + 1 == current_page }"
           class="page-item"
         >
-          <a class="page-link" href="#" @click.prevent="getIncidencias(page)">{{index+1}}</a>
+          <a class="page-link" href="#" @click.prevent="filtrar(page)">{{index+1}}</a>
         </li>
         <li class="page-item" :class="{disabled: current_page == last_page }">
           <a
             aria-label="Next"
             class="page-link"
             href="#"
-            @click.prevent="getIncidencias(current_page + 1)"
+            @click.prevent="filtrar(current_page + 1)"
           >›</a>
         </li>
       </ul>
@@ -307,20 +249,7 @@ export default {
           console.log(error);
         });
     },
-    getIncidencias(page) {
-      axios
-        .get("/abp-broggi/public/api/historial?page=" + page)
-        .then(response => {
-          console.log(response);
-          this.incidencias = response.data.incidencias.data;
-          this.last_page = response.data.incidencias.last_page;
-          this.current_page = response.data.incidencias.current_page;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    filtrar() {
+    filtrar(page) {
       let filtros = {};
       if (this.data_desde) {
         filtros.from_date = this.data_desde;
@@ -348,9 +277,8 @@ export default {
       }
       console.log("Filtros a aplicar:");
       console.log(filtros);
-      this.page = 1;
       axios
-        .post("/abp-broggi/public/api/historial?page=" + this.page, filtros)
+        .post("/abp-broggi/public/api/historial?page=" + page, filtros)
         .then(response => {
           console.log(response);
           this.incidencias = response.data.data;

@@ -44,6 +44,10 @@ class HistorialController extends Controller
         //
     }
 
+    public function search(Request $request){
+        
+    }
+
     public function filter(Request $request, Incidencia $incidencias){
         $incidencias = $incidencias->newQuery();
         if($request->has('from_date')){
