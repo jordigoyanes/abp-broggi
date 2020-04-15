@@ -160,5 +160,9 @@ class IncidenciaController extends Controller
 
     }
 
+    public function getAlertant($id){
+        return Alertant::where('tipus_alertant_id', $id)->get();
+    }
+
 
 }

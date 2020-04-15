@@ -26,3 +26,8 @@ Route::get('municipis','Api\MunicipiController@index');
 Route::get( '/comarca/{id}' ,'IncidenciaController@getComarca');
 
 Route::get( '/municipi/{id}' ,'IncidenciaController@getMunicipi');
+
+Route::get( '/centre/{id}' ,'IncidenciaController@getAlertant');
+
+
+
