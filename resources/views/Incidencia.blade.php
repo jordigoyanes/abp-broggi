@@ -36,17 +36,15 @@
                         {{-- PROVINCIA --}}
 
                         <div class="form-group col-md-6 col-sm-4 form-inline">
-                            <input type="radio" name="B" id="B" value="Barcelona" style="margin-right:15px;">
-                            <label for="B" style="margin-right:25px;">B</label><br>
+                            <label for="provinciaIncident">Provincia</label>
+                            <select name="provinciaIncident" id="provinciaIncident" style="border-radius:10px; margin-left:94px; ; width:300px;">
+                                <@foreach ($provincies as $provincia)
 
-                            <input type="radio" name="G" id="G" value="Girona" style="margin-right:15px;">
-                            <label for="G" style="margin-right:25px;">G</label><br>
+                                        <option value="{{ $provincia->id }}" selected> {{ $provincia->nom }} </option>
 
-                            <input type="radio" name="L" id="L" value="Lleida" style="margin-right:15px;">
-                            <label for="L" style="margin-right:25px;">L</label><br>
+                                @endforeach
+                            </select>
 
-                            <input type="radio" name="t" id="T" value="Tarragona" style="margin-right:15px;">
-                            <label for="T" style="margin-right:25px;">T</label><br>
                         </div>
 
                     </div>
@@ -63,15 +61,38 @@
                         {{-- COMARCA --}}
 
                         <div class="form-group col-md-6 col-sm-4">
+
                             <label for="comarca">Comarca</label>
                             <select name="comarca" id="comarca" style="border-radius:10px; margin-left:94px; ; width:300px;">
-                                <@foreach ($comarques as $comarca)
-
-                                    <option value="{{ $comarca->id }}" selected> {{ $comarca->nom }} </option>
-
-                                @endforeach
+                                <option value="">Selecciona una Comarca</option>
                             </select>
                         </div>
+
+                        {{-- SCRIPT AMB AJAX PER TROBAR LA COMARCA SEGONS EL ID DE LA PROVINCIA SELECCIONADA --}}
+                        <script>
+                            $(function(){
+                                $('#provinciaIncident').on('change', actualitzarComarca);
+
+                            });
+
+                            function actualitzarComarca() {
+                                var id_provincia = $(this).val();
+
+                                // AJAX
+
+                                $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
+
+                                    var html_select = '<option value="">Seleccioni una comarca</option>'
+
+                                    for(var i=0; i<data.length; i++)
+                                        html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+                                        console.log(html_select);
+
+                                    $('#comarca').html(html_select);
+                                });
+                            }
+
+                        </script>
 
                     </div>
 
@@ -91,15 +112,47 @@
 
                         <div class="form-group col-md-6 col-sm-4">
                             {{-- MUNICIPI --}}
-                            <label for="municipi">Municpi</label>
+                            <label for="municipi">Municipi</label>
                             <select name="municipi" id="municipi" style="border-radius:10px; margin-left:100px; ; width:300px;">
-                                @foreach ($municipis as $muni)
 
-                                    <option value="{{ $muni->id }}" selected> {{ $muni->nom }} </option>
+                                    <option value="">Selecciona una Municipi</option>
 
-                                @endforeach
                             </select>
                         </div>
+
+
+                        {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
+
+                        <script>
+
+                            $(function(){
+
+                                $('#comarca').on('change', actualitzarMunicipi);
+
+                            });
+
+                            function actualitzarMunicipi(){
+
+                                var comarques_id = $(this).val();
+
+
+                                // AJAX
+
+                                $.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
+
+                                var html_select = '<option value="">Seleccioni un Municipi</option>'
+
+                                for(var i=0; i<data.length; i++)
+                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+
+
+                                $('#municipi').html(html_select);
+                                });
+
+                            }
+
+
+                        </script>
 
                     </div>
                     <div class="form-row">
@@ -441,4 +494,5 @@
 
     </form>
 </div>
+
 @endsection

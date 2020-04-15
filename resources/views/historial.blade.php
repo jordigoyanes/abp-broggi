@@ -8,7 +8,7 @@ Historial
 @section('principal')
 
 <div id="app">
-    <historial />
+    <historial/>
 </div>
 <script src="{{ asset('js/app.js')}}"></script>
 

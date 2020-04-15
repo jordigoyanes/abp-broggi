@@ -16,6 +16,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
 </head>
 
 
@@ -51,12 +53,12 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">FORMACIO</a>
                         @if (Auth::check())
-                            <a class="dropdown-item" href="#">{{ Auth::user()->nom }}</a>                                
-                           
+                            <a class="dropdown-item" href="#">{{ Auth::user()->nom }}</a>
+
                         @else
                             <a class="dropdown-item" href="#">USUARI</a>
                         @endif
-                        
+
                         <a class="dropdown-item" href="{{ route('logout') }}">SORTIR</a>
                     </div>
                 </li>

@@ -25,7 +25,7 @@
 
             @foreach ($incidencies as $incidencia)
                 <tr>
-                    <td> #{{ $incidencia->id }} </td>
+                    <td> {{ $incidencia->id }} </td>
                     <td> {{ $incidencia->localitzacio }} </td>
                     <td> {{ $incidencia->hora }} </td>
                     <td> {{ $incidencia->TipusIncident->tipus }} </td>
