@@ -1,6 +1,7 @@
 html,
 body {
     min-height: 100vh;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 #logo {
@@ -20,9 +21,7 @@ h1 {
     border: none;
     color: white;
     background-color: #1CADC3;
-
 }
-
 
 #novaIncidencia {
     padding-left: 45px;
@@ -37,13 +36,13 @@ h1 {
 }
 
 #signup {
-    padding-left: 45px;
+    padding: 6px 40px;
     font-weight: bold;
-    padding-right: 45px;
     border-radius: 30px;
     border: none;
-    color: white;
+    color: #FEF1D0;
     background-color: #FCC536;
+    text-decoration: none;
 }
 
 #nom {
@@ -181,7 +180,7 @@ footer p {
     margin-top: 20px;
 }
 
-/* --------------------------------HISTORIAL------------------------------------ 
+/* --------------------------------HISTORIAL------------------------------------
 .content{
     display: flex;
     flex-direction: row-reverse;
