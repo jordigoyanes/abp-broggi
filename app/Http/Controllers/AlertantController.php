@@ -108,7 +108,14 @@ class AlertantController extends Controller
      */
     public function update(Request $request, Alertant $alertant)
     {
-        //
+        $alertant->nom = $request->input('nom');
+        $alertant->tipus_alertant_id = $request->input('tipus_alertant');
+        $alertant->telefon = $request->input('telefon');
+        $alertant->adreca = $request->input('adreca');
+        $alertant->municipis_id = $request->input('municipi');
+
+        $alertant->save();
+        return redirect()->action('AlertantController@show', $alertant->id);
     }
 
     /**

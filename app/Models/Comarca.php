@@ -22,6 +22,4 @@ class Comarca extends Model
     {
         return $this->belongsTo('App\Models\Provincia', 'id');
     }
-
-
 }

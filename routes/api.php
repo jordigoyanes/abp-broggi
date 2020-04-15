@@ -21,4 +21,6 @@ Route::get('historial','Api\HistorialController@index');
 
 Route::post('historial','Api\HistorialController@filter');
 
+Route::post('alertant','Api\AlertantController@alertantsByTipus');
+
 Route::get('municipis','Api\MunicipiController@index');
