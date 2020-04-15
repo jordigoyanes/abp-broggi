@@ -29,5 +29,8 @@ Route::get( '/municipi/{id}' ,'IncidenciaController@getMunicipi');
 
 Route::get( '/centre/{id}' ,'IncidenciaController@getAlertant');
 
+Route::get('/centreid/{id}', 'IncidenciaController@getAlertantbyId');
+Route::get('/codiRecurs/{id}', 'IncidenciaController@getRecurs');
+
 
 

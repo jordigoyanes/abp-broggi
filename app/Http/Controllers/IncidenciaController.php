@@ -233,5 +233,14 @@ class IncidenciaController extends Controller
         return Alertant::where('tipus_alertant_id', $id)->get();
     }
 
+    public function getAlertantbyId($id){
+        return Alertant::where('id', $id)->get();
+    }
+
+    public function getRecurs($id){
+
+        return RecursMobil::where('tipus_recurs_id', $id)->get();
+
+    }
 
 }
