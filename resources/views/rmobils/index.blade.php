@@ -28,49 +28,50 @@ Recursos Mòbils
                         </tr>
                     </thead>
                     <tbody>
-            
+                        
                         @foreach ($recursMobils as $recursMobil)
-                            <tr>
-                                <td>O</td>
-                                <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
-                                <td> {{ $recursMobil->codi }} </td>
-                                <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Incidencias</button> </td>
-                                
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            
-                                            <div class="card-deck">
+                        
+                        @if ($recursMobil->estat == 'activa')
+                       
+                        <tr>
+                            <td>O</td>
+                            <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
+                            <td> {{ $recursMobil->codi }} </td>
+                            <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Incidencias</button> </td>
 
-                                                @foreach ($recursMobil->Incidencias as $item)
+                            
+                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        
+                                        <div class="card-deck">
 
-                                                <div class="card">                                                    
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">#{{ $item->id }}</h4>
-                                                        <p class="card-text">{{ $item->localitzacio }}</p>
-                                                    </div>
+                                            @foreach ($recursMobil->Incidencias as $item)
+
+                                            <div class="card">                                                    
+                                                <div class="card-body">
+                                                    <p class="card-text">#{{ $item->id }}</h4>
+                                                    <p class="card-text">{{ $item->localitzacio }}</p>
                                                 </div>
-                                                
-                                                
+                                            </div>
                                             
-                                                @endforeach 
+                                            @endforeach 
 
-                                               
-                                            </div>                                                                                                                                  
-                                            {{-- {{ $recursMobil->Incidencias }} --}}
-                                          
-                                        </div>
+                                           
+                                        </div>                                                                                                                                  
+                                        
+                                      
                                     </div>
                                 </div>
-                                
-                                
-                                                                        
-                            </tr>      
+                            </div>
+
                             
-                            
-                            
+                        </tr>    
+                        
+                        @endif
 
 
+                            
                         @endforeach
                     
                     </tbody>
@@ -78,15 +79,8 @@ Recursos Mòbils
             </div>
 
            
-          </div>
         </div>
-
-
-        
-
-        
-
-
+    </div>
 
 
         <div class="col-sm-6">
@@ -105,15 +99,23 @@ Recursos Mòbils
                         </tr>
                     </thead>
                     <tbody>
-            
+                        
+                        
                         @foreach ($recursMobils as $recursMobil)
+
+                        @if ($recursMobil->estat == 'espera')
                             <tr>
                                 <td>O</td>
                                 <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
                                 <td> {{ $recursMobil->codi }} </td>
                                 <td> - </td>
                                                                         
-                            </tr>                
+                            </tr>    
+                        
+                            
+                        @endif
+
+                                        
                         @endforeach
                     
                     </tbody>

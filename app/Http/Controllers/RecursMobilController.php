@@ -47,6 +47,7 @@ class RecursMobilController extends Controller
         $recursMobil = new RecursMobil();
         $recursMobil->tipus_recurs_id = $request->input('tipus');
         $recursMobil->codi = $request->input('codi');
+        $recursMobil->estat = $request->input('estat');
 
         $recursMobil->save();
 

@@ -131,7 +131,7 @@ CREATE TABLE `estats_incidencia` (
 LOCK TABLES `estats_incidencia` WRITE;
 /*!40000 ALTER TABLE `estats_incidencia` DISABLE KEYS */;
 INSERT INTO estats_incidencia(id,estat) VALUES(1,'Activa');
-INSERT INTO estats_incidencia(id,estat) VALUES(2,'En Espera');
+INSERT INTO estats_incidencia(id,estat) VALUES(2,'Espera');
 /*!40000 ALTER TABLE `estats_incidencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,6 +334,7 @@ DROP TABLE IF EXISTS `recursos`;
 CREATE TABLE `recursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codi` varchar(45) DEFAULT NULL,
+  `estat` varchar(45) DEFAULT NULL,
   `tipus_recurs_id` int(11) NOT NULL,
   `id_usuario` int(11),
   PRIMARY KEY (`id`),
@@ -349,7 +350,7 @@ CREATE TABLE `recursos` (
 
 LOCK TABLES `recursos` WRITE;
 /*!40000 ALTER TABLE `recursos` DISABLE KEYS */;
-INSERT into `recursos` values (1,'AMB2456',1,1),(2,'AMB2456',1,1),(3,'AMB2456',1,1),(4,'AMB2456',1,1),(5,'AMB2456',1,1),(6,'AMB2456',1,1);
+INSERT into `recursos` values (1,'AMB2456','activa',1,1),(2,'AMB2456','activa',1,1),(3,'AMB2456','activa',1,1),(4,'AMB2456','activa',1,1),(5,'AMB2456','activa',1,1),(6,'AMB2456','activa',1,1);
 /*!40000 ALTER TABLE `recursos` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -41,10 +41,10 @@ Recursos Mòbils
                                     <div class="card-body">
                                         <table>
                                             <thead>
-                                                <th scope="col">imagen</th>
-                                                <th scope="col">imagen</th>
-                                                <th scope="col">imagen</th>
-                                                <th scope="col">imagen</th>                                    
+                                                <th scope="col"><img src="../img/ambulancia-medicalizada.jpg" alt="" style="width:100%;"></th>
+                                                <th scope="col"><img src="../img/ambulancia-sanitarizada.jpg" alt="" style="width:100%;"></th>
+                                                <th scope="col"><img src="../img/ambulancia-asistencial.jpg" alt="" style="width:100%;"></th>
+                                                <th scope="col"><img src="../img/helicoptero-medicalizado.jpg" alt="" style="width:100%;"></th>                                    
                                             </thead>
                                             <tbody>
                     
@@ -88,6 +88,26 @@ Recursos Mòbils
                                     </div>
                                   </div>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <div class="card" style="border:none; background-color:#eee;" >
+                                      <div class="card-body">
+                                          <div class="form-group col-md-3">
+                                            <label for="estat" >Estat</label>
+
+                                            <select name="estat" id="estat" placeholder="estat" class="custom-select input-sm chat-input mt-3" style=" width:200px;">
+                                                <option value="activa">activa</option>
+                                                <option value="espera">en espera</option>
+                
+                                            </select>
+
+                                              {{-- <label for="estat" >Estat</label>
+                                              <br>
+                                              <input type="estat" name="codi" id="codi" style="border-radius:10px; width:200px;"> --}}
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
                             </div>
                                
                         </div>
