@@ -6,7 +6,7 @@ LOGIN
 
 @section('principal')
 
-<div class="w-100 mt-5 d-flex justify-content-center">
+<div class="w-100 mt-4 d-flex justify-content-center">
     <div class="col-md-4">
         <div class="card text-center card  bg-default mb-3" style="border:none;">
 
@@ -15,12 +15,12 @@ LOGIN
 
                 <form action="{{ action('Auth\LoginController@login')}}" method="post">
                     @csrf
-                    
+
                     <input type="text" id="nom" name="nom" class="form-control input-sm chat-input mt-5"
                         placeholder="Username">
 
-                   
-                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-4"
+
+                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-3"
                         placeholder="Password">
 
                     <button id="login" type="submit" class="btn mt-5">LOGIN</button>
@@ -28,7 +28,7 @@ LOGIN
 
                 </form>
 
-                <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ url('/register') }} ">Regístrate</a></p>
+                <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ url('/register') }} "><u>Regístrate</u></a></p>
                 {{-- <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ action('UsuarioController@create') }} ">Regístrate</a></p> --}}
             </div>
 

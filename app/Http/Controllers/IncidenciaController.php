@@ -7,8 +7,11 @@ use App\Models\Comarca;
 use App\Models\TipusIncident;
 use App\Models\TipusAlertant;
 use App\Models\TipusRecurs;
-
-
+use App\Models\Provincia;
+use App\Models\EstatsIncidencia;
+use App\Models\Alertant;
+use App\Models\Afectat;
+use App\Models\RecursMobil;
 
 
 use App\Models\Incidencia;
@@ -48,19 +51,39 @@ class IncidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $municipis = Municipi::all();
-        $comarques = Comarca::all();
+
         $tipusIncident = TipusIncident::all();
         $tipusAlertant = TipusAlertant::all();
         $tipusRecurs = TipusRecurs::all();
+        $provincies = Provincia::all();
+        $estats = EstatsIncidencia::all();
+        $alertants = Alertant::all();
+        $comarques = Comarca::all();
+        $recurs = RecursMobil::all();
 
+        //   if($request->has('provinciaIncident')){
+        //       $provinciaIncident = $request->input('provinciaIncident');
+        //   }else{
+        //       $provinciaIncident = 1;
+        //   }
+
+        // $comarques = Comarca::where('provincies_id','=',$provinciaIncident)->get();
+
+
+        // $data['provinciaIncident'] = $provinciaIncident;
         $data['municipis'] = $municipis;
         $data['comarques'] = $comarques;
+        $data['provincies'] = $provincies;
         $data['tipusIncident'] = $tipusIncident;
         $data['tipusAlertant'] = $tipusAlertant;
         $data['tipusRecurs'] = $tipusRecurs;
+        $data['estatsIncidencia'] = $estats;
+        $data['alertants'] = $alertants;
+        $data['recursos'] = $recurs;
+
 
 
         return view('Incidencia', $data);
@@ -75,22 +98,77 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
 
+
+        $id_tipus_alertant = $request->input('tipusAlertant');
+
+        if($id_tipus_alertant != 1){
+
+            $alertant = new Alertant();
+
+            $id = rand(1,1000);
+
+            $alertant->id = $id;
+            $alertant->nom = $request->input('nomAlertant');
+            $alertant->cognoms = $request->input('cognomAlertant');
+            $alertant->adreca = $request->input('adreçaAlertant');
+            $alertant->municipis_id = 2;
+            $alertant->telefon = $request->input('telefonAlertant');
+            $alertant->tipus_alertant_id = $request->input('tipusAlertant');
+
+            $alertant->save();
+        }
+
+        $afectat_tarjeta = $request->input('tenir_tarjeta');
+
+        $afectat = new Afectat();
+
+        if($afectat_tarjeta == 2){
+            $afectat->cip = $request->input(null);
+        }
+        else{
+            $afectat->cip = $request->input('CipAfectat');
+        }
+        $afectat->telefon = $request->input('telefonAfectat');
+        $afectat->nom = $request->input('nomAfectat');
+        $afectat->cognoms = $request->input('cognomAfectat');
+        $afectat->sexe = $request->input('sexeAfectat');
+        $afectat->edat = $request->input('edatAfectat');
+        $afectat->tenir_tarjeta = $afectat_tarjeta;
+        $afectat->municipis_id = $request->input('municipiAfectat');
+
+        $afectat->save();
+
+
+
         $incidencia = new Incidencia();
 
-        $incidencia->id = $request->input('id');
-        // $incidencia->localitzacio = $request->input('id'); FALTA
-        // $incidencia->num_incidencia = $request->input('id'); FALTA
-        $incidencia->telefon_alertant = $request->input('TelefonAlertant');
+
+
+        $incidencia->localitzacio =  $request->input('localitzacio');
+
+        $incidencia->num_incidencia = rand(1,1000);
+
+        $incidencia->telefon_alertant = $request->input('telefon');
         $incidencia->data = $request->input('data');
         $incidencia->hora = $request->input('hora');
         $incidencia->adreca = $request->input('adreça');
-        // $incidencia->complement_adreca = $request->input('id'); FALTA
+        $incidencia->complement_adreca = $request->input('adreça2');
         $incidencia->descripcio = $request->input('descripcio');
+
         $incidencia->municipis_id = $request->input('municipi');
         $incidencia->tipus_incident_id = $request->input('tipus');
-        // $incidencia->estats_incidencia_id = $request->input('id'); FALTA
+        $incidencia->estats_incidencia_id = $request->input('estatIncidencia');
         $incidencia->tipus_alertant_id = $request->input('tipusAlertant');
-        // $incidencia->alertants_id = $request->input('id'); FALTA
+        $incidencia->alertants_id = $id;
+
+
+        $incidencia->save();
+
+
+
+        return redirect()->action('IncidenciaController@index');
+
+
 
     }
 
@@ -138,4 +216,31 @@ class IncidenciaController extends Controller
     {
         //
     }
+
+    public function getComarca($id){
+
+        return Comarca::where('provincies_id', $id)->get();
+
+    }
+
+    public function getMunicipi($id){
+
+        return Municipi::where('comarques_id', $id)->get();
+
+    }
+
+    public function getAlertant($id){
+        return Alertant::where('tipus_alertant_id', $id)->get();
+    }
+
+    public function getAlertantbyId($id){
+        return Alertant::where('id', $id)->get();
+    }
+
+    public function getRecurs($id){
+
+        return RecursMobil::where('tipus_recurs_id', $id)->get();
+
+    }
+
 }

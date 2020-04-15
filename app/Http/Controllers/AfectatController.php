@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RecursMobil;
-use App\Models\TipusRecurs;
+use App\Afectat;
 use Illuminate\Http\Request;
 
-class RecursMobilController extends Controller
+class AfectatController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $recursMobils = RecursMobil::all();
-
-        $datos['recursMobils'] = $recursMobils;
-
-        return view('rmobils.index', $datos);
+        //
     }
 
     /**
@@ -29,11 +24,7 @@ class RecursMobilController extends Controller
      */
     public function create()
     {
-        $tipusRecursos = TipusRecurs::all();
-
-        $data['tipusRecursos'] = $tipusRecursos;
-
-        return view('rmobils.create', $data);
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class RecursMobilController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RecursMobil  $recursMobil
+     * @param  \App\Afectat  $afectat
      * @return \Illuminate\Http\Response
      */
-    public function show(RecursMobil $recursMobil)
+    public function show(Afectat $afectat)
     {
         //
     }
@@ -61,10 +52,10 @@ class RecursMobilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RecursMobil  $recursMobil
+     * @param  \App\Afectat  $afectat
      * @return \Illuminate\Http\Response
      */
-    public function edit(RecursMobil $recursMobil)
+    public function edit(Afectat $afectat)
     {
         //
     }
@@ -73,10 +64,10 @@ class RecursMobilController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RecursMobil  $recursMobil
+     * @param  \App\Afectat  $afectat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RecursMobil $recursMobil)
+    public function update(Request $request, Afectat $afectat)
     {
         //
     }
@@ -84,10 +75,10 @@ class RecursMobilController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RecursMobil  $recursMobil
+     * @param  \App\Afectat  $afectat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RecursMobil $recursMobil)
+    public function destroy(Afectat $afectat)
     {
         //
     }

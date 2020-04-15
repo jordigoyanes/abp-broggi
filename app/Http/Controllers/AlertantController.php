@@ -76,7 +76,7 @@ class AlertantController extends Controller
         $provincias = Provincia::all();
         $municipis = Municipi::all();
         $comarcas = Comarca::all();
-        
+
         $data['alertant'] = $alertant;
         $data['provincias'] = $provincias;
         $data['municipis'] = $municipis;

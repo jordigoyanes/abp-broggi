@@ -1,6 +1,7 @@
 html,
 body {
     min-height: 100vh;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 #logo {
@@ -20,9 +21,7 @@ h1 {
     border: none;
     color: white;
     background-color: #1CADC3;
-
 }
-
 
 #novaIncidencia {
     padding-left: 45px;
@@ -37,13 +36,13 @@ h1 {
 }
 
 #signup {
-    padding-left: 45px;
+    padding: 6px 40px;
     font-weight: bold;
-    padding-right: 45px;
     border-radius: 30px;
     border: none;
-    color: white;
+    color: #FEF1D0;
     background-color: #FCC536;
+    text-decoration: none;
 }
 
 #nom {
@@ -165,23 +164,35 @@ footer p {
 /* -------------------------------------------------PRINCIPAL-------------------------------- */
 
 .nuevaIncidencia {
-
-    /* padding: 20px; */
     background-color: #DD177A;
-    border-radius: 30px;
+    border-radius: 35px;
     color: white;
     font-weight: bold;
-    width: 200px;
-    height: 84px;
-    margin-left: 900px;
+    padding: 3px 25px;
 }
 
-#tabla-principal {
-
-    margin-top: 20px;
+#tabla-principal th{
+    font-weight: normal;
 }
 
-/* --------------------------------HISTORIAL------------------------------------ 
+.paginacion-tabla ul{
+    margin-bottom:0;
+}
+
+@media (max-width: 992px) {
+    .esconder-sm{
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .esconder-xs {
+        display: none;
+    }
+  }
+
+/* --------------------------------HISTORIAL------------------------------------
 .content{
     display: flex;
     flex-direction: row-reverse;
@@ -258,4 +269,21 @@ input, select{
 #accordion>button {
 
     text-decoration: none;
+}
+
+.nourecurs{
+    background: #FCC536;
+    border-radius: 23px;
+    border:none;
+
+    font-weight: bold;
+    width: 200px;
+    height: 34px;
+
+
+}
+
+.nourecurs a{
+    text-decoration: none;
+    color: white;
 }

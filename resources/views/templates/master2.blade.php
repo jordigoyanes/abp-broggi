@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('titulo')</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -18,34 +20,35 @@
 </head>
 
 
-<body>
+<body class="d-flex flex-column">
 
-    <nav class="mb-3 navbar navbar-expand-lg navbar-light bg-transaparent border-bottom">
-        <a class="navbar-brand" href="#"><img id="logo" src="./img/logo.png" class="ml-5" alt=""></a>
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
+    <nav class="navbar border-bottom d-flex justify-content-between px-5 py-2">
+        {{-- Logo --}}
+        <div>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <div style="width:55px; height:55px">
+                    <img id="logo" src="./img/logo.png" class="w-100 h-100" alt="">
+                </div>
+            </a>
         </div>
+
     </nav>
 
-
-
-
-    <div class="flex-column d-flex justify-content-between h-100">
-        <div class="container">
-
+    <div class="flex-column d-flex justify-content-between" style="min-height: 100%">
+        <div class="container" >
             @yield('principal')
         </div>
 
-        <footer class="d-flex justify-content-center mt-2 p-1">
-            <p class="copyright mb-0 p-1">&copy; <script>
-                document.write(new Date().getFullYear())
-                </script> Institut Moisès Broggi</p>
-        </footer>
     </div>
+
+    <footer class="d-flex mt-auto px-5 py-3">
+        <div class="col-4 d-flex align-items-center">CA v</div>
+        <div class="col-4 d-flex justify-content-center align-items-center mb-0"><p class="copyright mb-0">&copy; <script>
+            document.write(new Date().getFullYear())
+            </script> Institut Moisès Broggi</p></div>
+        <div class="col-4 d-flex justify-content-end align-items-center">modo on</div>
+
+    </footer>
 </body>
 
 

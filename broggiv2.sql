@@ -152,7 +152,7 @@ CREATE TABLE `incidencies` (
   `hora` time NOT NULL,
   `adreca` varchar(150) NOT NULL,
   `complement_adreca` varchar(150) DEFAULT NULL,
-  `descripcio` varchar(256) DEFAULT NULL, 
+  `descripcio` varchar(256) DEFAULT NULL,
   `municipis_id` int(11) NOT NULL,
   `tipus_incident_id` int(11) NOT NULL,
   `estats_incidencia_id` int(11) NOT NULL,
