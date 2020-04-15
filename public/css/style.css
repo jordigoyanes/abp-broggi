@@ -259,3 +259,20 @@ input, select{
 
     text-decoration: none;
 }
+
+.nourecurs{
+    background: #FCC536;
+    border-radius: 23px;
+    border:none;
+    
+    font-weight: bold;
+    width: 200px;
+    height: 34px;
+    
+   
+}
+
+.nourecurs a{
+    text-decoration: none;
+    color: white;
+}
