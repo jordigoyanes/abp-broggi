@@ -18,6 +18,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
 </head>
 
 

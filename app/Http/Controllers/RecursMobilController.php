@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RecursMobil;
+use App\Models\TipusRecurs;
 use Illuminate\Http\Request;
 
 class RecursMobilController extends Controller
@@ -28,7 +29,11 @@ class RecursMobilController extends Controller
      */
     public function create()
     {
-        //
+        $tipusRecursos = TipusRecurs::all();
+
+        $data['tipusRecursos'] = $tipusRecursos;
+
+        return view('rmobils.create', $data);
     }
 
     /**

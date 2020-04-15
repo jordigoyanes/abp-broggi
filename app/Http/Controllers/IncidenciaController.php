@@ -7,6 +7,11 @@ use App\Models\Comarca;
 use App\Models\TipusIncident;
 use App\Models\TipusAlertant;
 use App\Models\TipusRecurs;
+use App\Models\Provincia;
+use App\Models\EstatsIncidencia;
+use App\Models\Alertant;
+
+
 
 
 
@@ -48,19 +53,36 @@ class IncidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $municipis = Municipi::all();
-        $comarques = Comarca::all();
+
         $tipusIncident = TipusIncident::all();
         $tipusAlertant = TipusAlertant::all();
         $tipusRecurs = TipusRecurs::all();
+        $provincies = Provincia::all();
+        $estats = EstatsIncidencia::all();
+        $alertants = Alertant::all();
+        $comarques = Comarca::all();
+        //   if($request->has('provinciaIncident')){
+        //       $provinciaIncident = $request->input('provinciaIncident');
+        //   }else{
+        //       $provinciaIncident = 1;
+        //   }
 
+        // $comarques = Comarca::where('provincies_id','=',$provinciaIncident)->get();
+
+
+        // $data['provinciaIncident'] = $provinciaIncident;
         $data['municipis'] = $municipis;
         $data['comarques'] = $comarques;
+        $data['provincies'] = $provincies;
         $data['tipusIncident'] = $tipusIncident;
         $data['tipusAlertant'] = $tipusAlertant;
         $data['tipusRecurs'] = $tipusRecurs;
+        $data['estatsIncidencia'] = $estats;
+        $data['alertants'] = $alertants;
+
 
 
         return view('Incidencia', $data);
@@ -77,20 +99,7 @@ class IncidenciaController extends Controller
 
         $incidencia = new Incidencia();
 
-        $incidencia->id = $request->input('id');
-        // $incidencia->localitzacio = $request->input('id'); FALTA
-        // $incidencia->num_incidencia = $request->input('id'); FALTA
-        $incidencia->telefon_alertant = $request->input('TelefonAlertant');
-        $incidencia->data = $request->input('data');
-        $incidencia->hora = $request->input('hora');
-        $incidencia->adreca = $request->input('adreça');
-        // $incidencia->complement_adreca = $request->input('id'); FALTA
-        $incidencia->descripcio = $request->input('descripcio');
-        $incidencia->municipis_id = $request->input('municipi');
-        $incidencia->tipus_incident_id = $request->input('tipus');
-        // $incidencia->estats_incidencia_id = $request->input('id'); FALTA
-        $incidencia->tipus_alertant_id = $request->input('tipusAlertant');
-        // $incidencia->alertants_id = $request->input('id'); FALTA
+
 
     }
 
@@ -138,4 +147,22 @@ class IncidenciaController extends Controller
     {
         //
     }
+
+    public function getComarca($id){
+
+        return Comarca::where('provincies_id', $id)->get();
+
+    }
+
+    public function getMunicipi($id){
+
+        return Municipi::where('comarques_id', $id)->get();
+
+    }
+
+    public function getAlertant($id){
+        return Alertant::where('tipus_alertant_id', $id)->get();
+    }
+
+
 }

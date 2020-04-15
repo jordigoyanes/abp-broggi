@@ -9,48 +9,47 @@ Recursos Mòbils
 @section('principal')
 
 
-    {{-- <button class="nuevaIncidencia"> <a href="{{ url('/novaIncidencia') }}">NOVA INCIDENCIA +</a> </button> --}}
+    <button class="nourecurs"> <a href="{{ action('RecursMobilController@create') }}">NOU RECURS +</a> </button>
 
     
-
-    <div class="card border-0">
-       
-        <div class="card-body">
-            <h2>ACTIUS</h2>
-            <table class="table table-bordered" id="tabla-principal">
-                <thead style="background-color: #1CADC3; color:white;">
-                    <tr>
-                        <th>ICONA</th>
-                        <th>TIPUS</th>
-                        <th>CODI</th>
-                        <th>INCIDENCIA</th>
-                       
-                    </tr>
-                </thead>
-                <tbody>
-        
-                    @foreach ($recursMobils as $recursMobil)
-                        <tr>
-                            <td>O</td>
-                            <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
-                            <td> {{ $recursMobil->codi }} </td>
-                            <td> {{ $recursMobil->incidencias }} </td>
-                                                                    
-                        </tr>                
-                    @endforeach
-                
-                </tbody>
-            </table>
-        </div>
-        
-    </div>
-
-    
-
-
     <div class="row">
         <div class="col-sm-6">
           <div class="card border-0">
+
+            <div class="card-body">
+                <h2>ACTIUS</h2>
+                <table class="table table-bordered" id="tabla-principal">
+                    <thead style="background-color: #1CADC3; color:white;">
+                        <tr>
+                            <th>ICONA</th>
+                            <th>TIPUS</th>
+                            <th>CODI</th>
+                            <th>INCIDENCIA</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                        @foreach ($recursMobils as $recursMobil)
+                            <tr>
+                                <td>O</td>
+                                <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
+                                <td> {{ $recursMobil->codi }} </td>
+                                <td> {{ $recursMobil->incidencias }} </td>
+                                                                        
+                            </tr>                
+                        @endforeach
+                    
+                    </tbody>
+                </table>
+            </div>
+
+           
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card border-0">
+
             <div class="card-body">
                 <h2 style="color:grey;">EN ESPERA</h2>
                 <table class="table table-bordered" id="tabla-principal">
@@ -78,37 +77,9 @@ Recursos Mòbils
                     </tbody>
                 </table>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card border-0">
-            <div class="card-body">
-                <h2 style="color:grey;">INACTIUS</h2>
-                <table class="table table-active" id="tabla-principal">
-                    <thead style="color:grey;">
-                        <tr>
-                            <th>ICONA</th>
-                            <th>TIPUS</th>
-                            <th>CODI</th>
-                            <th>INCIDENCIA</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-            
-                        {{-- @foreach ($recursMobils as $recursMobil)
-                            <tr>
-                                <td>O</td>
-                                <td> {{ $recursMobil->tipusRecurs->tipus }} </td>
-                                <td> {{ $recursMobil->codi }} </td>
-                                <td> {{ $recursMobil->incidencias }} </td>
-                                                                        
-                            </tr>                
-                        @endforeach --}}
-                    
-                    </tbody>
-                </table>
-            </div>
+
+
+           
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/incidencia','IncidenciaController');
 
     Route::resource('/alertant','AlertantController');
-    
+
     Route::resource('/rmobils','RecursMobilController');
 
 
@@ -41,3 +41,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::resource('/usuario', 'UsuarioController');
+

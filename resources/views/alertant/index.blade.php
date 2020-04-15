@@ -17,12 +17,12 @@ Alertants
             <option  value="{{$tipus->id}}">{{$tipus->tipus}}</option>
             @endif
             @endforeach
-            
+
         </select>
     </div>
     <div id="buscador-alertants" class="d-flex">
             <input class="form-control" value="{{$search}}" type="text" name="search" placeholder="Nom de l'alertant">
-            <button type="submit" class="ml-3 btn btn-primary ">CERCA</button>  
+            <button type="submit" class="ml-3 btn btn-primary ">CERCA</button>
     </div>
 </form>
     @if(count($alertants)==0)
@@ -47,7 +47,7 @@ Alertants
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="{{url('/alertant', $alertant->id)}}" class="btn btn-primary">Veure perfil</a>
-                    
+
                 </div>
             </div>
         @endforeach
