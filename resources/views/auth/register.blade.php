@@ -55,7 +55,7 @@ SIGN UP
 
                 </form>
 
-                <p id="cuenta" class="mt-4">Ya tienes cuenta? <a id="registrarse" href=" {{ url('/login') }} ">Entra</a></p>
+                <p id="cuenta" class="mt-4">Ya tienes cuenta? <a id="registrarse" href=" {{ url('/login') }} "><u>Entra</u></a></p>
 
             </div>
 

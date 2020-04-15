@@ -256,6 +256,32 @@
 
                             </div>
 
+                            <script>
+
+                            $(function(){
+                                $('#CentreSanitari').on('change', actualitzarCamps);
+
+                            });
+
+                            function actualitzarCamps() {
+                                var id = $(this).val();
+
+
+                                // AJAX
+
+                                $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
+
+
+                                    var direccio = '<option value="'+ data.id +'">'+ data.nom +'</option>';
+
+
+                                    $('#adreçaCentre').html(direccio);
+                                });
+                            }
+
+
+                            </script>
+
 
                     </div>
 
@@ -270,9 +296,11 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="hidden1" id="nomCentre">
-                                <label for="nomCentreFet">Nom del Centre</label>
-                                <input type="text" name="nomCentreFet" id="nomCentreFet" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <div class="hidden1" id="adreçaCentre">
+                                <label for="adreçaCentre">Adreça del Centre</label>
+                                <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:180px;">
+                                    <option value=""></option>
+                                </select>
 
                             </div>
 
@@ -318,6 +346,19 @@
                             </div>
 
                         </div>
+
+                        <div class="form-group col-md-6">
+                            <div class="hidden1" id="telefonCentre">
+                                <label for="telefonCentre">Telefon del Centre</label>
+                                <input type="text" name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:85px; ; width:250px;">
+
+                            </div>
+
+                        </div>
+
+
+
+
 
                     </div>
 
@@ -469,7 +510,8 @@
                            else{
                                 $("#centre").addClass("hidden1");
                                 $("#metge").addClass("hidden1");
-                                $("#nomCentre").addClass("hidden1");
+                                $("#adreçaCentre").addClass("hidden1");
+                                $("#telefonCentre").addClass("hidden1");
                                 $("#nomAlertant").removeClass("hidden2");
                                 $("#cognomAlertant").removeClass("hidden2");
                                 $("#adreçaAlertant").removeClass("hidden2");
@@ -758,9 +800,9 @@
                         <div class="form-group col-md-4">
                             <label for="tipusRecurs">Tipus</label>
                             <select name="tipusRecurs" id="tipusRecurs" style="border-radius:10px; margin-left:85px; ; width:200px;">
-                                @foreach ($recursos as $recurs)
+                                @foreach ($tipusRecurs as $recurs)
 
-                                <option value="{{ $recurs->id }}" selected> {{ $recurs->estat }} </option>
+                                <option value="{{ $recurs->id }}" selected> {{ $recurs->tipus }} </option>
 
                             @endforeach
                             </select>
@@ -769,10 +811,39 @@
                         <div class="form-group col-md-4">
                             <label for="CodiRecurs">Codi</label>
                             <select name="CodiRecurs" id="CodiRecurs" style="border-radius:10px; margin-left:85px; ; width:200px;">
-                                <option value="Codi1">Codi1</option>
-                                <option value="Codi2">Codi2</option>
+                                <option value="">Selecciona un codi</option>
                             </select>
                         </div>
+
+                        <script>
+
+                            $(function(){
+
+                                $('#tipusRecurs').on('change', actualitzarCodi);
+
+                            });
+
+                            function actualitzarCodi(){
+
+                                var codi = $(this).val();
+
+
+                                // AJAX
+
+                                $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
+
+                                var html_select = '<option value="">Selecciona un Codi</option>'
+
+                                for(var i=0; i<data.length; i++)
+                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+
+
+                                $('#CodiRecurs').html(html_select);
+                                });
+                            }
+
+
+                        </script>
                     </div>
 
                     <div class="form-row">
