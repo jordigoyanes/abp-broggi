@@ -6,7 +6,7 @@ SIGN UP
 
 @section('principal')
 
-<div class="w-100 mt-5 d-flex justify-content-center">
+<div class="w-100 mt-4 d-flex justify-content-center">
     <div class="col-md-4">
         <div class="card text-center card  bg-default mb-3" style="border:none;">
 
@@ -18,19 +18,19 @@ SIGN UP
                     <input type="text" id="nom" name="nom" class="form-control input-sm chat-input mt-5"
                         placeholder="Username" />
 
-                    <input type="text" id="userEmail" name="email" class="form-control input-sm chat-input mt-4"
+                    <input type="text" id="userEmail" name="email" class="form-control input-sm chat-input mt-3"
                         placeholder="Email" />
 
                     {{-- <input type="number" id="userType" name="rol" class="form-control input-sm chat-input mt-4"
                         placeholder="UserType" min="1" max="2" /> --}}
 
-                        <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-4">                       
-                                <option value="1" >recurs movil</option>                         
-                                <option value="2">getor de dades</option>                           
+                        <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-3">
+                                <option value="1">recurs movil</option>
+                                <option value="2">getor de dades</option>
 
-                        </select>  
-                        
-                          
+                        </select>
+
+
 
                     {{-- <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-4">
                         @foreach ($rols as $rol)
@@ -38,16 +38,16 @@ SIGN UP
                                 <option value="{{ $rol->id }}" selected>{{ $rol->nom }}</option>
                             @else
                                 <option value="{{ $rol->id }}">{{ $rol->nom }}</option>
-                            @endif 
+                            @endif
 
-                        @endforeach 
+                        @endforeach
                     </select>   --}}
-                          
 
-                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-4"
+
+                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-3"
                         placeholder="Password" />
 
-                    <input type="password" id="userConfirmPassword" name="conf_contrasenya" class="form-control input-sm chat-input mt-4"
+                    <input type="password" id="userConfirmPassword" name="conf_contrasenya" class="form-control input-sm chat-input mt-3"
                         placeholder="Confirm Password" />
 
                     <button id="login" type="submit" class="btn mt-5">SIGN UP</button>
