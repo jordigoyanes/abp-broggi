@@ -287,3 +287,10 @@ input, select{
     text-decoration: none;
     color: white;
 }
+
+/* --------------------ALERTANTS----------------------------- */
+
+#tipus_selected{
+    border:none;
+    border-bottom: #1C687D 1px solid;
+}

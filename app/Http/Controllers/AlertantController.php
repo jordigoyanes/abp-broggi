@@ -27,7 +27,7 @@ class AlertantController extends Controller
         }
         if($request->has('search')){
             $search= $request->input('search');
-            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);
+            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(9);
         }else{
             $search='';
             $alertants = Alertant::orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(5);

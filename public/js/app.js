@@ -17543,7 +17543,7 @@ var staticRenderFns = []
   }
 });
 // CONCATENATED MODULE: ./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
- /* harmony default export */ var src_RenderlessLaravelVuePaginationvue_type_script_lang_js_ = (RenderlessLaravelVuePaginationvue_type_script_lang_js_); 
+ /* harmony default export */ var src_RenderlessLaravelVuePaginationvue_type_script_lang_js_ = (RenderlessLaravelVuePaginationvue_type_script_lang_js_);
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -17655,7 +17655,7 @@ var component = normalizeComponent(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var RenderlessLaravelVuePagination = (component.exports);
@@ -17749,7 +17749,7 @@ var component = normalizeComponent(
   }
 });
 // CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=script&lang=js&
- /* harmony default export */ var src_LaravelVuePaginationvue_type_script_lang_js_ = (LaravelVuePaginationvue_type_script_lang_js_); 
+ /* harmony default export */ var src_LaravelVuePaginationvue_type_script_lang_js_ = (LaravelVuePaginationvue_type_script_lang_js_);
 // CONCATENATED MODULE: ./src/LaravelVuePagination.vue
 
 
@@ -17766,7 +17766,7 @@ var LaravelVuePagination_component = normalizeComponent(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var LaravelVuePagination = (LaravelVuePagination_component.exports);
@@ -38647,6 +38647,210 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
+      "div",
+      {
+        staticClass:
+          "d-flex flex-row flex-wrap align-items-center justify-content-between mb-2"
+      },
+      [
+
+        _vm._v(" "),
+        _c("form", { staticClass: "d-flex flex-row", attrs: { action: "" } }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "search",
+              name: "buscarIncidencia",
+              id: "buscarIncidencia",
+              placeholder: "Buscar Incidencia..."
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary ml-1", attrs: { type: "submit" } },
+            [_vm._v("Buscar")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("fieldset", { staticClass: "boxFiltroHistorial" }, [
+      _c("label", { attrs: { for: "data" } }, [_vm._v("Data")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+        _c("label", { attrs: { for: "data_desde" } }, [_vm._v("Desde")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control ml-1",
+          attrs: { type: "date", name: "data_desde", id: "data_desde" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+        _c("label", { attrs: { for: "data_hasta" } }, [_vm._v("Fins")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control ml-1",
+          attrs: { type: "date", name: "data_hasta", id: "data_hasta" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("label", { staticClass: "mt-1", attrs: { for: "hora" } }, [
+        _vm._v("Hora")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+        _c("label", { attrs: { for: "hora_desde" } }, [_vm._v("Desde")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control ml-1",
+          attrs: { type: "time", name: "hora_desde", id: "hora_desde" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+        _c("label", { attrs: { for: "hora_fins" } }, [_vm._v("Fins")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control ml-1",
+          attrs: { type: "time", name: "hora_fins", id: "hora_fins" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "alertant" } }, [_vm._v("Alertant")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-control",
+          attrs: { name: "alertant", id: "alertant" }
+        },
+        [
+          _c("option", { attrs: { value: "santpau" } }, [
+            _vm._v("Hospital de Sant Pau")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "valldhebron" } }, [
+            _vm._v("Hospital Vall d'Hebrón")
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("fieldset", { staticClass: "boxFiltroHistorial" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "edat" } }, [_vm._v("Edat")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+          _c("label", { attrs: { for: "edat" } }, [_vm._v("Desde")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control ml-1",
+            attrs: {
+              min: "0",
+              max: "200",
+              type: "number",
+              name: "edat",
+              id: "edat"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline justify-content-between mb-1" }, [
+          _c("label", { attrs: { for: "edat" } }, [_vm._v("Fins")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control ml-1",
+            attrs: {
+              min: "0",
+              max: "200",
+              type: "number",
+              name: "edat",
+              id: "edat"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "sexo",
+              id: "sexo_home",
+              value: "home"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "form-check-label", attrs: { for: "sexo_home" } },
+            [_vm._v("Home")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "sexo",
+              id: "sexo_dona",
+              value: "dona"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "form-check-label", attrs: { for: "sexo_dona" } },
+            [_vm._v("Dona")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-end flex-row" }, [
+      _c("div", { staticClass: "actions" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-secondary", attrs: { type: "reset" } },
+          [_vm._v("RESET")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary ml-2", attrs: { type: "submit" } },
+          [_vm._v("FILTRAR")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "thead",
       { staticStyle: { "background-color": "#1CADC3", color: "white" } },
       [
@@ -50962,7 +51166,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   null,
   null
-  
+
 )
 
 /* hot reload */
@@ -50982,7 +51186,7 @@ component.options.__file = "resources/js/components/Historial.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Historial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Historial.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Historial.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Historial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Historial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
