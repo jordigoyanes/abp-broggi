@@ -5,36 +5,39 @@ Alertants
 @endsection
 
 @section('principal')
-<form id="filtros-alertants" action="{{action('AlertantController@index')}}" method="get" class="mb-3 w-100 d-flex flex-wrap justify-content-between">
-    <div id="tipus_alertant" class="d-flex flex-row col-4 align-items-center">
+<form id="filtros-alertants" action="{{action('AlertantController@index')}}" method="get" class="mb w-100 d-flex flex-wrap justify-content-between mb-3">
+    <div id="tipus_alertant" class="d-flex flex-row col-3 align-items-center p-0">
 
-        <label class="mr-2 mb-0" for="tipus_selected">Tipus</label>
-        <select class="form-control" name="tipus_selected" id="tipus_selected">
+        {{-- <label class="mr-2 mb-0" for="tipus_selected">Tipus</label> --}}
+        <select class="form-control rounded-0 px-4" name="tipus_selected" id="tipus_selected"  style="border:none; border-bottom: #1C687D 1px solid; border-radius:0; color: #1C687D">
+            {{-- Falta arreglar aquesta opcio (tots els tipus) --}}
+            <option>Tots els tipus</option>
             @foreach ($tipus_list as $tipus)
-            @if($tipus->id == $tipus_selected)
-            <option selected value="{{$tipus->id}}">{{$tipus->tipus}}</option>
-            @else
-            <option  value="{{$tipus->id}}">{{$tipus->tipus}}</option>
-            @endif
+                @if($tipus->id == $tipus_selected)
+                    <option selected value="{{$tipus->id}}">{{$tipus->tipus}}</option>
+                @else
+                    <option  value="{{$tipus->id}}">{{$tipus->tipus}}</option>
+
+                @endif
             @endforeach
 
         </select>
     </div>
-    <div id="buscador-alertants" class="d-flex">
-            <input class="form-control" value="{{$search}}" type="text" name="search" placeholder="Nom de l'alertant">
-            <button type="submit" class="ml-3 btn btn-primary ">CERCA</button>
+    <div id="buscador-alertants" class="d-flex col-4">
+            <input class="form-control px-4" value="{{$search}}" type="text" name="search" placeholder="Nom de l'alertant" style="border:#1C687D 1px solid; border-radius:20px; color: #1C687D; text-decoration:underline">
+            <button type="submit" class="ml-3 btn rounded-circle" style="background: #D7F0F4"><img src="img/search.png" alt="lupa" width="16px"></button>
     </div>
 </form>
     @if(count($alertants)==0)
-    <div class="container">
+    {{-- <div class="container"> --}}
         <div class="alert alert-info" role="alert">
             No hi ha cap alertant
         </div>
-    </div>
+    {{-- </div> --}}
     @else
-    <div class="d-flex justify-content-center">
+    {{-- <div class="d-flex justify-content-center">
         {{ $alertants->appends(['search'=>$search, 'tipus_selected'=>$tipus_selected])->links() }}
-    </div>
+    </div> --}}
     <div id="alertants" class="container row rows-col-3 row-cols-md-2 ">
         @foreach ($alertants as $alertant)
             <div class="alertant mr-3 mb-3 col-4 border p-4 d-flex flex-column w-40">
@@ -46,7 +49,7 @@ Alertants
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="{{url('/alertant', $alertant->id)}}" class="btn btn-primary">Veure perfil</a>
+                    <a href="{{url('/alertant', $alertant->id)}}" class="btn rounded-0" style="background: #FCC536; color: white;">Veure perfil</a>
 
                 </div>
             </div>
