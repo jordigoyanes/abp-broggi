@@ -56,26 +56,35 @@ Recursos Mòbils
                                             </div>
                                             
                                             @endforeach 
-
+                                           
                                            
                                         </div>                                                                                                                                  
                                         
-                                      
+                                        
                                     </div>
                                 </div>
                             </div>
 
                             
                         </tr>    
+
+                        
                         
                         @endif
 
-
+                       
                             
                         @endforeach
+                        {{-- <tr>
+                            <td>{{ $recursMobils->links() }}
+                            </td>
+                        </tr> --}}
+                        
                     
                     </tbody>
                 </table>
+
+                
             </div>
 
            
@@ -120,6 +129,7 @@ Recursos Mòbils
                     
                     </tbody>
                 </table>
+                
             </div>
 
 

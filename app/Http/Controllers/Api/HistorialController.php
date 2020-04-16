@@ -45,7 +45,7 @@ class HistorialController extends Controller
     }
 
     public function search(Request $request){
-        
+        return Incidencia::where('id','=',  $request->input('search'))->paginate(5); 
     }
 
     public function filter(Request $request, Incidencia $incidencias){
