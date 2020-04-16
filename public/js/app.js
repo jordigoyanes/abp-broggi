@@ -1913,6 +1913,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    searchIncidencia: function searchIncidencia() {
+      var _this = this;
+
+      axios.post("/abp-broggi/public/api/historial/search", {
+        search: this.search
+      }).then(function (response) {
+        console.log(response);
+        _this.incidencias = response.data.data;
+        _this.current_page = response.data.current_page;
+        _this.last_page = response.data.last_page;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     reset: function reset() {
       this.data_desde = null;
       this.data_hasta = null;
@@ -1931,21 +1945,21 @@ __webpack_require__.r(__webpack_exports__);
       this.tipus_incident = null;
     },
     getData: function getData() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/abp-broggi/public/api/historial").then(function (response) {
-        _this.incidencias = response.data.incidencias.data;
-        _this.municipis = response.data.municipis;
-        _this.provincies = response.data.provincies;
-        _this.all_tipus_alertant = response.data.tipus_alertants;
-        _this.all_tipus_incident = response.data.tipus_incident;
-        _this.last_page = response.data.incidencias.last_page;
+        _this2.incidencias = response.data.incidencias.data;
+        _this2.municipis = response.data.municipis;
+        _this2.provincies = response.data.provincies;
+        _this2.all_tipus_alertant = response.data.tipus_alertants;
+        _this2.all_tipus_incident = response.data.tipus_incident;
+        _this2.last_page = response.data.incidencias.last_page;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     filtrar: function filtrar(page) {
-      var _this2 = this;
+      var _this3 = this;
 
       var filtros = {};
 
@@ -1985,9 +1999,9 @@ __webpack_require__.r(__webpack_exports__);
       console.log(filtros);
       axios.post("/abp-broggi/public/api/historial?page=" + page, filtros).then(function (response) {
         console.log(response);
-        _this2.incidencias = response.data.data;
-        _this2.current_page = response.data.current_page;
-        _this2.last_page = response.data.last_page;
+        _this3.incidencias = response.data.data;
+        _this3.current_page = response.data.current_page;
+        _this3.last_page = response.data.last_page;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1998,13 +2012,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     tipus_alertant: function tipus_alertant(val) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.post("/abp-broggi/public/api/alertant", {
         tipus_alertant: val
       }).then(function (response) {
         console.log(response);
-        _this3.alertants = response.data;
+        _this4.alertants = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -38017,7 +38031,7 @@ var render = function() {
             _c("h5", [_vm._v("Historial")]),
             _vm._v(" "),
             _c(
-              "form",
+              "div",
               { staticClass: "d-flex flex-row", attrs: { action: "" } },
               [
                 _c("input", {
@@ -38051,7 +38065,12 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary ml-1",
-                    attrs: { type: "submit" }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.searchIncidencia($event)
+                      }
+                    }
                   },
                   [_vm._v("Cerca")]
                 )

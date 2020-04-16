@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('historial','Api\HistorialController@index');
+Route::post('historial/search','Api\HistorialController@search');
 
 Route::post('historial','Api\HistorialController@filter');
 Route::post('alertant','Api\AlertantController@alertantsByTipus');
