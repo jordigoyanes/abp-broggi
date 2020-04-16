@@ -3,7 +3,7 @@
     <div class="w-100 mb-2">
       <div class="d-flex flex-row flex-wrap align-items-center justify-content-between mb-2">
         <h5>Historial</h5>
-        <form action class="d-flex flex-row">
+        <div action class="d-flex flex-row">
           <input
             type="search"
             class="form-control"
@@ -12,8 +12,8 @@
             placeholder="ID del incident..."
             v-model="search"
           />
-          <button class="btn btn-primary ml-1" type="submit">Cerca</button>
-        </form>
+          <button class="btn btn-primary ml-1" @click.prevent="searchIncidencia">Cerca</button>
+        </div>
       </div>
       <div class="formFiltros">
         <form action class="p-3" style="background-color:#D7F0F4;">
@@ -217,6 +217,21 @@ export default {
     };
   },
   methods: {
+    searchIncidencia() {
+      axios
+        .post("/abp-broggi/public/api/historial/search", {
+          search: this.search
+        })
+        .then(response => {
+          console.log(response);
+          this.incidencias = response.data.data;
+          this.current_page = response.data.current_page;
+          this.last_page = response.data.last_page;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     reset() {
       this.data_desde = null;
       this.data_hasta = null;
