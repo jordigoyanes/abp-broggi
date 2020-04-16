@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('historial','Api\HistorialController@index');
 
 Route::post('historial','Api\HistorialController@filter');
+Route::post('alertant','Api\AlertantController@alertantsByTipus');
 
 Route::get('municipis','Api\MunicipiController@index');
 
@@ -31,6 +32,3 @@ Route::get( '/centre/{id}' ,'IncidenciaController@getAlertant');
 
 Route::get('/centreid/{id}', 'IncidenciaController@getAlertantbyId');
 Route::get('/codiRecurs/{id}', 'IncidenciaController@getRecurs');
-
-
-

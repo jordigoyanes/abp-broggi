@@ -7,7 +7,9 @@ Editar alertant
 
 @section('principal')
 <h2>Editar alertant</h2>
-<form>
+<form method="post" action="{{action('AlertantController@update', $alertant)}}">
+  {{ method_field('put') }}
+  {{ csrf_field() }}
     <div class="form-group row">
       <label for="nom" class="col-sm-2 col-form-label">Nom</label>
       <div class="col-sm-10">

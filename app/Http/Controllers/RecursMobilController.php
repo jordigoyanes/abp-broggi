@@ -44,7 +44,14 @@ class RecursMobilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recursMobil = new RecursMobil();
+        $recursMobil->tipus_recurs_id = $request->input('tipus');
+        $recursMobil->codi = $request->input('codi');
+        $recursMobil->estat = $request->input('estat');
+
+        $recursMobil->save();
+
+        return redirect()->action('RecursMobilController@index')->withInput();
     }
 
     /**

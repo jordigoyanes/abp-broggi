@@ -9,6 +9,7 @@ use App\Models\Incidencia;
 use App\Models\TipusAlertant;
 use App\Models\Municipi;
 use App\Models\Provincia;
+use App\Models\TipusIncident;
 
 
 use App\Http\Resources\IncidenciaResource;
@@ -25,7 +26,7 @@ class HistorialController extends Controller
         if(!$request->has('page')){
             $data['tipus_alertants'] = TipusAlertant::all();
             $data['municipis'] = Municipi::all();
-            $data['provincies'] = Provincia::all();
+            $data['tipus_incident'] = TipusIncident::all();
         }
 
         $data['incidencias'] = Incidencia::with(['alertant', 'EstatIncidencia', 'TipusIncident', 'municipi'])->paginate(5);
@@ -41,6 +42,10 @@ class HistorialController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function search(Request $request){
+        
     }
 
     public function filter(Request $request, Incidencia $incidencias){
@@ -63,8 +68,14 @@ class HistorialController extends Controller
         if($request->has('tipus_alertant')){
             $incidencias->where('tipus_alertant_id', 'like', $request->input('tipus_alertant'));
         }
-        
-        return new IncidenciaResource($incidencias->get());
+        if($request->has('alertant')){
+            $incidencias->where('alertants_id', '=', $request->input('alertant'));
+        }
+        if($request->has('tipus_incident')){
+            $incidencias->where('tipus_incident_id', 'like', $request->input('tipus_incident'));
+        }
+
+        return $incidencias->with(['alertant', 'EstatIncidencia', 'TipusIncident', 'municipi'])->paginate(5);
     }
 
     /**
