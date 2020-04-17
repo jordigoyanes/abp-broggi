@@ -33,9 +33,13 @@
 
         {{-- Button --}}
         <div>
-            <a href=" {{ url('/login') }}" type="button" id="signup" class="">SIGN UP</a>
+            @if (Auth::check())
+            <a href=" {{ url('/register') }}" type="button" id="signup" class="">{{ Auth::user()->nom }}</a>
+            @else
+            <a href=" {{ url('/register') }}" type="button" id="signup" class="">REGISTRE</a>
+            <a href=" {{ url('/login') }}" type="button" id="signup">LOGIN</a>
+            @endif
         </div>
-
 
     </nav>
 
