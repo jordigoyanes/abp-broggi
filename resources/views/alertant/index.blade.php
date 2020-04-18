@@ -9,15 +9,13 @@ Alertants
     <div id="tipus_alertant" class="d-flex flex-row col-lg-3 col-md-4 col-sm-12 align-items-center p-0 mb-md-0 mb-sm-4 m-xs-4">
 
         {{-- <label class="mr-2 mb-0" for="tipus_selected">Tipus</label> --}}
-        <select class="form-control rounded-0 px-4" name="tipus_selected" id="tipus_selected"  style="border:none; border-bottom: #1C687D 1px solid; border-radius:0; color: #1C687D">
-            {{-- Falta arreglar aquesta opcio (tots els tipus) --}}
-            <option>Tots els tipus</option>
+        <select class="form-control rounded-0 px-4" name="tipus_selected" id="tipus_selected"  style="border:none; border-bottom: #1C687D 1px solid; border-radius:0; color: #1C687D">    
+            <option value="all">Tots els tipus</option>
             @foreach ($tipus_list as $tipus)
                 @if($tipus->id == $tipus_selected)
                     <option selected value="{{$tipus->id}}">{{$tipus->tipus}}</option>
                 @else
                     <option  value="{{$tipus->id}}">{{$tipus->tipus}}</option>
-
                 @endif
             @endforeach
 

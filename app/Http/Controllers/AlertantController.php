@@ -7,7 +7,7 @@ use App\Models\TipusAlertant;
 use App\Models\Provincia;
 use App\Models\Comarca;
 use App\Models\Municipi;
-
+use Log;
 
 use Illuminate\Http\Request;
 
@@ -20,18 +20,27 @@ class AlertantController extends Controller
      */
     public function index(Request $request)
     {
+        Log::info('This is some useful information better.');
+
+        $alertants = (new Alertant)->newQuery();
+        $search='';
         if($request->has('tipus_selected')){
             $tipus_selected = $request->input('tipus_selected');
         }else{
-            $tipus_selected = 1;
+            $tipus_selected = "all";
         }
         if($request->has('search')){
             $search= $request->input('search');
-            $alertants = Alertant::where('nom', 'like', '%'.$search.'%')->orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(9);
-        }else{
-            $search='';
-            $alertants = Alertant::orderby('nom')->where('tipus_alertant_id', '=', $tipus_selected)->paginate(9);
+            if($search != ''){
+                $alertants->where('nom', 'like', '%'.$search.'%');
+            }
         }
+        if($tipus_selected != "all"){
+            $alertants->where('tipus_alertant_id', '=', $tipus_selected);
+        }
+        $alertants->orderby('nom');
+        $alertants = $alertants->paginate(9);
+        Log::info($alertants);
         $data['tipus_selected'] = $tipus_selected;
         $data['alertants'] = $alertants;
         $data['search'] = $search;
