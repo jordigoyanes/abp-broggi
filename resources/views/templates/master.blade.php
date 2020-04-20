@@ -26,16 +26,20 @@
         <div>
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div style="width:55px; height:55px">
-                    <img id="logo" src="./img/logo.png" class="w-100 h-100" alt="">
+                    <img id="logo" src="{{asset('img/logo.png')}}" class="w-100 h-100" alt="">
                 </div>
             </a>
         </div>
 
         {{-- Button --}}
         <div>
-            <a href=" {{ url('/login') }}" type="button" id="signup" class="">SIGN UP</a>
+            @if (Auth::check())
+            <a href=" {{ url('/register') }}" type="button" id="signup" class="">{{ Auth::user()->nom }}</a>
+            @else
+            <a href=" {{ url('/register') }}" type="button" id="signup" class="">REGISTRE</a>
+            <a href=" {{ url('/login') }}" type="button" id="signup">LOGIN</a>
+            @endif
         </div>
-
 
     </nav>
 

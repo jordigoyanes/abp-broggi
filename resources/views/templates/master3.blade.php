@@ -30,7 +30,7 @@
          <div>
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div style="width:55px; height:55px">
-                    <img id="logo" src="./img/logo.png" class="w-100 h-100" alt="">
+                    <img id="logo" src="{{asset('img/logo.png')}}" class="w-100 h-100" alt="">
                 </div>
             </a>
 
