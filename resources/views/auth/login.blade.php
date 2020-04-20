@@ -6,30 +6,28 @@ LOGIN
 
 @section('principal')
 
-<div class="w-100 mt-4 d-flex justify-content-center">
+<div class="entrar w-100 mt-4 d-flex justify-content-center">
     <div class="col-md-4">
-        <div class="card text-center card  bg-default mb-3" style="border:none;">
+        <div class="card text-center card bg-default mb-3 border-0">
 
             <div class="card-body">
-                <h1>LOGIN</h1>
+                <h1 class="font-weight-bold text-uppercase">LOGIN</h1>
 
                 <form action="{{ action('Auth\LoginController@login')}}" method="post">
                     @csrf
 
-                    <input type="text" id="nom" name="nom" class="form-control input-sm chat-input mt-5"
-                        placeholder="Username">
+                    <input type="text" name="nom" class="form-control input-sm chat-input mt-5  rounded-0 px-4 py-3" placeholder="Username">
 
 
-                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-3"
-                        placeholder="Password">
+                    <input type="password" name="contrasenya" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Password">
 
-                    <button id="login" type="submit" class="btn mt-5">LOGIN</button>
+                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill login">LOGIN</button>
 
 
                 </form>
 
-                <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ url('/register') }} "><u>Regístrate</u></a></p>
-                {{-- <p id="cuenta" class="mt-4">¿No tienes cuenta? <a id="registrarse" href=" {{ action('UsuarioController@create') }} ">Regístrate</a></p> --}}
+                <a href=" {{ url('/register') }} " class="cambiar"><p class="mt-3 cambiar">¿No tienes cuenta? <u>Regístrate</u></p></a>
+                
             </div>
 
         </div>

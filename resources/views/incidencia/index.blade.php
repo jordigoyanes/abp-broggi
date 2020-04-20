@@ -9,16 +9,16 @@
 
     <div class="d-flex justify-content-end">
         <a href="{{ action('IncidenciaController@create') }}" class="text-decoration-none">
-            <button class="nuevaIncidencia d-flex flex-row align-items-center">
-                <p class="align-self-center my-auto">NOVA INCIDENCIA </p>
-                <span class="align-self-center my-auto ml-3" style="font-size: 2.5rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);"> +</span>
+            <button class="nuevaIncidencia rounded-pill border-0 d-flex flex-row align-items-center font-weight-bold">
+                <p class="align-self-center my-auto text-white">NOVA INCIDENCIA </p>
+                <span class="align-self-center my-auto ml-3 text-white"> +</span>
             </button>
         </a>
     </div>
 
     <div>
-        <table class="shadow-sm table mt-4" id="tabla-principal">
-            <thead style="background-color: #1CADC3; color:white;">
+        <table class="tabla shadow-sm table mt-4" id="tabla-principal">
+            <thead class="text-white">
                 <tr>
                     <th>ID</th>
                     <th class="esconder-xs">LOCALITZACIÓ</th>

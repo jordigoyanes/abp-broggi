@@ -6,56 +6,35 @@ SIGN UP
 
 @section('principal')
 
-<div class="w-100 mt-4 d-flex justify-content-center">
+<div class="entrar w-100 mt-4 d-flex justify-content-center">
     <div class="col-md-4">
-        <div class="card text-center card  bg-default mb-3" style="border:none;">
+        <div class="card text-center card bg-default mb-3 border-0">
 
             <div class="card-body">
-                <h1>SIGN UP</h1>
+                <h1 class="font-weight-bold text-uppercase">SIGN UP</h1>
 
                 <form action=" {{ action('Auth\RegisterController@register') }} " method="post">
                     @csrf
-                    <input type="text" id="nom" name="nom" class="form-control input-sm chat-input mt-5"
-                        placeholder="Username" />
+                    <input type="text" name="nom" class="form-control input-sm chat-input mt-5 rounded-0 px-4 py-3" placeholder="Username" />
 
-                    <input type="text" id="userEmail" name="email" class="form-control input-sm chat-input mt-3"
-                        placeholder="Email" />
+                    <input type="text" name="email" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Email" />
 
-                    {{-- <input type="number" id="userType" name="rol" class="form-control input-sm chat-input mt-4"
-                        placeholder="UserType" min="1" max="2" /> --}}
+                    <select name="rol" placeholder="UserType" class="custom-select input-sm chat-input mt-3 rounded-0 px-4 py-3">
+                        <option>- Seleccionar -</option>
+                        <option value="2">Gestor de dades</option>
+                        <option value="1">Recurs Mòbil</option>
+                            
+                    </select>
 
-                        <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-3">
-                                <option value="1">recurs movil</option>
-                                <option value="2">getor de dades</option>
+                    <input type="password" name="contrasenya" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Password" />
 
-                        </select>
+                    <input type="password" name="conf_contrasenya" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Confirm Password" />
 
-
-
-                    {{-- <select name="rol" id="userType" placeholder="UserType" class="custom-select input-sm chat-input mt-4">
-                        @foreach ($rols as $rol)
-                            @if ($rols->rols_id == old('rol'))
-                                <option value="{{ $rol->id }}" selected>{{ $rol->nom }}</option>
-                            @else
-                                <option value="{{ $rol->id }}">{{ $rol->nom }}</option>
-                            @endif
-
-                        @endforeach
-                    </select>   --}}
-
-
-                    <input type="password" id="contrasenya" name="contrasenya" class="form-control input-sm chat-input mt-3"
-                        placeholder="Password" />
-
-                    <input type="password" id="userConfirmPassword" name="conf_contrasenya" class="form-control input-sm chat-input mt-3"
-                        placeholder="Confirm Password" />
-
-                    <button id="login" type="submit" class="btn mt-5">SIGN UP</button>
-
+                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill login">SIGN UP</button>
 
                 </form>
 
-                <p id="cuenta" class="mt-4">Ya tienes cuenta? <a id="registrarse" href=" {{ url('/login') }} "><u>Entra</u></a></p>
+                <a href=" {{ url('/login') }} " class="cambiar"><p class="mt-3 cambiar">Ya tienes cuenta? <u>Entra</u></p></a>
 
             </div>
 

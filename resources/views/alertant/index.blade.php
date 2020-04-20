@@ -37,7 +37,7 @@ Alertants
     @else
     <div class="d-flex flex-wrap mx-n2 mt-2 mb-5">
         @foreach ($alertants as $alertant)
-            <div class="card m-2 rounded-0" style="width:379px">
+            <div class="card m-2 rounded-0 p-2" style="width:379px">
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
                         <div style="width:50px" class="">

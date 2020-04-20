@@ -29,8 +29,8 @@
                         {{-- DATA --}}
 
                         <div class="form-group col-md-6 col-sm-4">
-                            <label for="data">Data</label>
-                            <input type="date" name="data" id="data" style="border-radius:10px; margin-left:100px; width:300px;">
+                            <label for="data" style="width:100px">Data</label>
+                            <input type="date" name="data" id="data"  class="rounded-pill">
                         </div>
 
                         {{-- PROVINCIA --}}
@@ -210,7 +210,7 @@
                         {{-- DESCRIPCIO --}}
                         <div class="form-group col-md-4 col-sm-4">
                             <label for="descripcio">Descripcio</label>
-                            <textarea name="descripcio" id="descripcio" cols="150" rows="3" style="border-radius:10px;"></textarea>
+                            <textarea name="descripcio" id="descripcio" cols="120" rows="3" style="border-radius:10px;"></textarea>
                         </div>
                     </div>
 

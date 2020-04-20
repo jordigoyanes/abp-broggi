@@ -38,7 +38,7 @@ class IncidenciaController extends Controller
     {
 
 
-        $incidencies = Incidencia::paginate(5);
+        $incidencies = Incidencia::paginate(10);
 
         $datos['incidencies'] = $incidencies;
 

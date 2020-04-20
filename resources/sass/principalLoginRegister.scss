@@ -1,0 +1,64 @@
+html,
+body {
+    min-height: 100vh;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.login {
+    padding: 6px 80px;
+    background-color: $blue;
+    color: $pastel;
+}
+
+footer {
+    border-top: 1px solid rgba(161, 171, 190, 0.25);
+}
+
+footer p {
+    color: #657386;
+} 
+
+
+.entrar{
+    input, select{
+        all: initial; // or all: unset
+        box-sizing: border-box;
+        width: 100%;
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        background: #FEF1D0;
+        color: #B09B27;
+        border: 1px white solid;
+    }
+
+    input::placeholder{
+        color: #B09B27;
+    }
+
+    input:hover,
+    input:active,
+    select:hover,
+    select:active{
+        background: #fff;
+        color: #B09B27;
+        border-color: #B09B27;
+    }
+
+    button {
+        padding: 6px 80px;
+        background-color: $blue;
+        color: $pastel;
+    } 
+
+    button:hover{
+        color: $pastel;
+    }
+
+    .cambiar {
+        color: #1C687D;
+        font-weight: bold;
+    }
+    .cambiar:hover{
+        text-decoration:none;
+    }    
+
+}
