@@ -272,9 +272,12 @@
                                 $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
 
 
-                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
-                                    console.log(data);
+                                    var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
+                                    var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
+                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
 
+                                    $('#NomCentre').html(Nom);
+                                    $('#telefonCentre').html(telefon);
                                     $('#adreçaCentre').html(direccio);
                                 });
                             }
@@ -296,9 +299,9 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="hidden1" id="adreçaCentre">
-                                <label for="adreçaCentre">Adreça del Centre</label>
-                                <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:180px;" disabled>
+                            <div class="hidden1" id="NomCentre1">
+                                <label for="NomCentre">Nom del Centre</label>
+                                <select name="NomCentre" id="NomCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
                                     <option value=""></option>
                                 </select>
 
@@ -348,11 +351,20 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="hidden1" id="telefonCentre">
+                            <div class="hidden1" id="telefonCentre1">
                                 <label for="telefonCentre">Telefon del Centre</label>
-                                <input type="text" name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:85px; ; width:250px;">
+                                <select name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:60px;  width:200px;" disabled>
+                                    <option value=""></option>
+                                </select>
 
                             </div>
+
+                        </div>
+                        <div class="hidden1" id="adreçaCentre1">
+                            <label for="adreçaCentre">Adreça del Centre</label>
+                            <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
+                                <option value=""></option>
+                            </select>
 
                         </div>
 

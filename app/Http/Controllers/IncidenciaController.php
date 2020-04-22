@@ -64,16 +64,7 @@ class IncidenciaController extends Controller
         $comarques = Comarca::all();
         $recurs = RecursMobil::all();
 
-        //   if($request->has('provinciaIncident')){
-        //       $provinciaIncident = $request->input('provinciaIncident');
-        //   }else{
-        //       $provinciaIncident = 1;
-        //   }
 
-        // $comarques = Comarca::where('provincies_id','=',$provinciaIncident)->get();
-
-
-        // $data['provinciaIncident'] = $provinciaIncident;
         $data['municipis'] = $municipis;
         $data['comarques'] = $comarques;
         $data['provincies'] = $provincies;
