@@ -1,15 +1,30 @@
+// Aquest full de scss es per definir els estils generals i globals i també el formulari de login i registre
+
+// 1.- General
+// 2.- Headers
+// 3.- Footers
+// 4.- Formularis de login i registre
+
+
+// 1.- General =============================================
 html,
 body {
     min-height: 100vh;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-.login {
-    padding: 6px 80px;
-    background-color: $blue;
-    color: $pastel;
+// 2.- Headers =============================================
+#signup {
+    padding: 6px 40px;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    color: #FEF1D0;
+    background-color: #FCC536;
+    text-decoration: none;
 }
 
+// 3.- Footers =============================================
 footer {
     border-top: 1px solid rgba(161, 171, 190, 0.25);
 }
@@ -18,7 +33,7 @@ footer p {
     color: #657386;
 } 
 
-
+// 4.- Formularis de login i register ======================
 .entrar{
     input, select{
         all: initial; // or all: unset

@@ -5,10 +5,14 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-.login {
-  padding: 6px 80px;
-  background-color: #1CADC3;
-  color: #D7F0F4;
+#signup {
+  padding: 6px 40px;
+  font-weight: bold;
+  border-radius: 30px;
+  border: none;
+  color: #FEF1D0;
+  background-color: #FCC536;
+  text-decoration: none;
 }
 
 footer {
@@ -118,4 +122,8 @@ footer p {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.tabla thead {
+  background-color: #1CADC3;
+}
 
+/*# sourceMappingURL=app.css.map */

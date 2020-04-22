@@ -30,7 +30,7 @@ SIGN UP
 
                     <input type="password" name="conf_contrasenya" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Confirm Password" />
 
-                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill login">SIGN UP</button>
+                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill">SIGN UP</button>
 
                 </form>
 

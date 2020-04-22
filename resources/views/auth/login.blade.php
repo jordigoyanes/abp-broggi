@@ -21,13 +21,13 @@ LOGIN
 
                     <input type="password" name="contrasenya" class="form-control input-sm chat-input mt-3 rounded-0 px-4 py-3" placeholder="Password">
 
-                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill login">LOGIN</button>
+                    <button type="submit" class="btn mt-5 font-weight-bold rounded-pill">LOGIN</button>
 
 
                 </form>
 
                 <a href=" {{ url('/register') }} " class="cambiar"><p class="mt-3 cambiar">¿No tienes cuenta? <u>Regístrate</u></p></a>
-                
+
             </div>
 
         </div>

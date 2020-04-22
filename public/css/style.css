@@ -1,31 +1,3 @@
-html,
-body {
-    min-height: 100vh;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-
-/* #novaIncidencia {
-    padding-left: 45px;
-    font-weight: bold;
-    padding-right: 45px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 60px;
-    border: none;
-    color: white;
-    background-color: #DD177A;
-} */
-
-#signup {
-    padding: 6px 40px;
-    font-weight: bold;
-    border-radius: 30px;
-    border: none;
-    color: #FEF1D0;
-    background-color: #FCC536;
-    text-decoration: none;
-}
-
 
 /* --------------------------------HISTORIAL------------------------------------
 .content{
