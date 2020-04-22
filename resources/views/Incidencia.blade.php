@@ -272,8 +272,8 @@
                                 $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
 
 
-                                    var direccio = '<option value="'+ data.id +'">'+ data.nom +'</option>';
-
+                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
+                                    console.log(data);
 
                                     $('#adreçaCentre').html(direccio);
                                 });
@@ -298,7 +298,7 @@
                         <div class="form-group col-md-6">
                             <div class="hidden1" id="adreçaCentre">
                                 <label for="adreçaCentre">Adreça del Centre</label>
-                                <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:180px;">
+                                <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:180px;" disabled>
                                     <option value=""></option>
                                 </select>
 

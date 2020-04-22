@@ -98,7 +98,7 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
 
-
+        // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
         $id_tipus_alertant = $request->input('tipusAlertant');
 
         if($id_tipus_alertant != 1){
@@ -117,6 +117,8 @@ class IncidenciaController extends Controller
 
             $alertant->save();
         }
+
+        // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
 
         $afectat_tarjeta = $request->input('tenir_tarjeta');
 
@@ -139,7 +141,7 @@ class IncidenciaController extends Controller
         $afectat->save();
 
 
-
+        // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         $incidencia = new Incidencia();
 
 
@@ -162,10 +164,11 @@ class IncidenciaController extends Controller
         $incidencia->alertants_id = $id;
 
 
+
         $incidencia->save();
 
 
-
+        // QUAN ACABEM D'INTRODUIR LES DADES REDIRECCIONEM AL INDEX------------------------------
         return redirect()->action('IncidenciaController@index');
 
 
