@@ -12,8 +12,6 @@
 
     <div id="accordion" class="card-body card-body-formulari">
 
-
-
         {{-- **************Dades incidencia******************** --}}
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingOne" data-toggle="collapse"
@@ -25,178 +23,106 @@
                 <div class="card-subbody card-subbody-formulari">
 
                     <div class="form-row">
-
                         {{-- DATA --}}
-
                         <div class="form-group col-md-6 col-sm-4">
                             <label for="data" style="width:100px">Data</label>
                             <input type="date" name="data" id="data"  class="rounded-pill">
                         </div>
 
                         {{-- PROVINCIA --}}
-
                         <div class="form-group col-md-6 col-sm-4 form-inline">
-                            <label for="provinciaIncident">Provincia</label>
-                            <select name="provinciaIncident" id="provinciaIncident" style="border-radius:10px; margin-left:94px; ; width:300px;">
-                                <@foreach ($provincies as $provincia)
-
-                                        <option value="{{ $provincia->id }}" selected> {{ $provincia->nom }} </option>
-
-                                @endforeach
+                            <label for="provinciaIncidencia">Provincia</label>
+                            <select name="provinciaIncidencia" id="provinciaIncidencia" style="border-radius:10px; margin-left:94px; ; width:300px;">
+                                <option value=''>Selecciona una provincia</option>
                             </select>
-
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         {{-- HORA --}}
-
                         <div class="form-group col-md-6 col-sm-4">
-                            <label for="hora">Hora</label>
-                            <input type="time" name="hora" id="hora" style="border-radius:10px; margin-left:100px; ; width:300px;">
+                            <label for="horaIncidencia">Hora</label>
+                            <input type="time" name="horaIncidencia" id="horaIncidencia" style="border-radius:10px; margin-left:100px; ; width:300px;">
                         </div>
 
                         {{-- COMARCA --}}
-
                         <div class="form-group col-md-6 col-sm-4">
-
-                            <label for="comarca">Comarca</label>
-                            <select name="comarca" id="comarca" style="border-radius:10px; margin-left:94px; ; width:300px;">
-                                <option value="">Selecciona una Comarca</option>
+                            <label for="comarcaIncidencia">Comarca</label>
+                            <select name="comarcaIncidencia" id="comarcaIncidencia" style="border-radius:10px; margin-left:94px; ; width:300px;">
+                                <option value="">Selecciona una comarca</option>
                             </select>
                         </div>
-
-                        {{-- SCRIPT AMB AJAX PER TROBAR LA COMARCA SEGONS EL ID DE LA PROVINCIA SELECCIONADA --}}
-                        <script>
-                            $(function(){
-                                $('#provinciaIncident').on('change', actualitzarComarca);
-                            });
-                            function actualitzarComarca() {
-                                var id_provincia = $(this).val();
-                                // AJAX
-                                //$.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-                                $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
-                                    var html_select = '<option value="">Selecciona una comarca</option>'
-                                    console.log(id_provincia);
-                                    for(var i=0; i<data.length; i++)
-                                        html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                    $('#comarca').html(html_select);
-                                });
-                            }
-                        </script>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-6 col-sm-4">
                             {{-- TIPUS --}}
-                            <label for="tipus">Tipus</label>
-                            <select name="tipus" id="tipus" style="border-radius:10px; margin-left:95px; ; width:300px;">
+                            <label for="tipusIncidencia">Tipus</label>
+                            <select name="tipusIncidencia" id="tipusIncidencia" style="border-radius:10px; margin-left:95px; ; width:300px;">
                                 <@foreach ($tipusIncident as $tipus)
-
                                     <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
-
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group col-md-6 col-sm-4">
                             {{-- MUNICIPI --}}
-                            <label for="municipi">Municipi</label>
-                            <select name="municipi" id="municipi" style="border-radius:10px; margin-left:100px; ; width:300px;">
-
-                                    <option value="">Selecciona una Municipi</option>
-
+                            <label for="municipiIncidencia">Municipi</label>
+                            <select name="municipiIncidencia" id="municipiIncidencia" style="border-radius:10px; margin-left:100px; ; width:300px;">
+                                    <option value="">Selecciona un municipi</option>
                             </select>
                         </div>
-
-
-                        {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
-
-                        <script>
-                            $(function(){
-                                $('#comarca').on('change', actualitzarMunicipi);
-                            });
-                            function actualitzarMunicipi(){
-                                var comarques_id = $(this).val();
-                                // AJAX
-                                //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-                                $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
-                                var html_select = '<option value="">Seleccioni un Municipi</option>'
-                                for(var i=0; i<data.length; i++)
-                                    console.log(comarques_id);
-                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                $('#municipi').html(html_select);
-                                });
-                            }
-                        </script>
-
                     </div>
 
                     {{-- ADREÇA I COMPLEMENT DE LA ADREÇA --}}
 
                     <div class="form-row">
-
-
                         <div class="form-group col-md-6">
-                            <label for="adreça">Adreça</label>
-                            <input type="text" name="adreça" id="adreça" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <label for="adreçaIncidencia">Adreça</label>
+                            <input type="text" name="adreçaIncidencia" id="adreçaIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="adreça2">Indicacions</label>
-                            <input type="text" name="adreça2" id="adreça2" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <label for="indicacionsIncidencia">Indicacions</label>
+                            <input type="text" name="indicacionsIncidencia" id="indicacionsIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
-                            <label for="telefon">Telefon</label>
-                            <input type="text" name="telefon" id="telefon" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <label for="telefonIncidencia">Telefon</label>
+                            <input type="text" name="telefonIncidencia" id="telefonIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
                                 <@foreach ($estatsIncidencia as $estat)
-
                                         <option value="{{ $estat->id }}" selected> {{ $estat->estat }} </option>
-
                                     @endforeach
-
                             </select>
                         </div>
-
-
                     </div>
+
                     <div class="form-row">
-
                         <div class="form-group col-md-12">
-                            <label for="localitzacio">Localitzacio</label>
-                            <input type="text" name="localitzacio" id="localitzacio" style="border-radius:10px; margin-left:85px; ; width:800px;">
+                            <label for="localitzacioIncidencia">Localitzacio</label>
+                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:85px; ; width:800px;">
                         </div>
-
                     </div>
 
                     <div class="form-row">
                         {{-- DESCRIPCIO --}}
                         <div class="form-group col-md-4 col-sm-4">
-                            <label for="descripcio">Descripcio</label>
-                            <textarea name="descripcio" id="descripcio" cols="120" rows="3" style="border-radius:10px;"></textarea>
+                            <label for="descripcioIncidencia">Descripcio</label>
+                            <textarea name="descripcioIncidencia" id="descripcioIncidencia" cols="120" rows="3" style="border-radius:10px;"></textarea>
                         </div>
                     </div>
-
-             </div>
+                </div>
             </div>
         </div>
 
         {{-- **************Dades alertant******************** --}}
-
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingTwo" data-toggle="collapse"
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -207,61 +133,33 @@
                 <div class="card-subbody card-subbody-formulari">
 
                     <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-4">
+                            {{-- TIPUS  --}}
+                            <label for="tipusAlertant">Tipus d'Alertant</label>
+                            <select name="tipusAlertant" id="tipusAlertant" style="border-radius:10px; margin-left:95px; ; width:300px;">
+                                <@foreach ($tipusAlertant as $tipus)
+                                    <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-
-                            <div class="form-group col-md-6 col-sm-4">
-                                {{-- TIPUS  --}}
-                                <label for="tipusAlertant">Tipus d'Alertant</label>
-                                <select name="tipusAlertant" id="tipusAlertant" style="border-radius:10px; margin-left:95px; ; width:300px;">
-                                    <@foreach ($tipusAlertant as $tipus)
-
-                                        <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
-
-                                    @endforeach
+                        {{-- CENTRE SANITARI EN EL CAS DE QUE L'ALERTANT SIGUI AQUEST --}}
+                        <div class="form-group col-md-6 col-sm-4">
+                            <div class="hidden1" id="centre">
+                                <label for="centreSanitari">Nom del Centre Sanitari</label>
+                                <select name="centreSanitari" id="centreSanitari" style="border-radius:10px; margin-left:60px;  width:180px;">
+                                    <option value="">Selecciona una Centre</option>
                                 </select>
                             </div>
-
-                            {{-- CENTRE SANITARI EN EL CAS DE QUE L'ALERTANT SIGUI AQUEST --}}
-
-                            <div class="form-group col-md-6 col-sm-4">
-                                <div class="hidden1" id="centre">
-                                    <label for="CentreSanitari">Nom del Centre Sanitari</label>
-                                    <select name="CentreSanitari" id="CentreSanitari" style="border-radius:10px; margin-left:60px;  width:180px;">
-                                        <option value="">Selecciona una Centre</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <script>
-                            $(function(){
-                                $('#CentreSanitari').on('change', actualitzarCamps);
-                            });
-                            function actualitzarCamps() {
-                                var id = $(this).val();
-                                // AJAX
-                                $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
-                                    var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
-                                    var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
-                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
-                                    $('#NomCentre').html(Nom);
-                                    $('#telefonCentre').html(telefon);
-                                    $('#adreçaCentre').html(direccio);
-                                });
-                            }
-                            </script>
-
-
+                        </div>
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
                             <div class="hidden1" id="metge">
                                 <label for="NomMetge">Nom del Metge</label>
                                 <input type="text" name="NomMetge" id="NomMetge" style="border-radius:10px; margin-left:85px; ; width:300px;">
                             </div>
-
                         </div>
 
                         <div class="form-group col-md-6">
@@ -270,18 +168,14 @@
                                 <select name="NomCentre" id="NomCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
                                     <option value=""></option>
                                 </select>
-
                             </div>
-
                         </div>
 
                         <div class="form-group col-md-6">
                             <div class="" id="nomAlertant">
                                 <label for="nomAlertant">Nom del Alertant</label>
                                 <input type="text" name="nomAlertant" id="nomAlertant" style="border-radius:10px; margin-left:85px; ; width:300px;">
-
                             </div>
-
                         </div>
 
                         <div class="form-group col-md-6">
@@ -290,30 +184,22 @@
                                 <input type="text" name="cognomAlertant" id="cognomAlertant" style="border-radius:10px; margin-left:50px; ; width:200px;">
 
                             </div>
-
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
-
                             <div class="" id="adreçaAlertant">
                                 <label for="adreçaAlertant">Adreça del Alertant</label>
                                 <input type="text" name="adreçaAlertant" id="adreçaAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
-
                             </div>
-
                         </div>
 
                         <div class="form-group col-md-6">
                             <div class="" id="telefonAlertant">
                                 <label for="telefonAlertant">Telefon del Alertant</label>
                                 <input type="text" name="telefonAlertant" id="telefonAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
-
                             </div>
-
                         </div>
 
                         <div class="form-group col-md-6">
@@ -322,173 +208,47 @@
                                 <select name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:60px;  width:200px;" disabled>
                                     <option value=""></option>
                                 </select>
-
                             </div>
-
                         </div>
+
                         <div class="hidden1" id="adreçaCentre1">
                             <label for="adreçaCentre">Adreça del Centre</label>
                             <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
                                 <option value=""></option>
                             </select>
-
                         </div>
-
-
-
-
-
                     </div>
 
-                    <div class="form-row">
-
+                    <div class="form-row amagar">
                         {{-- PROVINCIA ALERTANT --}}
-
                         <div class="form-group col-md-4">
-                            <div class="" id="provinciaAlertant">
-
-                                <label for="provinciaAlertant">Provincia</label>
-                                <select name="provinciaAlertant" id="provinciaAlertant" style="border-radius:10px; margin-left:50px; ; width:130px;">
-                                    <@foreach ($provincies as $provincia)
-
-                                            <option value="{{ $provincia->id }}" selected> {{ $provincia->nom }} </option>
-
-                                    @endforeach
-                                </select>
-
-                            </div>
-
-
+                            <label for="provinciaAlertant">Provincia</label>
+                            <select name="provinciaAlertant" id="provinciaAlertant" style="border-radius:10px; margin-left:50px; ; width:130px;">
+                                <option value="">Selecciona una provincia</option>
+                            </select>
                         </div>
 
                         {{-- COMARCA --}}
-
                         <div class="form-group col-md-4">
-                            <div class="" id="comarcaAlertant">
-
-                                <label for="comarcaAlertant">Provincia</label>
-                                <select name="comarcaAlertant" id="comarcaAlertant" style="border-radius:10px; margin-left:60px;  width:180px;">
-                                    <option value="">Selecciona una Comarca</option>
-                                </select>
-
-                            </div>
-
-
+                            <label for="comarcaAlertant">Comarca</label>
+                            <select name="comarcaAlertant" id="comarcaAlertant" style="border-radius:10px; margin-left:60px;  width:180px;">
+                                <option value="">Selecciona una comarca</option>
+                            </select>
                         </div>
-
-                        {{-- SCRIPT AMB AJAX PER TROBAR LA COMARCA SEGONS EL ID DE LA PROVINCIA SELECCIONADA --}}
-                        <script>
-                            $(function(){
-                                $('#provinciaAlertant').on('change', actualitzarComarca1);
-                            });
-                            function actualitzarComarca1() {
-                                var id_provincia = $(this).val();
-                                // AJAX
-                                $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-                                    var html_select = '<option value="">Seleccioni una comarca</option>'
-                                    for(var i=0; i<data.length; i++)
-                                        html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                        console.log(html_select);
-                                    $('#comarcaAlertant').html(html_select);
-                                });
-                            }
-                        </script>
 
                         {{-- MUNICIPI ALERTANT--}}
                         <div class="form-group col-md-4 col-sm-4">
-                            <div class="" id="municipiAlertant">
-
-                                <label for="municipiAlertant">Municipi</label>
-                                <select name="municipiAlertant" id="municipiAlertant" style="border-radius:10px; margin-left:70px; ; width:200px;">
-
-                                    <option value="">Selecciona una Municipi</option>
-
-                            </select>
-
-                            </div>
-
+                            <label for="municipiAlertant">Municipi</label>
+                            <select name="municipiAlertant" id="municipiAlertant" style="border-radius:10px; margin-left:70px; ; width:200px;">
+                                <option value="">Selecciona un municipi</option>
+                        </select>
                         </div>
-
-
-                        {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
-
-                        <script>
-                            $(function(){
-                                $('#comarcaAlertant').on('change', actualitzarMunicipi1);
-                            });
-                            function actualitzarMunicipi1(){
-                                var comarques_id = $(this).val();
-                                // AJAX
-                                $.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-                                var html_select = '<option value="">Seleccioni un Municipi</option>'
-                                for(var i=0; i<data.length; i++)
-                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                $('#municipiAlertant').html(html_select);
-                                });
-                            }
-                        </script>
-
-
-
-
                     </div>
-
-                    <script>
-                        $(function(){
-                            $('#tipusAlertant').on('change', crearCentre);
-                        });
-                        function crearCentre(){
-                            var id = $(this).val();
-                            if(id == 1){
-                                $(".hidden1").removeClass("hidden1");
-                                $(".hidden1").removeClass("hidden1");
-                                $(".hidden1").removeClass("hidden1");
-                                $("#nomAlertant").addClass("hidden2");
-                                $("#cognomAlertant").addClass("hidden2");
-                                $("#adreçaAlertant").addClass("hidden2");
-                                $("#telefonAlertant").addClass("hidden2");
-                                $("#provinciaAlertant").addClass("hidden2");
-                                $("#comarcaAlertant").addClass("hidden2");
-                                $("#municipiAlertant").addClass("hidden2");
-                            }
-                           else{
-                                $("#centre").addClass("hidden1");
-                                $("#metge").addClass("hidden1");
-                                $("#adreçaCentre").addClass("hidden1");
-                                $("#telefonCentre").addClass("hidden1");
-                                $("#nomAlertant").removeClass("hidden2");
-                                $("#cognomAlertant").removeClass("hidden2");
-                                $("#adreçaAlertant").removeClass("hidden2");
-                                $("#telefonAlertant").removeClass("hidden2");
-                                $("#provinciaAlertant").removeClass("hidden2");
-                                $("#comarcaAlertant").removeClass("hidden2");
-                                $("#municipiAlertant").removeClass("hidden2");
-                            }
-                        }
-                        $(function(){
-                            $('#tipusAlertant').on('change', actualitzarCentre);
-                        });
-                        function actualitzarCentre(){
-                            var id = $(this).val();
-                            // AJAX
-                            if(id == 1){
-                                $.get('http://localhost:80/abp-broggi/public/api/centre/'+ id +'', function(data){
-                                var html_select = '<option value="">Selecciona un Centre</option>'
-                                for(var i=0; i<data.length; i++)
-                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                $('#CentreSanitari').html(html_select);
-                                });
-                            }
-                        }
-                    </script>
-
-
                 </div>
             </div>
         </div>
 
         {{-- **************Dades afectats******************** --}}
-
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingThree" data-toggle="collapse"
                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -516,7 +276,6 @@
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
                             <label for="telefonAfectat">Telefon</label>
                             <input type="text" name="telefonAfectat" id="telefonAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
@@ -524,13 +283,7 @@
                         </div>
 
                     </div>
-
-                    <div class="form-row">
-
-                        <p>(Opcional...)</p>
-
-                    </div>
-
+                    
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
@@ -570,11 +323,7 @@
                         {{-- PROVINCIA AFECTAT --}}
                         <div class="form-group col-md-3">
                             <label for="provinciaAfectat1">Provincia</label>
-                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat">
-                                    <option value="0" selected>Selecciona una provincia</option>
-                                    <@foreach ($provincies as $provincia)
-                                            <option value="{{ $provincia->id }}"> {{ $provincia->nom }} </option>
-                                    @endforeach
+                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
                                 </select>
                         </div>
 
@@ -603,7 +352,6 @@
         </div>
 
         {{-- **************Dades recursos mobils******************** --}}
-
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingFour" data-toggle="collapse"
                 data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
@@ -682,7 +430,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="card-footer text-muted text-center">
         <button class="btn btn-primary" type="submit">Guardar</button>

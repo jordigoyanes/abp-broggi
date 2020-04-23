@@ -1,6 +1,15 @@
 $( document ).ready(function() {
 
     $(function(){
+        $('#provinciaIncidencia').on('change', actualitzarComarca);
+        $('#comarcaIncidencia').on('change', actualitzarMunicipi);
+
+        $('#CentreSanitari').on('change', actualitzarCamps);
+        $('#provinciaAlertant').on('change', actualitzarComarca);
+        $('#comarcaAlertant').on('change', actualitzarMunicipi);
+        $('#tipusAlertant').on('change', crearCentre);
+        $('#tipusAlertant').on('change', actualitzarCentre);
+
         $('.tenirTarjeta').on('change', crearCip);
         $('.provinciaAfectat').on('change', actualitzarComarcaAfectat);
         $('.comarcaAfectat').on('change', actualitzarMunicipiAfectat);
@@ -11,6 +20,113 @@ $( document ).ready(function() {
     var afectats = $('.afectat').length;
     var recursos = $('.recurs').length;
 
+    actualitzarProvincia();
+    actualitzarProvinciaAfectat();
+
+    // =========================================================
+    //INCIDENCIA================================================
+    // =========================================================
+
+    //Actualitzar el select de provincies al crear una incidencia
+    function actualitzarProvincia(){
+        // AJAX
+        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ '', function(data){
+            $.get('http://broggi.lo:8888/public/api/provincies', function(data){
+            var html_select = '<option value="">Selecciona una provincia</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+            $('#provinciaIncidencia').html(html_select);
+            $('#provinciaAlertant').html(html_select);
+        });
+    }
+
+    // Actualitzar el select de comarques quan es tria la provincia
+    // SCRIPT AMB AJAX PER TROBAR LA COMARCA SEGONS EL ID DE LA PROVINCIA SELECCIONADA
+    function actualitzarComarca() {
+        var id_provincia = $(this).val();
+        var id_camp = $(this).attr('id');
+        var apartat = id_camp.slice(("provincia").length, id_camp.length);
+        // AJAX
+        //$.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
+        $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
+            var html_select = '<option value="">Selecciona una comarca</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+            $('#comarca'+apartat).html(html_select);
+        });
+    }
+
+    // Actualitzar el select de municipis quan es tria la comarca
+    // SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA
+    function actualitzarMunicipi(){
+        var comarques_id = $(this).val();
+        var id_camp = $(this).attr('id');
+        var apartat = id_camp.slice(("comarca").length, id_camp.length);
+        // AJAX
+        //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
+        $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
+        var html_select = '<option value="">Selecciona un municipi</option>'
+        for(var i=0; i<data.length; i++)
+            html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+        $('#municipi'+apartat).html(html_select);
+        });
+    }
+
+    // =========================================================
+    //ALERTANT==================================================
+    // =========================================================
+
+    // Actualitza els camps del tipus d'alertant
+    function actualitzarCamps() {
+        var id = $(this).val();
+        // AJAX
+        // $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
+        $.get('http://broggi.lo:8888/public/api/centreid/'+ id +'', function(data){
+            var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
+            var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
+            var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
+            $('#NomCentre').html(Nom);
+            $('#telefonCentre').html(telefon);
+            $('#adreçaCentre').html(direccio);
+        });
+    }
+
+    function crearCentre(){
+        var id = $(this).val();
+        if(id == 1){
+            $(".hidden1").removeClass("hidden1");
+            $("#nomAlertant").addClass("hidden2");
+            $("#cognomAlertant").addClass("hidden2");
+            $("#adreçaAlertant").addClass("hidden2");
+            $("#telefonAlertant").addClass("hidden2");
+            $(".amagar").css("display", "none");
+        }
+       else{
+            $("#centre").addClass("hidden1");
+            $("#metge").addClass("hidden1");
+            $("#adreçaCentre").addClass("hidden1");
+            $("#telefonCentre").addClass("hidden1");
+            $("#nomAlertant").removeClass("hidden2");
+            $("#cognomAlertant").removeClass("hidden2");
+            $("#adreçaAlertant").removeClass("hidden2");
+            $("#telefonAlertant").removeClass("hidden2");
+            $(".amagar").css("display", "flex");
+        }
+    }
+
+    function actualitzarCentre(){
+        var id = $(this).val();
+        // AJAX
+        if(id == 1){
+            // $.get('http://localhost:80/abp-broggi/public/api/centre/'+ id +'', function(data){
+            $.get('http://broggi.lo:8888/public/api/centre/'+ id +'', function(data){
+            var html_select = '<option value="">Selecciona un Centre</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+            $('#CentreSanitari').html(html_select);
+            });
+        }
+    }
 
     // =========================================================
     //AFECTATS=================================================
@@ -56,10 +172,6 @@ $( document ).ready(function() {
                     "</div>"+
 
                     "<div class='form-row'>"+
-                        "<p>(Opcional...)</p>"+
-                    "</div>"+
-
-                    "<div class='form-row'>"+
                         "<div class='form-group col-md-6'>"+
                             "<label for='nomAfectat'>Nom</label>"+
                             "<input type='text' name='nomAfectat' id='nomAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
@@ -93,17 +205,13 @@ $( document ).ready(function() {
                         "<div class='form-group col-md-3'>"+
                             "<label for='provinciaAfectat"+afectats+"'>Provincia</label>"+
                                 "<select name='provinciaAfectat' id='provinciaAfectat"+afectats+"' style='border-radius:10px; margin-left:50px; ; width:130px;' class='provinciaAfectat'>"+
-                                    "<option value='0' selected>Selecciona una provincia</option>"+
-                                    "<option value='1'>Barcelona</option>"+
-                                    "<option value='2'>Girona</option>"+
-                                    "<option value='3'>Lleida</option>"+
-                                    "<option value='4'>Tarragona</option>"+
+                                    "<option value=''>Selecciona una provincia</option>"+
                                 "</select>"+
                         "</div>"+
 
                         "<div class='form-group col-md-4 col-sm-4'>"+
                             "<label for='comarcaAfectat"+afectats+"' style='margin-left:10px;'>Comarca</label>"+
-                            "<select name='comarcaAfectat' id='comarcaAfectat"+afectats+"' style='border-radius:10px; margin-left:60px;  width:180px;'>"+
+                            "<select name='comarcaAfectat' id='comarcaAfectat"+afectats+"' style='border-radius:10px; margin-left:60px;  width:180px;' class='comarcaAfectat'>"+
                                 "<option value=''>Selecciona una comarca</option>"+
                             "</select>"+
                         "</div>"+
@@ -118,6 +226,7 @@ $( document ).ready(function() {
 
                 "</div>"
             ));
+            actualitzarProvinciaAfectat();
         }
     });
 
@@ -134,11 +243,22 @@ $( document ).ready(function() {
         }
     }
 
+    //Actualitzar el select de provincies al crear un afectat nou
+    function actualitzarProvinciaAfectat(){
+        // AJAX
+        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ '', function(data){
+            $.get('http://broggi.lo:8888/public/api/provincies', function(data){
+            var html_select = '<option value="">Selecciona una provincia</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+            $('#provinciaAfectat'+afectats).html(html_select);
+        });
+    }
+
     // Actualitzar el select de comarques quan es tria la provincia
     function actualitzarComarcaAfectat() {
         var id_provincia = $(this).val();
         var id_afectat = $(this).attr("id").slice(-1);
-        console.log("id provincia: "+id_provincia);
         // AJAX
         // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
             $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
@@ -165,7 +285,6 @@ $( document ).ready(function() {
 
     // Eliminar un afectat
     function eliminarAfectat(){
-        console.log("borrar afectat");
         var id_afectat = $(this).attr("id").slice(-1);
         $('#afectat'+id_afectat).remove();
     }

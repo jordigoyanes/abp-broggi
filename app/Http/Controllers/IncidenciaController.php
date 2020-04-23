@@ -112,7 +112,7 @@ class IncidenciaController extends Controller
         // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
 
         $afectat_tarjeta = $request->input('tenir_tarjeta');
-
+        //loop
         $afectat = new Afectat();
 
         if($afectat_tarjeta == 2){

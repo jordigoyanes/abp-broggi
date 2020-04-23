@@ -25,6 +25,8 @@ Route::post('alertant','Api\AlertantController@alertantsByTipus');
 
 Route::get('municipis','Api\MunicipiController@index');
 
+Route::get('provincies','Api\ProvinciaController@index');
+
 Route::get( '/comarca/{id}' ,'IncidenciaController@getComarca');
 
 Route::get( '/municipi/{id}' ,'IncidenciaController@getMunicipi');
