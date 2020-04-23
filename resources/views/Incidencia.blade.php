@@ -497,7 +497,6 @@
 
             <div id="collapseThree" class="collapse show afectats" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-subbody card-subbody-formulari afectat">
-
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
@@ -554,6 +553,7 @@
                         <div class="form-group col-md-4">
                             <label for="sexeAfectat">Sexe</label>
                             <select name="sexeAfectat" id="sexeAfectat" style="border-radius:10px; margin-left:100px; ; width:100px;">
+                                <option value="null" selected>Selecciona</option>
                                 <option value="Home">Home</option>
                                 <option value="Dona">Dona</option>
                             </select>
@@ -564,49 +564,35 @@
                             <input type="number" name="edatAfectat" id="edatAfectat" style="border-radius:10px; margin-left:50px; ; width:50px;">
 
                         </div>
-
-
                     </div>
+
                     <div class="form-row">
-
                         {{-- PROVINCIA AFECTAT --}}
-
                         <div class="form-group col-md-3">
-
-                            <label for="provinciaAfectat">Provincia</label>
-                                <select name="provinciaAfectat" id="provinciaAfectat" style="border-radius:10px; margin-left:50px; ; width:130px;">
+                            <label for="provinciaAfectat1">Provincia</label>
+                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat">
+                                    <option value="0" selected>Selecciona una provincia</option>
                                     <@foreach ($provincies as $provincia)
-
-                                            <option value="{{ $provincia->id }}" selected> {{ $provincia->nom }} </option>
-
+                                            <option value="{{ $provincia->id }}"> {{ $provincia->nom }} </option>
                                     @endforeach
                                 </select>
-
                         </div>
 
                          {{-- COMARCA AFECTAT --}}
-
                          <div class="form-group col-md-4 col-sm-4">
-
-                            <label for="comarcaAfectat" style="margin-left:10px;">Comarca</label>
-                            <select name="comarcaAfectat" id="comarcaAfectat" style="border-radius:10px; margin-left:60px;  width:180px;">
-                                <option value="">Selecciona una Comarca</option>
+                            <label for="comarcaAfectat1" style="margin-left:10px;">Comarca</label>
+                            <select name="comarcaAfectat" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
+                                <option value="">Selecciona una comarca</option>
                             </select>
                         </div>
-
-
 
                         {{-- MUNICIPI AFECTAT--}}
                         <div class="form-group col-md-5 col-sm-4">
-
-                            <label for="municipiAfectat">Municipi</label>
-                            <select name="municipiAfectat" id="municipiAfectat" style="border-radius:10px; margin-left:70px; ; width:290px;">
-
-                                    <option value="">Selecciona una Municipi</option>
-
+                            <label for="municipiAfectat1">Municipi</label>
+                            <select name="municipiAfectat" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
+                                    <option value="">Selecciona un municipi</option>
                             </select>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -614,7 +600,6 @@
             <div class="d-flex justify-content-center">
                 <button class="btn btn-danger" id="afegirAfectat" type="button">Afegeix afectat</button>
             </div>
-
         </div>
 
         {{-- **************Dades recursos mobils******************** --}}
@@ -625,55 +610,30 @@
                 <h3 class="mb-0">Dades dels recursos mobils</h3>
             </div>
 
-            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-subbody card-subbody-formulari">
-
+            <div id="collapseFour" class="collapse show recursos" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-subbody card-subbody-formulari recurs">
                     {{-- TIPUS I CODI DE RECURS MOBIL --}}
                     <div class="form-row">
-
                         <div class="form-group col-md-4">
                             <label for="tipusRecurs">Tipus</label>
-                            <select name="tipusRecurs" id="tipusRecurs" style="border-radius:10px; margin-left:85px; ; width:200px;">
+                            <select name="tipusRecurs" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
+                                <option value="0" selected>Selecciona el tipus de recurs</option>
                                 @foreach ($tipusRecurs as $recurs)
-
-                                <option value="{{ $recurs->id }}" selected> {{ $recurs->tipus }} </option>
-
-                            @endforeach
+                                    <option value="{{ $recurs->id }}"> {{ $recurs->tipus }} </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="CodiRecurs">Codi</label>
-                            <select name="CodiRecurs" id="CodiRecurs" style="border-radius:10px; margin-left:85px; ; width:200px;">
+                            <label for="CodiRecurs1">Codi</label>
+                            <select name="CodiRecurs" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
                                 <option value="">Selecciona un codi</option>
                             </select>
                         </div>
-
-                        <script>
-                            $(function(){
-                                $('#tipusRecurs').on('change', actualitzarCodi);
-                            });
-                            function actualitzarCodi(){
-                                var codi = $(this).val();
-                                // AJAX
-                                $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
-                                var html_select = '<option value="">Selecciona un Codi</option>'
-                                for(var i=0; i<data.length; i++)
-                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
-                                $('#CodiRecurs').html(html_select);
-                                });
-                            }
-                        </script>
-                    </div>
-
-                    <div class="form-row">
-
                     </div>
 
                     {{-- HORES DEL RECURS MOBIL --}}
-
                     <div class="form-row">
-
                         <div class="form-group col-md-4">
                             <label for="hActivacio">Hora d'Activació</label>
                             <input type="time" name="hActivacio" id="hActivacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
@@ -688,11 +648,9 @@
                             <label for="hAssistencia">Hora d'Assistencia</label>
                             <input type="time" name="hAssistencia" id="hAssistencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-4">
                             <label for="hTransport">Hora de Transport</label>
                             <input type="time" name="hTransport" id="hTransport" style="border-radius:10px; margin-left:85px; ; width:80px;">
@@ -707,22 +665,25 @@
                             <label for="hTransferencia">Hora de Transferencia</label>
                             <input type="time" name="hTransferencia" id="hTransferencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="form-group col-md-4">
                             <label for="hFinalització">Hora de Finalització</label>
                             <input type="time" name="hFinalització" id="hFinalització" style="border-radius:10px; margin-left:85px; ; width:100px;">
                         </div>
-
                     </div>
 
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger" id="afegirRecurs" type="button">Afegeix recurs</button>
+            </div>
         </div>
     </div>
+
+
     <div class="card-footer text-muted text-center">
         <button class="btn btn-primary" type="submit">Guardar</button>
         <button class="btn btn-primary" href="{{ url('/incidencia') }}" >Cancelar</button>
