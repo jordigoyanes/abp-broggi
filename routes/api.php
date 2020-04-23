@@ -27,6 +27,8 @@ Route::get('municipis','Api\MunicipiController@index');
 
 Route::get('provincies','Api\ProvinciaController@index');
 
+Route::get('tipusRecurs','Api\TipusRecursController@index');
+
 Route::get( '/comarca/{id}' ,'IncidenciaController@getComarca');
 
 Route::get( '/municipi/{id}' ,'IncidenciaController@getMunicipi');
@@ -34,4 +36,5 @@ Route::get( '/municipi/{id}' ,'IncidenciaController@getMunicipi');
 Route::get( '/centre/{id}' ,'IncidenciaController@getAlertant');
 
 Route::get('/centreid/{id}', 'IncidenciaController@getAlertantbyId');
+
 Route::get('/codiRecurs/{id}', 'IncidenciaController@getRecurs');

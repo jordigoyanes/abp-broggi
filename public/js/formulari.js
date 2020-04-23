@@ -23,6 +23,8 @@ $( document ).ready(function() {
     actualitzarProvincia();
     actualitzarProvinciaAfectat();
 
+    actualitzarTipusRecurs();
+
     // =========================================================
     //INCIDENCIA================================================
     // =========================================================
@@ -146,7 +148,7 @@ $( document ).ready(function() {
             afectats++;
             $('.afectats').append($(
                 "<div class='card-subbody card-subbody-formulari afectat' style='border-top: solid 1px black' id='afectat"+afectats+"'>"+
-                    "<div class='d-flex justify-content-end'><button type='button' class='eliminarAfectat' id='brossaAfectat"+afectats+"'>brossa</button></div>"+
+                    "<div id='brossaAfectat"+afectats+"' class='d-flex justify-content-end eliminarAfectat'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
                     "<div class='form-row'>" +
                         "<div class='form-group col-md-6'>" +
                             "<label for='tenir_tarjeta"+afectats+"'>Te tarjeta S.S ?</label>" +
@@ -246,7 +248,7 @@ $( document ).ready(function() {
     //Actualitzar el select de provincies al crear un afectat nou
     function actualitzarProvinciaAfectat(){
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ '', function(data){
+        // $.get('http://localhost:80/abp-broggi/public/api/provincies', function(data){
             $.get('http://broggi.lo:8888/public/api/provincies', function(data){
             var html_select = '<option value="">Selecciona una provincia</option>'
             for(var i=0; i<data.length; i++)
@@ -305,8 +307,8 @@ $( document ).ready(function() {
         if(recursos<9){
             recursos++;
             $('.recursos').append($(
-            "<div id='recurs"+recursos+"' class='card-subbody card-subbody-formulari recurs' style='border-top: solid 1px black'>"+
-                    "<div class='d-flex justify-content-end'><button type='button' class='eliminarRecurs' id='brossaRecurs"+recursos+"'>brossa</button></div>"+
+            "<div id='recurs"+recursos+"' class='card-subbody-formulari recurs' style='border-top: solid 1px black'>"+
+                    "<div id='brossaRecurs"+recursos+"'class='d-flex justify-content-end eliminarRecurs'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
                     "<div class='form-row'>"+
                         "<div class='form-group col-md-4'>"+
                             "<label for='tipusRecurs"+recursos+"'>Tipus</label>"+
@@ -319,8 +321,8 @@ $( document ).ready(function() {
                         "</div>"+
 
                         "<div class='form-group col-md-4'>"+
-                            "<label for='CodiRecurs'>Codi</label>"+
-                            "<select name='CodiRecurs' id='CodiRecurs' style='border-radius:10px; margin-left:85px; ; width:200px;'>"+
+                            "<label for='CodiRecurs"+recursos+"'>Codi</label>"+
+                            "<select name='CodiRecurs"+recursos+"' id='CodiRecurs"+recursos+"' style='border-radius:10px; margin-left:85px; ; width:200px;'>"+
                                 "<option value=''>Selecciona un codi</option>"+
                             "</select>"+
                         "</div>"+
@@ -368,8 +370,18 @@ $( document ).ready(function() {
                     "</div>"+
                 "</div>"
             ));
+            actualitzarTipusRecurs();
         }
     })
+
+    function actualitzarTipusRecurs(){
+        $.get('http://broggi.lo:8888/public/api/tipusRecurs', function(data){
+            var html_select = '<option value="">Selecciona el tipus</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].tipus +'</option>';
+            $('#tipusRecurs'+recursos).html(html_select);
+        });
+    }
 
     function actualitzarCodi(){
         var codi = $(this).val();
@@ -380,6 +392,7 @@ $( document ).ready(function() {
             var html_select = '<option value="">Selecciona un codi</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+                console.log(html_select)
             $('#CodiRecurs'+id_recurs).html(html_select);
         });
     }

@@ -26,7 +26,7 @@
                         {{-- DATA --}}
                         <div class="form-group col-md-6 col-sm-4">
                             <label for="data" style="width:100px">Data</label>
-                            <input type="date" name="data" id="data"  class="rounded-pill">
+                            <input type="date" name="data" id="data" style="border-radius:10px; margin-left:35px; ; width:300px;">
                         </div>
 
                         {{-- PROVINCIA --}}
@@ -107,7 +107,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="localitzacioIncidencia">Localitzacio</label>
-                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:85px; ; width:800px;">
+                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:55px; ; width:800px;">
                         </div>
                     </div>
 
@@ -255,99 +255,99 @@
                 <h3 class="mb-0">Dades dels afectats</h3>
             </div>
 
-            <div id="collapseThree" class="collapse show afectats" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-subbody card-subbody-formulari afectat">
-                    <div class="form-row">
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="afectats card-subbody-formulari">
+                    <div class="afectat">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
+                                <select name="tenir_tarjeta" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
+                                    <option value="1" selected>Si</option>
+                                    <option value="2">No</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
-                            <select name="tenir_tarjeta" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
-                                <option value="1" selected>Si</option>
-                                <option value="2">No</option>
-                            </select>
+                            <div class="form-group col-md-6">
+                                <div class="" id="cip1">
+                                    <label for="CipAfectat">CIP</label>
+                                    <input type="text" name="CipAfectat" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <div class="" id="cip1">
-                                <label for="CipAfectat">CIP</label>
-                                <input type="text" name="CipAfectat" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="telefonAfectat">Telefon</label>
+                                <input type="text" name="telefonAfectat" id="telefonAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="nomAfectat">Nom</label>
+                                <input type="text" name="nomAfectat" id="nomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="cognomAfectat">Cognom</label>
+                                <input type="text" name="cognomAfectat" id="cognomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4">
+                                <label for="sexeAfectat">Sexe</label>
+                                <select name="sexeAfectat" id="sexeAfectat" style="border-radius:10px; margin-left:100px; ; width:100px;">
+                                    <option value="null" selected>Selecciona</option>
+                                    <option value="Home">Home</option>
+                                    <option value="Dona">Dona</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="edatAfectat">Edat</label>
+                                <input type="number" name="edatAfectat" id="edatAfectat" style="border-radius:10px; margin-left:50px; ; width:50px;">
+
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            {{-- PROVINCIA AFECTAT --}}
+                            <div class="form-group col-md-3">
+                                <label for="provinciaAfectat1">Provincia</label>
+                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
+                                </select>
+                            </div>
+
+                            {{-- COMARCA AFECTAT --}}
+                            <div class="form-group col-md-4 col-sm-4">
+                                <label for="comarcaAfectat1" style="margin-left:10px;">Comarca</label>
+                                <select name="comarcaAfectat" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
+                                    <option value="">Selecciona una comarca</option>
+                                </select>
+                            </div>
+
+                            {{-- MUNICIPI AFECTAT--}}
+                            <div class="form-group col-md-5 col-sm-4">
+                                <label for="municipiAfectat1">Municipi</label>
+                                <select name="municipiAfectat" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
+                                    <option value="">Selecciona un municipi</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="telefonAfectat">Telefon</label>
-                            <input type="text" name="telefonAfectat" id="telefonAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
-                        </div>
-
-                    </div>
-                    
-                    <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                            <label for="nomAfectat">Nom</label>
-                            <input type="text" name="nomAfectat" id="nomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="cognomAfectat">Cognom</label>
-                            <input type="text" name="cognomAfectat" id="cognomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="form-row">
-
-                        <div class="form-group col-md-4">
-                            <label for="sexeAfectat">Sexe</label>
-                            <select name="sexeAfectat" id="sexeAfectat" style="border-radius:10px; margin-left:100px; ; width:100px;">
-                                <option value="null" selected>Selecciona</option>
-                                <option value="Home">Home</option>
-                                <option value="Dona">Dona</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="edatAfectat">Edat</label>
-                            <input type="number" name="edatAfectat" id="edatAfectat" style="border-radius:10px; margin-left:50px; ; width:50px;">
-
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        {{-- PROVINCIA AFECTAT --}}
-                        <div class="form-group col-md-3">
-                            <label for="provinciaAfectat1">Provincia</label>
-                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
-                                </select>
-                        </div>
-
-                         {{-- COMARCA AFECTAT --}}
-                         <div class="form-group col-md-4 col-sm-4">
-                            <label for="comarcaAfectat1" style="margin-left:10px;">Comarca</label>
-                            <select name="comarcaAfectat" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
-                                <option value="">Selecciona una comarca</option>
-                            </select>
-                        </div>
-
-                        {{-- MUNICIPI AFECTAT--}}
-                        <div class="form-group col-md-5 col-sm-4">
-                            <label for="municipiAfectat1">Municipi</label>
-                            <select name="municipiAfectat" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
-                                    <option value="">Selecciona un municipi</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-danger" id="afegirAfectat" type="button">Afegeix afectat</button>
+                <div class="d-flex justify-content-center card-subbody-formulari">
+                    <button class="btn rounded-circle text-white" id="afegirAfectat" type="button"style="background: #FCC536 ">+</button>
+                </div>
             </div>
         </div>
 
@@ -358,82 +358,79 @@
                 <h3 class="mb-0">Dades dels recursos mobils</h3>
             </div>
 
-            <div id="collapseFour" class="collapse show recursos" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-subbody card-subbody-formulari recurs">
-                    {{-- TIPUS I CODI DE RECURS MOBIL --}}
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="tipusRecurs">Tipus</label>
-                            <select name="tipusRecurs" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
-                                <option value="0" selected>Selecciona el tipus de recurs</option>
-                                @foreach ($tipusRecurs as $recurs)
-                                    <option value="{{ $recurs->id }}"> {{ $recurs->tipus }} </option>
-                                @endforeach
-                            </select>
+            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-subbody-formulari recursos">
+                    <div class="recurs">
+                        {{-- TIPUS I CODI DE RECURS MOBIL --}}
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="tipusRecurs">Tipus</label>
+                                <select name="tipusRecurs" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
+                                    <option value="0" selected>Selecciona el tipus</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="CodiRecurs1">Codi</label>
+                                <select name="CodiRecurs" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
+                                    <option value="">Selecciona un codi</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="CodiRecurs1">Codi</label>
-                            <select name="CodiRecurs" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
-                                <option value="">Selecciona un codi</option>
-                            </select>
+                        {{-- HORES DEL RECURS MOBIL --}}
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="hActivacio">Hora d'Activació</label>
+                                <input type="time" name="hActivacio" id="hActivacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hMovilitzacio">Hora de Movilització</label>
+                                <input type="time" name="hMovilitzacio" id="hMovilitzacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hAssistencia">Hora d'Assistencia</label>
+                                <input type="time" name="hAssistencia" id="hAssistencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="hTransport">Hora de Transport</label>
+                                <input type="time" name="hTransport" id="hTransport" style="border-radius:10px; margin-left:85px; ; width:80px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hArribada">Hora d'Arribada al Hospital</label>
+                                <input type="time" name="hArribada" id="hArribada" style="border-radius:10px; margin-left:85px; ; width:50px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hTransferencia">Hora de Transferencia</label>
+                                <input type="time" name="hTransferencia" id="hTransferencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="hFinalització">Hora de Finalització</label>
+                                <input type="time" name="hFinalització" id="hFinalització" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
                         </div>
                     </div>
-
-                    {{-- HORES DEL RECURS MOBIL --}}
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="hActivacio">Hora d'Activació</label>
-                            <input type="time" name="hActivacio" id="hActivacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="hMovilitzacio">Hora de Movilització</label>
-                            <input type="time" name="hMovilitzacio" id="hMovilitzacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="hAssistencia">Hora d'Assistencia</label>
-                            <input type="time" name="hAssistencia" id="hAssistencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="hTransport">Hora de Transport</label>
-                            <input type="time" name="hTransport" id="hTransport" style="border-radius:10px; margin-left:85px; ; width:80px;">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="hArribada">Hora d'Arribada al Hospital</label>
-                            <input type="time" name="hArribada" id="hArribada" style="border-radius:10px; margin-left:85px; ; width:50px;">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="hTransferencia">Hora de Transferencia</label>
-                            <input type="time" name="hTransferencia" id="hTransferencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="hFinalització">Hora de Finalització</label>
-                            <input type="time" name="hFinalització" id="hFinalització" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-danger" id="afegirRecurs" type="button">Afegeix recurs</button>
+                <div class="d-flex justify-content-center card-subbody-formulari" >
+                    <button class="btn rounded-circle text-white" id="afegirRecurs" type="button" style="background: #FCC536 ">+</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="card-footer text-muted text-center">
-        <button class="btn btn-primary" type="submit">Guardar</button>
-        <button class="btn btn-primary" href="{{ url('/incidencia') }}" >Cancelar</button>
+    <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
+        <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
+        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/incidencia') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
     </div>
 
     </form>

@@ -51,8 +51,7 @@ class IncidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
         $municipis = Municipi::all();
 
         $tipusIncident = TipusIncident::all();
@@ -75,8 +74,6 @@ class IncidenciaController extends Controller
         $data['alertants'] = $alertants;
         $data['recursos'] = $recurs;
 
-
-
         return view('Incidencia', $data);
     }
 
@@ -88,17 +85,15 @@ class IncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-
         // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
+
         $id_tipus_alertant = $request->input('tipusAlertant');
 
         if($id_tipus_alertant != 1){
 
             $alertant = new Alertant();
 
-            $id = rand(1,1000);
-
-            $alertant->id = $id;
+            $alertant->id = $id = rand(1,1000);
             $alertant->nom = $request->input('nomAlertant');
             $alertant->cognoms = $request->input('cognomAlertant');
             $alertant->adreca = $request->input('adreçaAlertant');
@@ -134,8 +129,6 @@ class IncidenciaController extends Controller
 
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         $incidencia = new Incidencia();
-
-
 
         $incidencia->localitzacio =  $request->input('localitzacio');
 
