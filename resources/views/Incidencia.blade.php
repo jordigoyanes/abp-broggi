@@ -72,29 +72,19 @@
                         <script>
                             $(function(){
                                 $('#provinciaIncident').on('change', actualitzarComarca);
-
                             });
-
                             function actualitzarComarca() {
-
                                 var id_provincia = $(this).val();
-
                                 // AJAX
-
-                                $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-
+                                //$.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
+                                $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
                                     var html_select = '<option value="">Selecciona una comarca</option>'
-
+                                    console.log(id_provincia);
                                     for(var i=0; i<data.length; i++)
-
                                         html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-
-
                                     $('#comarca').html(html_select);
-
                                 });
                             }
-
                         </script>
 
                     </div>
@@ -127,34 +117,21 @@
                         {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
 
                         <script>
-
                             $(function(){
-
                                 $('#comarca').on('change', actualitzarMunicipi);
-
                             });
-
                             function actualitzarMunicipi(){
-
                                 var comarques_id = $(this).val();
-
-
                                 // AJAX
-
-                                $.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-
+                                //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
+                                $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
                                 var html_select = '<option value="">Seleccioni un Municipi</option>'
-
                                 for(var i=0; i<data.length; i++)
+                                    console.log(comarques_id);
                                     html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-
-
                                 $('#municipi').html(html_select);
                                 });
-
                             }
-
-
                         </script>
 
                     </div>
@@ -257,29 +234,21 @@
                             </div>
 
                             <script>
-
                             $(function(){
                                 $('#CentreSanitari').on('change', actualitzarCamps);
-
                             });
-
                             function actualitzarCamps() {
                                 var id = $(this).val();
-
-
                                 // AJAX
-
                                 $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
-
-
-                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
-                                    console.log(data);
-
+                                    var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
+                                    var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
+                                    var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
+                                    $('#NomCentre').html(Nom);
+                                    $('#telefonCentre').html(telefon);
                                     $('#adreçaCentre').html(direccio);
                                 });
                             }
-
-
                             </script>
 
 
@@ -296,9 +265,9 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="hidden1" id="adreçaCentre">
-                                <label for="adreçaCentre">Adreça del Centre</label>
-                                <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:180px;" disabled>
+                            <div class="hidden1" id="NomCentre1">
+                                <label for="NomCentre">Nom del Centre</label>
+                                <select name="NomCentre" id="NomCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
                                     <option value=""></option>
                                 </select>
 
@@ -348,11 +317,20 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="hidden1" id="telefonCentre">
+                            <div class="hidden1" id="telefonCentre1">
                                 <label for="telefonCentre">Telefon del Centre</label>
-                                <input type="text" name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:85px; ; width:250px;">
+                                <select name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:60px;  width:200px;" disabled>
+                                    <option value=""></option>
+                                </select>
 
                             </div>
+
+                        </div>
+                        <div class="hidden1" id="adreçaCentre1">
+                            <label for="adreçaCentre">Adreça del Centre</label>
+                            <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
+                                <option value=""></option>
+                            </select>
 
                         </div>
 
@@ -402,27 +380,18 @@
                         <script>
                             $(function(){
                                 $('#provinciaAlertant').on('change', actualitzarComarca1);
-
                             });
-
                             function actualitzarComarca1() {
                                 var id_provincia = $(this).val();
-
-
                                 // AJAX
-
                                 $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-
                                     var html_select = '<option value="">Seleccioni una comarca</option>'
-
                                     for(var i=0; i<data.length; i++)
                                         html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
                                         console.log(html_select);
-
                                     $('#comarcaAlertant').html(html_select);
                                 });
                             }
-
                         </script>
 
                         {{-- MUNICIPI ALERTANT--}}
@@ -444,33 +413,19 @@
                         {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
 
                         <script>
-
                             $(function(){
-
                                 $('#comarcaAlertant').on('change', actualitzarMunicipi1);
-
                             });
-
                             function actualitzarMunicipi1(){
-
                                 var comarques_id = $(this).val();
-
-
                                 // AJAX
-
                                 $.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-
                                 var html_select = '<option value="">Seleccioni un Municipi</option>'
-
                                 for(var i=0; i<data.length; i++)
                                     html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-
-
                                 $('#municipiAlertant').html(html_select);
                                 });
                             }
-
-
                         </script>
 
 
@@ -479,21 +434,12 @@
                     </div>
 
                     <script>
-
                         $(function(){
-
                             $('#tipusAlertant').on('change', crearCentre);
-
                         });
-
                         function crearCentre(){
-
-
                             var id = $(this).val();
-
-
                             if(id == 1){
-
                                 $(".hidden1").removeClass("hidden1");
                                 $(".hidden1").removeClass("hidden1");
                                 $(".hidden1").removeClass("hidden1");
@@ -504,8 +450,6 @@
                                 $("#provinciaAlertant").addClass("hidden2");
                                 $("#comarcaAlertant").addClass("hidden2");
                                 $("#municipiAlertant").addClass("hidden2");
-
-
                             }
                            else{
                                 $("#centre").addClass("hidden1");
@@ -520,42 +464,22 @@
                                 $("#comarcaAlertant").removeClass("hidden2");
                                 $("#municipiAlertant").removeClass("hidden2");
                             }
-
-
                         }
-
                         $(function(){
-
                             $('#tipusAlertant').on('change', actualitzarCentre);
-
                         });
-
                         function actualitzarCentre(){
-
                             var id = $(this).val();
-
-
                             // AJAX
-
                             if(id == 1){
-
                                 $.get('http://localhost:80/abp-broggi/public/api/centre/'+ id +'', function(data){
-
                                 var html_select = '<option value="">Selecciona un Centre</option>'
-
                                 for(var i=0; i<data.length; i++)
                                     html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-
-
                                 $('#CentreSanitari').html(html_select);
                                 });
-
                             }
-
-
-
                         }
-
                     </script>
 
 
@@ -571,58 +495,25 @@
                 <h3 class="mb-0">Dades dels afectats</h3>
             </div>
 
-            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-subbody card-subbody-formulari">
+            <div id="collapseThree" class="collapse show afectats" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-subbody card-subbody-formulari afectat">
 
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="tenir_tarjeta">Te tarjeta S.S ?</label>
-                            <select name="tenir_tarjeta" id="tenir_tarjeta" style="border-radius:10px; margin-left:100px; ; width:300px;">
+                            <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
+                            <select name="tenir_tarjeta" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
                                 <option value="1" selected>Si</option>
                                 <option value="2">No</option>
                             </select>
-
                         </div>
 
                         <div class="form-group col-md-6">
-                            <div class="" id="cip">
+                            <div class="" id="cip1">
                                 <label for="CipAfectat">CIP</label>
-                                <input type="text" name="CipAfectat" id="CipAfectat" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                                <input type="text" name="CipAfectat" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;">
                             </div>
                         </div>
-
-                        <script>
-
-                            $(function(){
-
-                                $('#tenir_tarjeta').on('change', crearCip);
-
-                            });
-
-                            function crearCip(){
-
-
-                                var te_tarjeta = $(this).val();
-
-
-                                if(te_tarjeta == '1'){
-
-                                    $(".hidden").removeClass("hidden");
-
-                                }
-                                if(te_tarjeta == '2'){
-                                    $("#cip").addClass("hidden");
-                                }
-
-
-                            }
-
-
-                        </script>
-
-
-
                     </div>
 
                     <div class="form-row">
@@ -703,31 +594,6 @@
                             </select>
                         </div>
 
-                        {{-- SCRIPT AMB AJAX PER TROBAR LA COMARCA SEGONS EL ID DE LA PROVINCIA SELECCIONADA --}}
-                        <script>
-                            $(function(){
-                                $('#provinciaAfectat').on('change', actualitzarComarca2);
-
-                            });
-
-                            function actualitzarComarca2() {
-                                var id_provincia = $(this).val();
-
-                                // AJAX
-
-                                $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-
-                                    var html_select = '<option value="">Seleccioni una comarca</option>'
-
-                                    for(var i=0; i<data.length; i++)
-                                        html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-                                        console.log(html_select);
-
-                                    $('#comarcaAfectat').html(html_select);
-                                });
-                            }
-
-                        </script>
 
 
                         {{-- MUNICIPI AFECTAT--}}
@@ -741,46 +607,182 @@
                             </select>
                         </div>
 
-
-                        {{-- SCRIPT PER TROBAR UN MUNICIPI SEGONS EL ID DE LA COMARCA SELECCIONADA --}}
-
-                        <script>
-
-                            $(function(){
-
-                                $('#comarcaAfectat').on('change', actualitzarMunicipi2);
-
-                            });
-
-                            function actualitzarMunicipi2(){
-
-                                var comarques_id = $(this).val();
-
-
-                                // AJAX
-
-                                $.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-
-                                var html_select = '<option value="">Seleccioni un Municipi</option>'
-
-                                for(var i=0; i<data.length; i++)
-                                    html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-
-
-                                $('#municipiAfectat').html(html_select);
-                                });
-                            }
-
-
-                        </script>
-
                     </div>
-
-
-
-
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger" id="afegirAfectat" type="button">Afegeix afectat</button>
+            </div>
+
+            <script>
+                $( document ).ready(function() {
+
+                    var afectats= $('.afectat').length;
+                    console.log(afectats);
+
+                    // Afegir afectat(es poden afegir fins a 9)
+                    $('#afegirAfectat').on('click', function(){
+                        if(afectats<9){
+                            afectats++;
+                            $('.afectats').append($(
+                                "<div class='card-subbody card-subbody-formulari afectat' style='border-top: solid 1px black'>"+
+                                    "<div class='form-row'>" +
+                                        "<div class='form-group col-md-6'>" +
+                                            "<label for='tenir_tarjeta"+afectats+"'>Te tarjeta S.S ?</label>" +
+                                            "<select name='tenir_tarjeta' id='tenir_tarjeta"+afectats+"' style='border-radius:10px; margin-left:100px; ; width:300px;' class='tenirTarjeta'>" +
+                                                "<option value='1' selected>Si</option>" +
+                                               " <option value='2'>No</option>" +
+                                            "</select>" +
+                                        "</div>" +
+
+                                        "<div class='form-group col-md-6'>" +
+                                            "<div class='' id='cip"+afectats+"'>" +
+                                                "<label for='CipAfectat'>CIP</label>" +
+                                                "<input type='text' name='CipAfectat' id='CipAfectat' style='border-radius:10px; margin-left:85px; ; width:300px;'>" +
+                                            "</div>" +
+                                        "</div>" +
+                                    "</div>"+
+
+                                    "<div class='form-row'>"+
+                                        "<div class='form-group col-md-6'>"+
+                                            "<label for='telefonAfectat'>Telefon</label>"+
+                                            "<input type='text' name='telefonAfectat' id='telefonAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+                                        "</div>"+
+                                    "</div>"+
+
+                                    "<div class='form-row'>"+
+                                        "<p>(Opcional...)</p>"+
+                                    "</div>"+
+
+                                    "<div class='form-row'>"+
+                                        "<div class='form-group col-md-6'>"+
+                                            "<label for='nomAfectat'>Nom</label>"+
+                                            "<input type='text' name='nomAfectat' id='nomAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+                                        "</div>"+
+
+                                        "<div class='form-group col-md-6'>"+
+                                            "<label for='cognomAfectat'>Cognom</label>"+
+                                           " <input type='text' name='cognomAfectat' id='cognomAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+
+                                       " </div>"+
+                                    "</div>"+
+
+                                   " <div class='form-row'>"+
+                                        "<div class='form-group col-md-4'>"+
+                                            "<label for='sexeAfectat'>Sexe</label>"+
+                                            "<select name='sexeAfectat' id='sexeAfectat' style='border-radius:10px; margin-left:100px; ; width:100px;'>"+
+                                                "<option value='Home'>Home</option>"+
+                                                "<option value='Dona'>Dona</option>"+
+                                            "</select>"+
+                                       " </div>"+
+
+                                        "<div class='form-group col-md-4'>"+
+                                            "<label for='edatAfectat'>Edat</label>"+
+                                            "<input type='number' name='edatAfectat' id='edatAfectat' style='border-radius:10px; margin-left:50px; ; width:50px;'>"+
+
+                                        "</div>"+
+                                    "</div>"+
+
+                                    "<div class='form-row'>"+
+                                        "<div class='form-group col-md-3'>"+
+                                            "<label for='provinciaAfectat'>Provincia</label>"+
+                                                "<select name='provinciaAfectat' id='provinciaAfectat' style='border-radius:10px; margin-left:50px; ; width:130px;'>"+
+                                                    "<@foreach ($provincies as $provincia)"+
+
+                                                            "<option value='{{ $provincia->id }}' selected> {{ $provincia->nom }} </option>"+
+
+                                                    "@endforeach"+
+                                                "</select>"+
+                                        "</div>"+
+
+                                        "<div class='form-group col-md-4 col-sm-4'>"+
+                                            "<label for='comarcaAfectat' style='margin-left:10px;'>Comarca</label>"+
+                                            "<select name='comarcaAfectat' id='comarcaAfectat' style='border-radius:10px; margin-left:60px;  width:180px;'>"+
+                                                "<option value=''>Selecciona una Comarca</option>"+
+                                            "</select>"+
+                                        "</div>"+
+
+                                        "<div class='form-group col-md-5 col-sm-4'>"+
+                                            "<label for='municipiAfectat'>Municipi</label>"+
+                                            "<select name='municipiAfectat' id='municipiAfectat' style='border-radius:10px; margin-left:70px; ; width:290px;'>"+
+                                                    "<option value=''>Selecciona una Municipi</option>"+
+                                            "</select>"+
+                                        "</div>"+
+                                    "</div>"+
+
+                                "</div>"
+
+                            ));
+
+                            console.log(afectats);
+
+                            $(function(){
+                                $('.tenirTarjeta').on('change', crearCip);
+                            });
+                            function crearCip(){
+                                var te_tarjeta = $(this).val();
+                                var id_afectat = $(this).attr("id").slice(-1);
+                                console.log("id del afectat: "+id_afectat);
+                                console.log("as.jcsa");
+                                if(te_tarjeta == '1'){
+                                    $(".hidden").removeClass("hidden");
+                                }
+                                if(te_tarjeta == '2'){
+                                    $("#cip"+id_afectat).addClass("hidden");
+                                }
+                            }
+                        }
+                    });
+
+                    $(function(){
+                        $('.tenirTarjeta').on('change', crearCip);
+                    });
+                    function crearCip(){
+                        var te_tarjeta = $(this).val();
+                        var id_afectat = $(this).attr("id").slice(-1);
+                        console.log("id del afectat: "+id_afectat);
+                        console.log("as.jcsa");
+                        if(te_tarjeta == '1'){
+                            $(".hidden").removeClass("hidden");
+                        }
+                        if(te_tarjeta == '2'){
+                            $("#cip"+id_afectat).addClass("hidden");
+                        }
+                    }
+
+                    $(function(){
+                        $('#provinciaAfectat').on('change', actualitzarComarca2);
+                    });
+                    function actualitzarComarca2() {
+                        var id_provincia = $(this).val();
+                        // AJAX
+                        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
+                            $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
+                            var html_select = '<option value="">Seleccioni una comarca</option>'
+                            for(var i=0; i<data.length; i++)
+                                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+                                console.log(html_select);
+                            $('#comarcaAfectat').html(html_select);
+                        });
+                    }
+
+                    $(function(){
+                        $('#comarcaAfectat').on('change', actualitzarMunicipi2);
+                    });
+                    function actualitzarMunicipi2(){
+                        var comarques_id = $(this).val();
+                        // AJAX
+                        //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
+                        $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
+                        var html_select = '<option value="">Seleccioni un Municipi</option>'
+                        for(var i=0; i<data.length; i++)
+                            html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+                        $('#municipiAfectat').html(html_select);
+                        });
+                    }
+                });
+            </script>
         </div>
 
         {{-- **************Dades recursos mobils******************** --}}
@@ -816,33 +818,19 @@
                         </div>
 
                         <script>
-
                             $(function(){
-
                                 $('#tipusRecurs').on('change', actualitzarCodi);
-
                             });
-
                             function actualitzarCodi(){
-
                                 var codi = $(this).val();
-
-
                                 // AJAX
-
                                 $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
-
                                 var html_select = '<option value="">Selecciona un Codi</option>'
-
                                 for(var i=0; i<data.length; i++)
                                     html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
-
-
                                 $('#CodiRecurs').html(html_select);
                                 });
                             }
-
-
                         </script>
                     </div>
 
