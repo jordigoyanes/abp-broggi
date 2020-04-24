@@ -25,6 +25,8 @@ $( document ).ready(function() {
 
     actualitzarTipusRecurs();
 
+    setDefaultValues();
+
     // =========================================================
     //INCIDENCIA================================================
     // =========================================================
@@ -87,7 +89,7 @@ $( document ).ready(function() {
             var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
             var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
             var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
-            $('#NomCentre').html(Nom);
+            $('#centreSanitari').html(Nom);
             $('#telefonCentre').html(telefon);
             $('#adreçaCentre').html(direccio);
         });
@@ -152,7 +154,7 @@ $( document ).ready(function() {
                     "<div class='form-row'>" +
                         "<div class='form-group col-md-6'>" +
                             "<label for='tenir_tarjeta"+afectats+"'>Te tarjeta S.S ?</label>" +
-                            "<select name='tenir_tarjeta' id='tenir_tarjeta"+afectats+"' style='border-radius:10px; margin-left:100px; ; width:300px;' class='tenirTarjeta'>" +
+                            "<select name='tenir_tarjeta"+afectats+"' id='tenir_tarjeta"+afectats+"' style='border-radius:10px; margin-left:100px; ; width:300px;' class='tenirTarjeta'>" +
                                 "<option value='1' selected>Si</option>" +
                                " <option value='2'>No</option>" +
                             "</select>" +
@@ -160,28 +162,28 @@ $( document ).ready(function() {
 
                         "<div class='form-group col-md-6'>" +
                             "<div class='' id='cip"+afectats+"'>" +
-                                "<label for='CipAfectat'>CIP</label>" +
-                                "<input type='text' name='CipAfectat' id='CipAfectat' style='border-radius:10px; margin-left:85px; ; width:300px;'>" +
+                                "<label for='CipAfectat"+afectats+"'>CIP</label>" +
+                                "<input type='text' name='CipAfectat"+afectats+"' id='CipAfectat"+afectats+"' style='border-radius:10px; margin-left:85px; ; width:300px;' value=''>" +
                             "</div>" +
                         "</div>" +
                     "</div>"+
 
                     "<div class='form-row'>"+
                         "<div class='form-group col-md-6'>"+
-                            "<label for='telefonAfectat'>Telefon</label>"+
-                            "<input type='text' name='telefonAfectat' id='telefonAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+                            "<label for='telefonAfectat"+afectats+"'>Telefon</label>"+
+                            "<input type='text' name='telefonAfectat"+afectats+"' id='telefonAfectat"+afectats+"' style='border-radius:10px; margin-left:150px; ; width:300px;' value=''>"+
                         "</div>"+
                     "</div>"+
 
                     "<div class='form-row'>"+
                         "<div class='form-group col-md-6'>"+
-                            "<label for='nomAfectat'>Nom</label>"+
-                            "<input type='text' name='nomAfectat' id='nomAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+                            "<label for='nomAfectat"+afectats+"'>Nom</label>"+
+                            "<input type='text' name='nomAfectat"+afectats+"' id='nomAfectat"+afectats+"' style='border-radius:10px; margin-left:150px; ; width:300px;' value=''>"+
                         "</div>"+
 
                         "<div class='form-group col-md-6'>"+
-                            "<label for='cognomAfectat'>Cognom</label>"+
-                           " <input type='text' name='cognomAfectat' id='cognomAfectat' style='border-radius:10px; margin-left:150px; ; width:300px;'>"+
+                            "<label for='cognomAfectat"+afectats+"'>Cognom</label>"+
+                           " <input type='text' name='cognomAfectat"+afectats+"' id='cognomAfectat"+afectats+"' style='border-radius:10px; margin-left:150px; ; width:300px;' value=''>"+
 
                        " </div>"+
                     "</div>"+
@@ -190,15 +192,15 @@ $( document ).ready(function() {
                         "<div class='form-group col-md-4'>"+
                             "<label for='sexeAfectat'>Sexe</label>"+
                             "<select name='sexeAfectat' id='sexeAfectat' style='border-radius:10px; margin-left:100px; ; width:100px;'>"+
-                            "<option value='null' selected>Selecciona</option>"+
+                            "<option value='' selected>Selecciona</option>"+
                                 "<option value='Home'>Home</option>"+
                                 "<option value='Dona'>Dona</option>"+
                             "</select>"+
                        " </div>"+
 
                         "<div class='form-group col-md-4'>"+
-                            "<label for='edatAfectat'>Edat</label>"+
-                            "<input type='number' name='edatAfectat' id='edatAfectat' style='border-radius:10px; margin-left:50px; ; width:50px;'>"+
+                            "<label for='edatAfectat"+afectats+"'>Edat</label>"+
+                            "<input type='number' name='edatAfectat"+afectats+"' id='edatAfectat"+afectats+"' style='border-radius:10px; margin-left:50px; ; width:50px;' value=''>"+
 
                         "</div>"+
                     "</div>"+
@@ -206,29 +208,29 @@ $( document ).ready(function() {
                     "<div class='form-row'>"+
                         "<div class='form-group col-md-3'>"+
                             "<label for='provinciaAfectat"+afectats+"'>Provincia</label>"+
-                                "<select name='provinciaAfectat' id='provinciaAfectat"+afectats+"' style='border-radius:10px; margin-left:50px; ; width:130px;' class='provinciaAfectat'>"+
+                                "<select name='provinciaAfectat"+afectats+"' id='provinciaAfectat"+afectats+"' style='border-radius:10px; margin-left:50px; ; width:130px;' class='provinciaAfectat'>"+
                                     "<option value=''>Selecciona una provincia</option>"+
                                 "</select>"+
                         "</div>"+
 
                         "<div class='form-group col-md-4 col-sm-4'>"+
                             "<label for='comarcaAfectat"+afectats+"' style='margin-left:10px;'>Comarca</label>"+
-                            "<select name='comarcaAfectat' id='comarcaAfectat"+afectats+"' style='border-radius:10px; margin-left:60px;  width:180px;' class='comarcaAfectat'>"+
+                            "<select name='comarcaAfectat"+afectats+"' id='comarcaAfectat"+afectats+"' style='border-radius:10px; margin-left:60px;  width:180px;' class='comarcaAfectat'>"+
                                 "<option value=''>Selecciona una comarca</option>"+
                             "</select>"+
                         "</div>"+
 
                         "<div class='form-group col-md-5 col-sm-4'>"+
                             "<label for='municipiAfectat"+afectats+"'>Municipi</label>"+
-                            "<select name='municipiAfectat' id='municipiAfectat"+afectats+"' style='border-radius:10px; margin-left:70px; ; width:290px;'>"+
+                            "<select name='municipiAfectat"+afectats+"' id='municipiAfectat"+afectats+"' style='border-radius:10px; margin-left:70px; ; width:290px;'>"+
                                     "<option value=''>Selecciona un municipi</option>"+
                             "</select>"+
                         "</div>"+
                     "</div>"+
-
                 "</div>"
             ));
             actualitzarProvinciaAfectat();
+            $('#numAfectats').val(afectats);
         }
     });
 
@@ -289,6 +291,8 @@ $( document ).ready(function() {
     function eliminarAfectat(){
         var id_afectat = $(this).attr("id").slice(-1);
         $('#afectat'+id_afectat).remove();
+        afectats = $('.afectat').length;
+        $('#numAfectats').val(afectats);
     }
 
 
@@ -402,4 +406,25 @@ $( document ).ready(function() {
         var id_recurs = $(this).attr("id").slice(-1);
         $('#recurs'+id_recurs).remove();
     }
+
+    // =========================================================
+    //DEFAULT VALUES===========================================
+    // =========================================================
+
+    function setDefaultValues(){
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear()+"-"+(month)+"-"+(day);
+        var time = now.getHours() + ":";
+        if(now.getMinutes()<10){
+            time+= "0" + now.getMinutes();
+        }else{
+            time+= now.getMinutes();
+        }
+
+        $('#dataIncidencia').val(today);
+        $('#horaIncidencia').val(time);
+    }
+
 });

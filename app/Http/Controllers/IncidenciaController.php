@@ -93,7 +93,7 @@ class IncidenciaController extends Controller
 
             $alertant = new Alertant();
 
-            $alertant->id = $id = rand(1,1000);
+            $alertant->id = $id_alertant = rand(1,1000);
             $alertant->nom = $request->input('nomAlertant');
             $alertant->cognoms = $request->input('cognomAlertant');
             $alertant->adreca = $request->input('adreçaAlertant');
@@ -106,56 +106,56 @@ class IncidenciaController extends Controller
 
         // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
 
-        $afectat_tarjeta = $request->input('tenir_tarjeta');
-        //loop
-        $afectat = new Afectat();
+        $numAfectats = $request->input('numAfectats');
 
-        if($afectat_tarjeta == 2){
-            $afectat->cip = $request->input(null);
+        for($i = 1; $i <= $numAfectats; $i++){
+
+            $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
+
+            $afectat = new Afectat();
+
+            if($afectat_tarjeta == 2){
+                $afectat->cip = $request->input(null);
+            }
+            else{
+                $afectat->cip = $request->input(('CipAfectat').$i);
+            }
+            $afectat->telefon = $request->input(('telefonAfectat').$i);
+            $afectat->nom = $request->input(('nomAfectat').$i);
+            $afectat->cognoms = $request->input(('cognomAfectat').$i);
+            $afectat->sexe = $request->input(('sexeAfectat').$i);
+            $afectat->edat = $request->input(('edatAfectat').$i);
+            $afectat->tenir_tarjeta = $afectat_tarjeta;
+            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+
+            $afectat->save();
         }
-        else{
-            $afectat->cip = $request->input('CipAfectat');
-        }
-        $afectat->telefon = $request->input('telefonAfectat');
-        $afectat->nom = $request->input('nomAfectat');
-        $afectat->cognoms = $request->input('cognomAfectat');
-        $afectat->sexe = $request->input('sexeAfectat');
-        $afectat->edat = $request->input('edatAfectat');
-        $afectat->tenir_tarjeta = $afectat_tarjeta;
-        $afectat->municipis_id = $request->input('municipiAfectat');
-
-        $afectat->save();
-
 
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         $incidencia = new Incidencia();
 
-        $incidencia->localitzacio =  $request->input('localitzacio');
+        $incidencia->localitzacio =  $request->input('localitzacioIncidencia');
 
         $incidencia->num_incidencia = rand(1,1000);
 
-        $incidencia->telefon_alertant = $request->input('telefon');
-        $incidencia->data = $request->input('data');
-        $incidencia->hora = $request->input('hora');
-        $incidencia->adreca = $request->input('adreça');
-        $incidencia->complement_adreca = $request->input('adreça2');
-        $incidencia->descripcio = $request->input('descripcio');
+        $incidencia->telefon_alertant = $request->input('telefonIncidencia');
+        $incidencia->data = $request->input('dataIncidencia');
+        $incidencia->hora = $request->input('horaIncidencia');
+        $incidencia->adreca = $request->input('adreçaIncidencia');
+        $incidencia->complement_adreca = $request->input('indicacionsIncidencia');
+        $incidencia->descripcio = $request->input('descripcioIncidencia');
 
-        $incidencia->municipis_id = $request->input('municipi');
-        $incidencia->tipus_incident_id = $request->input('tipus');
+        $incidencia->municipis_id = $request->input('municipiIncidencia');
+        $incidencia->tipus_incident_id = $request->input('tipusIncidencia');
         $incidencia->estats_incidencia_id = $request->input('estatIncidencia');
         $incidencia->tipus_alertant_id = $request->input('tipusAlertant');
-        $incidencia->alertants_id = $id;
-
-
+        $incidencia->alertants_id = $id_alertant;
 
         $incidencia->save();
 
 
         // QUAN ACABEM D'INTRODUIR LES DADES REDIRECCIONEM AL INDEX------------------------------
         return redirect()->action('IncidenciaController@index');
-
-
 
     }
 

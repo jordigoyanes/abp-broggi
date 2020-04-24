@@ -34,9 +34,8 @@
         {{-- Button --}}
         <div>
             @if (Auth::check())
-            <a href=" {{ url('/register') }}" type="button" id="signup" class="">{{ Auth::user()->nom }}</a>
+            <a href=" {{ url('/register') }}"class=""><p>Hauria d'haber el navbar</p></a>
             @else
-            <a href=" {{ url('/register') }}" type="button" id="signup" class="">REGISTRE</a>
             <a href=" {{ url('/login') }}" type="button" id="signup">LOGIN</a>
             @endif
         </div>

@@ -25,8 +25,8 @@
                     <div class="form-row">
                         {{-- DATA --}}
                         <div class="form-group col-md-6 col-sm-4">
-                            <label for="data" style="width:100px">Data</label>
-                            <input type="date" name="data" id="data" style="border-radius:10px; margin-left:35px; ; width:300px;">
+                            <label for="dataIncidencia" style="width:100px">Data</label>
+                            <input type="date" name="dataIncidencia" id="dataIncidencia" style="border-radius:10px; margin-left:35px; ; width:300px;">
                         </div>
 
                         {{-- PROVINCIA --}}
@@ -59,8 +59,9 @@
                             {{-- TIPUS --}}
                             <label for="tipusIncidencia">Tipus</label>
                             <select name="tipusIncidencia" id="tipusIncidencia" style="border-radius:10px; margin-left:95px; ; width:300px;">
+                                <option value="" selected>Selecciona el tipus</option>
                                 <@foreach ($tipusIncident as $tipus)
-                                    <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
+                                    <option value="{{ $tipus->id }}"> {{ $tipus->tipus }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -79,26 +80,27 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="adreçaIncidencia">Adreça</label>
-                            <input type="text" name="adreçaIncidencia" id="adreçaIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <input type="text" name="adreçaIncidencia" id="adreçaIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="indicacionsIncidencia">Indicacions</label>
-                            <input type="text" name="indicacionsIncidencia" id="indicacionsIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <input type="text" name="indicacionsIncidencia" id="indicacionsIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefonIncidencia">Telefon</label>
-                            <input type="text" name="telefonIncidencia" id="telefonIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                            <input type="text" name="telefonIncidencia" id="telefonIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <option value="">Selecciona l'estat</option>
                                 <@foreach ($estatsIncidencia as $estat)
-                                        <option value="{{ $estat->id }}" selected> {{ $estat->estat }} </option>
+                                        <option value="{{ $estat->id }}"> {{ $estat->estat }} </option>
                                     @endforeach
                             </select>
                         </div>
@@ -107,7 +109,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="localitzacioIncidencia">Localitzacio</label>
-                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:55px; ; width:800px;">
+                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:55px; ; width:800px;" value="">
                         </div>
                     </div>
 
@@ -115,7 +117,7 @@
                         {{-- DESCRIPCIO --}}
                         <div class="form-group col-md-4 col-sm-4">
                             <label for="descripcioIncidencia">Descripcio</label>
-                            <textarea name="descripcioIncidencia" id="descripcioIncidencia" cols="120" rows="3" style="border-radius:10px;"></textarea>
+                            <textarea name="descripcioIncidencia" id="descripcioIncidencia" cols="120" rows="3" style="border-radius:10px;" value=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -137,8 +139,9 @@
                             {{-- TIPUS  --}}
                             <label for="tipusAlertant">Tipus d'Alertant</label>
                             <select name="tipusAlertant" id="tipusAlertant" style="border-radius:10px; margin-left:95px; ; width:300px;">
+                                <option value="" selected>Selecciona el tipus</option>
                                 <@foreach ($tipusAlertant as $tipus)
-                                    <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
+                                    <option value="{{ $tipus->id }}"> {{ $tipus->tipus }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -159,15 +162,6 @@
                             <div class="hidden1" id="metge">
                                 <label for="NomMetge">Nom del Metge</label>
                                 <input type="text" name="NomMetge" id="NomMetge" style="border-radius:10px; margin-left:85px; ; width:300px;">
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <div class="hidden1" id="NomCentre1">
-                                <label for="NomCentre">Nom del Centre</label>
-                                <select name="NomCentre" id="NomCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
-                                    <option value=""></option>
-                                </select>
                             </div>
                         </div>
 
@@ -261,7 +255,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
-                                <select name="tenir_tarjeta" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
+                                <select name="tenir_tarjeta1" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
                                     <option value="1" selected>Si</option>
                                     <option value="2">No</option>
                                 </select>
@@ -269,53 +263,44 @@
 
                             <div class="form-group col-md-6">
                                 <div class="" id="cip1">
-                                    <label for="CipAfectat">CIP</label>
-                                    <input type="text" name="CipAfectat" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                                    <label for="CipAfectat1">CIP</label>
+                                    <input type="text" name="CipAfectat1" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="telefonAfectat">Telefon</label>
-                                <input type="text" name="telefonAfectat" id="telefonAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
+                                <label for="telefonAfectat1">Telefon</label>
+                                <input type="text" name="telefonAfectat1" id="telefonAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
                             </div>
-
                         </div>
 
                         <div class="form-row">
-
                             <div class="form-group col-md-6">
-                                <label for="nomAfectat">Nom</label>
-                                <input type="text" name="nomAfectat" id="nomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
+                                <label for="nomAfectat1">Nom</label>
+                                <input type="text" name="nomAfectat1" id="nomAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="cognomAfectat">Cognom</label>
-                                <input type="text" name="cognomAfectat" id="cognomAfectat" style="border-radius:10px; margin-left:150px; ; width:300px;">
-
+                                <label for="cognomAfectat1">Cognom</label>
+                                <input type="text" name="cognomAfectat1" id="cognomAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
                             </div>
-
-
                         </div>
 
                         <div class="form-row">
-
                             <div class="form-group col-md-4">
-                                <label for="sexeAfectat">Sexe</label>
-                                <select name="sexeAfectat" id="sexeAfectat" style="border-radius:10px; margin-left:100px; ; width:100px;">
-                                    <option value="null" selected>Selecciona</option>
+                                <label for="sexeAfectat1">Sexe</label>
+                                <select name="sexeAfectat1" id="sexeAfectat1" style="border-radius:10px; margin-left:100px; ; width:100px;">
+                                    <option value="" selected>Selecciona</option>
                                     <option value="Home">Home</option>
                                     <option value="Dona">Dona</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="edatAfectat">Edat</label>
-                                <input type="number" name="edatAfectat" id="edatAfectat" style="border-radius:10px; margin-left:50px; ; width:50px;">
-
+                                <label for="edatAfectat1">Edat</label>
+                                <input type="number" name="edatAfectat1" id="edatAfectat1" style="border-radius:10px; margin-left:50px; ; width:50px;" value="">
                             </div>
                         </div>
 
@@ -323,14 +308,14 @@
                             {{-- PROVINCIA AFECTAT --}}
                             <div class="form-group col-md-3">
                                 <label for="provinciaAfectat1">Provincia</label>
-                                <select name="provinciaAfectat" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
+                                <select name="provinciaAfectat1" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
                                 </select>
                             </div>
 
                             {{-- COMARCA AFECTAT --}}
                             <div class="form-group col-md-4 col-sm-4">
                                 <label for="comarcaAfectat1" style="margin-left:10px;">Comarca</label>
-                                <select name="comarcaAfectat" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
+                                <select name="comarcaAfectat1" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
                                     <option value="">Selecciona una comarca</option>
                                 </select>
                             </div>
@@ -338,7 +323,7 @@
                             {{-- MUNICIPI AFECTAT--}}
                             <div class="form-group col-md-5 col-sm-4">
                                 <label for="municipiAfectat1">Municipi</label>
-                                <select name="municipiAfectat" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
+                                <select name="municipiAfectat1" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
                                     <option value="">Selecciona un municipi</option>
                                 </select>
                             </div>
@@ -346,7 +331,8 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari">
-                    <button class="btn rounded-circle text-white" id="afegirAfectat" type="button"style="background: #FCC536 ">+</button>
+                    <input type="hidden" id="numAfectats" name="numAfectats" value="1">
+                    <button class="btn rounded-circle text-white" id="afegirAfectat" type="button"style="background: #FCC536">+</button>
                 </div>
             </div>
         </div>
