@@ -6,6 +6,8 @@ use App\Models\RecursMobil;
 use App\Models\TipusRecurs;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class RecursMobilController extends Controller
 {
     /**
@@ -15,11 +17,15 @@ class RecursMobilController extends Controller
      */
     public function index(Request $request)
     {
-        $recursMobils = RecursMobil::all();
+        $user = Auth::user();
+        if($user->rols_id == 2){
+            $recursMobils = RecursMobil::all();
 
-        $datos['recursMobils'] = $recursMobils;
+            $datos['recursMobils'] = $recursMobils;
 
-        return view('rmobils.index', $datos);
+            return view('rmobils.index', $datos);
+        }else
+            return redirect('/incidencia');
     }
 
     /**

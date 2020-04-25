@@ -9,6 +9,7 @@ use App\Models\Comarca;
 use App\Models\Municipi;
 use Log;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AlertantController extends Controller
@@ -20,33 +21,37 @@ class AlertantController extends Controller
      */
     public function index(Request $request)
     {
-        Log::info('This is some useful information better.');
+        $user = Auth::user();
+        if($user->rols_id == 2){
+            Log::info('This is some useful information better.');
 
-        $alertants = (new Alertant)->newQuery();
-        $search='';
-        if($request->has('tipus_selected')){
-            $tipus_selected = $request->input('tipus_selected');
-        }else{
-            $tipus_selected = "all";
-        }
-        if($request->has('search')){
-            $search= $request->input('search');
-            if($search != ''){
-                $alertants->where('nom', 'like', '%'.$search.'%');
+            $alertants = (new Alertant)->newQuery();
+            $search='';
+            if($request->has('tipus_selected')){
+                $tipus_selected = $request->input('tipus_selected');
+            }else{
+                $tipus_selected = "all";
             }
-        }
-        if($tipus_selected != "all"){
-            $alertants->where('tipus_alertant_id', '=', $tipus_selected);
-        }
-        $alertants->orderby('nom');
-        $alertants = $alertants->paginate(9);
-        Log::info($alertants);
-        $data['tipus_selected'] = $tipus_selected;
-        $data['alertants'] = $alertants;
-        $data['search'] = $search;
-        $data['tipus_list'] = TipusAlertant::all();
+            if($request->has('search')){
+                $search= $request->input('search');
+                if($search != ''){
+                    $alertants->where('nom', 'like', '%'.$search.'%');
+                }
+            }
+            if($tipus_selected != "all"){
+                $alertants->where('tipus_alertant_id', '=', $tipus_selected);
+            }
+            $alertants->orderby('nom');
+            $alertants = $alertants->paginate(9);
+            Log::info($alertants);
+            $data['tipus_selected'] = $tipus_selected;
+            $data['alertants'] = $alertants;
+            $data['search'] = $search;
+            $data['tipus_list'] = TipusAlertant::all();
 
-        return view('alertant.index', $data);
+            return view('alertant.index', $data);
+        }else
+            return redirect('/incidencia');
     }
 
     /**

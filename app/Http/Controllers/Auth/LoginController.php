@@ -53,18 +53,14 @@ class LoginController extends Controller
         $contrasenya = $request->input('contrasenya');
         $user = Usuario::where('nom', $nom)->first();
 
-        if($user != null && Hash::check($contrasenya, $user->contrasenya))
-        {
+        if($user != null && Hash::check($contrasenya, $user->contrasenya)){
             Auth::login($user);
             return redirect('/incidencia');
         }
-        else
-        {
+        else{
             return redirect('login')->withInput();
         }
-
     }
-
 
     public function logout()
     {

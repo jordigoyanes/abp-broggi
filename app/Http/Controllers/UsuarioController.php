@@ -43,6 +43,11 @@ class UsuarioController extends Controller
         //
     }
 
+    public function storeRecursos(Request $request)
+    {
+        //
+    }
+
     /**
      * Display the specified resource.
      *

@@ -139,6 +139,7 @@ class IncidenciaController extends Controller
 
         $incidencia->localitzacio =  $request->input('localitzacioIncidencia');
 
+
         $incidencia->num_incidencia = rand(1,1000);
 
         $incidencia->telefon_alertant = $request->input('telefonIncidencia');

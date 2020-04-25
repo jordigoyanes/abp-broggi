@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
     $(function(){
+        //Formulari incidencia
         $('#provinciaIncidencia').on('change', actualitzarComarca);
         $('#comarcaIncidencia').on('change', actualitzarMunicipi);
 
@@ -15,10 +16,16 @@ $( document ).ready(function() {
         $('.comarcaAfectat').on('change', actualitzarMunicipiAfectat);
 
         $('.tipusRecurs').on('change', actualitzarCodi);
+
+        //Formulari recurs usuari
+        $('.tipusRecursUsuari').on('change', actualitzarCodiUsuari);
     });
 
+    //Formulari incidencia
     var afectats = $('.afectat').length;
     var recursos = $('.recurs').length;
+
+
 
     actualitzarProvincia();
     actualitzarProvinciaAfectat();
@@ -26,6 +33,14 @@ $( document ).ready(function() {
     actualitzarTipusRecurs();
 
     setDefaultValues();
+
+    //Formulari recurs usuari
+    var recursosUsuari = $('.recursUsuari').length;
+
+    actualitzarTipusRecursUsuari();
+
+
+    //FORMULARI INCIDENCIA *************************************
 
     // =========================================================
     //INCIDENCIA================================================
@@ -149,7 +164,7 @@ $( document ).ready(function() {
         if(afectats<9){
             afectats++;
             $('.afectats').append($(
-                "<div class='card-subbody card-subbody-formulari afectat' style='border-top: solid 1px black' id='afectat"+afectats+"'>"+
+                "<div class='card-subbody card-subbody-formulari afectat' style='border-top: solid 1px #1C687D' id='afectat"+afectats+"'>"+
                     "<div id='brossaAfectat"+afectats+"' class='d-flex justify-content-end eliminarAfectat'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
                     "<div class='form-row'>" +
                         "<div class='form-group col-md-6'>" +
@@ -302,7 +317,6 @@ $( document ).ready(function() {
 
     // Afegir recurs(es poden afegir fins a 9)
     $('#afegirRecurs').on('click', function(){
-
         $(function(){
             $('.eliminarRecurs').on('click', eliminarRecurs);
             $('.tipusRecurs').on('change', actualitzarCodi);
@@ -425,6 +439,73 @@ $( document ).ready(function() {
 
         $('#dataIncidencia').val(today);
         $('#horaIncidencia').val(time);
+    }
+
+    //FORMULARI RECURS USUARI *************************************
+    // Afegir recurs(es poden afegir fins a 9)
+    $('#afegirRecursUsuari').on('click', function(){
+        $(function(){
+            $('.eliminarRecursUsuari').on('click', eliminarRecursUsuari);
+            $('.tipusRecursUsuari').on('change', actualitzarCodiUsuari);
+        });
+
+        if(recursosUsuari<9){
+            recursosUsuari++;
+            $('.recursos').append($(
+                "<div class='recursUsuari' style='border-top: solid 1px #1C687D' id='recursUsuari"+recursosUsuari+"'>"+
+                    "<div id='brossaRecurs"+recursosUsuari+"'class='d-flex justify-content-end eliminarRecursUsuari'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
+                    "<div class='form-row'>"+
+                        "<div class='form-group col-6'>"+
+                            "<label for='tipusRecursUsuari"+recursosUsuari+"'>Tipus</label>"+
+                            "<select name='tipusRecursUsuari"+recursosUsuari+"' id='tipusRecursUsuari"+recursosUsuari+"' style='border-radius:10px; margin-left:85px; ; width:200px;' class='tipusRecursUsuari'>"+
+                                "<option value='0' selected>Selecciona el tipus</option>"+
+                            "</select>"+
+                        "</div>"+
+
+                        "<div class='form-group col-6'>"+
+                            "<label for='CodiRecursUsuari"+recursosUsuari+"'>Codi</label>"+
+                            "<select name='CodiRecursUsuari"+recursosUsuari+"' id='CodiRecursUsuari"+recursosUsuari+"' style='border-radius:10px; margin-left:85px; ; width:200px;'>"+
+                                "<option value=''>Selecciona un codi</option>"+
+                            "</select>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>"
+            ));
+            actualitzarTipusRecursUsuari();
+        }
+
+    });
+
+    // Eliminar un recurs
+    function eliminarRecursUsuari(){
+        var id_recurs = $(this).attr("id").slice(-1);
+        $('#recursUsuari'+id_recurs).remove();
+        recursosUsuari = $('.recursUsuari').length;
+    }
+
+    // Actualitzar el tipus de recurs de l'usuari
+    function actualitzarTipusRecursUsuari(){
+        $.get('http://broggi.lo:8888/public/api/tipusRecurs', function(data){
+            var html_select = '<option value="">Selecciona el tipus</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].tipus +'</option>';
+            $('#tipusRecursUsuari'+recursosUsuari).html(html_select);
+        });
+    }
+
+    function actualitzarCodiUsuari(){
+        var codi = $(this).val();
+
+        var id_recurs = $(this).attr("id").slice(-1);
+        // AJAX
+        // $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
+        $.get('http://broggi.lo:8888/public/api/codiRecurs/'+ codi +'', function(data){
+            var html_select = '<option value="">Selecciona un codi</option>'
+            for(var i=0; i<data.length; i++)
+                html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+                console.log(html_select)
+            $('#CodiRecursUsuari'+id_recurs).html(html_select);
+        });
     }
 
 });
