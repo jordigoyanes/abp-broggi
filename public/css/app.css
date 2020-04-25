@@ -125,15 +125,8 @@ footer p {
 .tabla thead {
   background-color: #1CADC3;
 }
+.tabla thead th {
+  font-weight: normal;
+}
 
 /*# sourceMappingURL=app.css.map */
-.hidden1{
-    display: none;
-}
-
-.hidden2{
-    display:none;
-}
-.hidden{
-    display: none;
-}

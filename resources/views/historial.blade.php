@@ -4,7 +4,6 @@
 Historial
 @endsection
 
-
 @section('principal')
 
 <div id="app">

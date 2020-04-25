@@ -13,6 +13,7 @@ use App\Models\Alertant;
 use App\Models\Afectat;
 use App\Models\RecursMobil;
 
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Incidencia;
 use Illuminate\Http\Request;
@@ -36,11 +37,17 @@ class IncidenciaController extends Controller
 
     public function index(Request $request)
     {
-        $incidencies = Incidencia::paginate(10);
-        $datos['incidencies'] = $incidencies;
-        return view('incidencia.index', $datos);
+        $user = Auth::user();
+        if($user->rols_id == 2){
+            $incidencies = Incidencia::paginate(10);
+            $datos['incidencies'] = $incidencies;
+            return view('incidencia.index', $datos);
+        }else{
+            $incidencies = Incidencia::paginate(10);
+            $datos['incidencies'] = $incidencies;
+            return view('incidencia.index', $datos);
+        }
     }
-
 
     /**
      * Show the form for creating a new resource.

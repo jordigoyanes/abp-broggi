@@ -24,13 +24,4 @@ class Usuario extends Authenticatable
         return $this->belongsTo('App\Rol','rols_id');
     }
 
-    public function esGestor(){
-        foreach ($this->rols()->get() as $role){
-            if ($role->id == '2'){
-                return true;
-            }
-        }
-        return false;
-    }
-
 }

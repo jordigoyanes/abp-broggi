@@ -19,10 +19,7 @@
     <script src="{{ asset('js/formulari.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-
 </head>
-
 
 <body class="d-flex flex-column">
 
@@ -52,13 +49,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/historial') }}">HISTORIAL</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/alertant') }}">ALERTANTS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/rmobils') }}">RECURSOS MÒBILS</a>
-                </li>
-
+                @if (Auth::user()->rols_id==2)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/alertant') }}">ALERTANTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/rmobils') }}">RECURSOS MÒBILS</a>
+                    </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,7 +66,6 @@
                         <a class="dropdown-item" href="#">FORMACIO</a>
                         @if (Auth::check())
                             <a class="dropdown-item" href="#">{{ Auth::user()->nom }}</a>
-
                         @else
                             <a class="dropdown-item" href="#">USUARI</a>
                         @endif

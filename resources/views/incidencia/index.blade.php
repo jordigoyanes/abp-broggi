@@ -5,7 +5,7 @@
 @endsection
 
 @section('principal')
-
+@if (Auth::user()->rols_id==2)
     <div class="d-flex justify-content-end">
         <a href="{{ action('IncidenciaController@create') }}" class="text-decoration-none">
             <button class="nuevaIncidencia rounded-pill border-0 d-flex flex-row align-items-center font-weight-bold">
@@ -14,10 +14,10 @@
             </button>
         </a>
     </div>
-
+@endif
     <div>
         <table class="tabla shadow-sm table mt-4" id="tabla-principal">
-            <thead class="text-white">
+            <thead class="text-white font-weight-normal">
                 <tr>
                     <th>ID</th>
                     <th class="esconder-xs">LOCALITZACIÓ</th>
