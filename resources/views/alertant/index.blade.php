@@ -9,7 +9,7 @@ Alertants
     <div id="tipus_alertant" class="d-flex flex-row col-lg-3 col-md-4 col-sm-12 align-items-center p-0 mb-md-0 mb-sm-4 m-xs-4">
 
         {{-- <label class="mr-2 mb-0" for="tipus_selected">Tipus</label> --}}
-        <select class="form-control rounded-0 px-4" name="tipus_selected" id="tipus_selected"  style="border:none; border-bottom: #1C687D 1px solid; border-radius:0; color: #1C687D">    
+        <select class="form-control rounded-0 px-4" name="tipus_selected" id="tipus_selected"  style="border:none; border-bottom: #1C687D 1px solid; border-radius:0; color: #1C687D">
             <option value="all">Tots els tipus</option>
             @foreach ($tipus_list as $tipus)
                 @if($tipus->id == $tipus_selected)
@@ -42,8 +42,17 @@ Alertants
                             <img class="w-100" src="{{asset('img/hospital.svg')}}" alt="">
                         </div>
                         <div class="d-flex flex-column ml-4">
-                            <div><strong>{{$alertant->nom}}</strong></div>
-                            <div>{{$alertant->tipus->tipus}}</div>
+                            <div><strong>
+                                @if($alertant->nom != null)
+                                {{$alertant->nom}}
+                                @else Sense nom
+                                @endif</strong>
+                            </div>
+                            <div>
+                                @if($alertant->tipus_alertant_id != null)
+                                {{$alertant->tipus->tipus}}
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="mt-3">

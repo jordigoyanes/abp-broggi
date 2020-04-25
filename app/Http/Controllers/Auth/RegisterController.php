@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -80,14 +80,13 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $email = $request->input('email');
-        $nom = $request->input('nom');
-        $contrasenya = $request->input('contrasenya');
-        $rols_id = $request->input('rol');
-        $contrasenya = Hash::make($contrasenya);
-
-        DB::insert('insert into usuaris(id, email, nom, contrasenya, rols_id, remember_token) values(?, ?, ?, ?, ?, ?)', [null, $email, $nom, $contrasenya, $rols_id, null]);
-
+        $usuari = new Usuario();
+        $usuari->email = $request->input('email');
+        $usuari->nom = $request->input('nom');
+        $usuari->contrasenya = Hash::make($request->input('contrasenya'));
+        $usuari->rols_id = $request->input('rol');
+        $usuari->save();
+        
         return redirect('login');
     }
 

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    
+
     <link rel="icon" href="{{asset('img/logo.png')}}" type="image/png" sizes="16x16">
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -32,14 +32,12 @@
                 </div>
             </a>
         </div>
-
     </nav>
 
     <div class="flex-column d-flex justify-content-between" style="min-height: 100%">
         <div class="container" >
             @yield('principal')
         </div>
-
     </div>
 
     <footer class="d-flex mt-auto px-5 py-3">

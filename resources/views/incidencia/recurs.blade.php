@@ -1,20 +1,10 @@
-@extends('templates.master3')
+@extends('templates.master4')
 
 @section('titulo')
     INICI
 @endsection
 
 @section('principal')
-
-    <div class="d-flex justify-content-end">
-        <a href="{{ action('IncidenciaController@create') }}" class="text-decoration-none">
-            <button class="nuevaIncidencia rounded-pill border-0 d-flex flex-row align-items-center font-weight-bold">
-                <p class="align-self-center my-auto text-white">NOVA INCIDENCIA </p>
-                <span class="align-self-center my-auto ml-3 text-white"> +</span>
-            </button>
-        </a>
-    </div>
-
     <div>
         <table class="tabla shadow-sm table mt-4" id="tabla-principal">
             <thead class="text-white">

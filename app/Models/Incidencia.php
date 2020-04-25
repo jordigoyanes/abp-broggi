@@ -9,7 +9,7 @@ class Incidencia extends Model
     protected $table = 'incidencies';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
     public $timestamps = false;
 
@@ -21,7 +21,7 @@ class Incidencia extends Model
     public function recursosMobils(){
         return $this->belongsToMany('App\Models\RecursMobil','incidencies_has_recursos','recursos_id', 'incidencies_id');
     }
-    
+
     public function EstatIncidencia()
     {
         return $this->belongsTo('App\Models\EstatsIncidencia', 'estats_incidencia_id');

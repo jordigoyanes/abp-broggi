@@ -16,10 +16,6 @@ Recursos Mòbils
 
     <div id="accordion" class="card-body card-body-formulari">
 
-
-
-      
-
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingTwo" data-toggle="collapse"
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -29,12 +25,12 @@ Recursos Mòbils
             <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-subbody card-subbody-formulari">
 
-                    
 
-                    <div class="form-row">                        
-                       
+
+                    <div class="form-row">
+
                         <div class="form-group ">
-                            
+
                             <div class="row">
                                 <div class="col-sm-8">
                                   <div class="card" style="border:none; background-color:#eee;">
@@ -44,33 +40,33 @@ Recursos Mòbils
                                                 <th scope="col"><img src="../img/ambulancia-medicalizada.jpg" alt="" style="width:100%;"></th>
                                                 <th scope="col"><img src="../img/ambulancia-sanitarizada.jpg" alt="" style="width:100%;"></th>
                                                 <th scope="col"><img src="../img/ambulancia-asistencial.jpg" alt="" style="width:100%;"></th>
-                                                <th scope="col"><img src="../img/helicoptero-medicalizado.jpg" alt="" style="width:100%;"></th>                                    
+                                                <th scope="col"><img src="../img/helicoptero-medicalizado.jpg" alt="" style="width:100%;"></th>
                                             </thead>
                                             <tbody>
-                    
+
                                             <tr>
-                                                    
-                                                
+
+
                                             @foreach ($tipusRecursos as $tipusRecurs)
-                                                
-                                              
+
+
                                                     <td><label for="tipus" >{{ $tipusRecurs->tipus }}</label></td>
-                                            
+
                                             @endforeach
-                    
+
                                             </tr>
-                    
+
                                             <tr>
-                    
+
                                             @foreach ($tipusRecursos as $tipusRecurs)
-                                                                            
+
                                                <td> <input type="radio" name="tipus" id="tipus" class="mr-5" value="{{ $tipusRecurs->id }}" ></td>
-                                                                            
+
                                             @endforeach
-                    
+
                                             </tr>
-                    
-                    
+
+
                                             </tbody>
                                             </table>
                                     </div>
@@ -98,7 +94,7 @@ Recursos Mòbils
                                             <select name="estat" id="estat" placeholder="estat" class="custom-select input-sm chat-input mt-3" style=" width:200px;">
                                                 <option value="activa">activa</option>
                                                 <option value="espera">en espera</option>
-                
+
                                             </select>
 
                                               {{-- <label for="estat" >Estat</label>
@@ -109,21 +105,21 @@ Recursos Mòbils
                                     </div>
                                   </div>
                             </div>
-                               
+
                         </div>
 
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
     <div class="card-footer text-muted text-center">
-        <button class="btn btn-primary" type="submit">Guardar</button>        
+        <button class="btn btn-primary" type="submit">Guardar</button>
         <a class="btn btn-primary" href=" {{ url('/rmobils') }} " role="button">CANCELAR</a>
     </div>
 
     </form>
-</div>        
-    
+</div>
+
 @endsection

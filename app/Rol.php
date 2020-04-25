@@ -16,11 +16,12 @@ class Rol extends Authenticatable
     protected $table = 'rols';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
     public $timestamps = false;
 
     public function usuaris()
     {
         return $this->hasMany('App\Usuario','id');
     }
+
 }

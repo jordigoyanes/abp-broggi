@@ -36,12 +36,8 @@ class IncidenciaController extends Controller
 
     public function index(Request $request)
     {
-
-
         $incidencies = Incidencia::paginate(10);
-
         $datos['incidencies'] = $incidencies;
-
         return view('incidencia.index', $datos);
     }
 
@@ -74,7 +70,7 @@ class IncidenciaController extends Controller
         $data['alertants'] = $alertants;
         $data['recursos'] = $recurs;
 
-        return view('Incidencia', $data);
+        return view('incidencia.novaIncidencia', $data);
     }
 
     /**
