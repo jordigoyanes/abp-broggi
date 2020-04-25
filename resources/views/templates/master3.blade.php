@@ -17,6 +17,7 @@
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/formulari.js') }}"></script>
+    <script src="{{ asset('js/formacio.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -63,7 +64,7 @@
                         ALTRES
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">FORMACIO</a>
+                        <a class="dropdown-item" href="{{ url('/formacio') }}">FORMACIO</a>
                         @if (Auth::check())
                             <a class="dropdown-item" href="#">{{ Auth::user()->nom }}</a>
                         @else

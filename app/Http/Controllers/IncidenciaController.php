@@ -91,6 +91,7 @@ class IncidenciaController extends Controller
         // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
 
         $id_tipus_alertant = $request->input('tipusAlertant');
+        $id_alertant;
 
         if($id_tipus_alertant != 1){
 
@@ -105,6 +106,8 @@ class IncidenciaController extends Controller
             $alertant->tipus_alertant_id = $request->input('tipusAlertant');
 
             $alertant->save();
+        }else{
+            $id_alertant = $request->input('centreSanitari');
         }
 
         // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
@@ -114,7 +117,6 @@ class IncidenciaController extends Controller
         for($i = 1; $i <= $numAfectats; $i++){
 
             $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
-
             $afectat = new Afectat();
 
             if($afectat_tarjeta == 2){
@@ -157,6 +159,22 @@ class IncidenciaController extends Controller
 
         $incidencia->save();
 
+        $numRecursos = $request->input('numRecursos');
+
+        for($i = 1; $i <= $numRecursos; $i++){
+
+            $incidencia->recursosMobils()->attach($request->input('CodiRecurs'.$i),
+            [
+                'prioritat' =>$request->input('prioritat'.$i),
+                'hora_acitvacio' => $request->input('hActivacio'.$i),
+                'hora_mobilitzacio' => $request->input('hMovilitzacio'.$i),
+                'hora_assistencia' => $request->input('hAssistencia'.$i),
+                'hora_transport' => $request->input('hTransport'.$i),
+                'hora_arribada_hospital' => $request->input('hArribada'.$i),
+                'hora_transferencia' => $request->input('hTransferencia'.$i),
+                'hora_finalitzacio' => $request->input('hFinalització'.$i)
+            ]);
+        }
 
         // QUAN ACABEM D'INTRODUIR LES DADES REDIRECCIONEM AL INDEX------------------------------
         return redirect()->action('IncidenciaController@index');

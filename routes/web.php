@@ -44,6 +44,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/novaIncidencia', function(){
         return view('Incidencia');
     });
+    
+    Route::get('/formacio', function () {
+        return view('formacio');
+    })->name('formacio');
+
 });
 
 

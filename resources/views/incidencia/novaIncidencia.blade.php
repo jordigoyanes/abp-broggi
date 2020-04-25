@@ -350,15 +350,15 @@
                         {{-- TIPUS I CODI DE RECURS MOBIL --}}
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="tipusRecurs">Tipus</label>
-                                <select name="tipusRecurs" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
+                                <label for="tipusRecurs1">Tipus</label>
+                                <select name="tipusRecurs1" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
                                     <option value="0" selected>Selecciona el tipus</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="CodiRecurs1">Codi</label>
-                                <select name="CodiRecurs" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
+                                <select name="CodiRecurs1" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
                                     <option value="">Selecciona un codi</option>
                                 </select>
                             </div>
@@ -367,47 +367,48 @@
                         {{-- HORES DEL RECURS MOBIL --}}
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="hActivacio">Hora d'Activació</label>
-                                <input type="time" name="hActivacio" id="hActivacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hActivacio1">Hora d'Activació</label>
+                                <input type="time" name="hActivacio1" id="hActivacio1" style="border-radius:10px; margin-left:85px; ; width:100px;">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="hMovilitzacio">Hora de Movilització</label>
-                                <input type="time" name="hMovilitzacio" id="hMovilitzacio" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hMovilitzacio1">Hora de Movilització</label>
+                                <input type="time" name="hMovilitzacio1" id="hMovilitzacio1" style="border-radius:10px; margin-left:85px; ; width:100px;">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="hAssistencia">Hora d'Assistencia</label>
-                                <input type="time" name="hAssistencia" id="hAssistencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="hTransport">Hora de Transport</label>
-                                <input type="time" name="hTransport" id="hTransport" style="border-radius:10px; margin-left:85px; ; width:80px;">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="hArribada">Hora d'Arribada al Hospital</label>
-                                <input type="time" name="hArribada" id="hArribada" style="border-radius:10px; margin-left:85px; ; width:50px;">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="hTransferencia">Hora de Transferencia</label>
-                                <input type="time" name="hTransferencia" id="hTransferencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hAssistencia1">Hora d'Assistencia</label>
+                                <input type="time" name="hAssistencia1" id="hAssistencia1" style="border-radius:10px; margin-left:85px; ; width:100px;">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="hFinalització">Hora de Finalització</label>
-                                <input type="time" name="hFinalització" id="hFinalització" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hTransport1">Hora de Transport</label>
+                                <input type="time" name="hTransport1" id="hTransport1" style="border-radius:10px; margin-left:85px; ; width:80px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hArribada1">Hora d'Arribada al Hospital</label>
+                                <input type="time" name="hArribada1" id="hArribada1" style="border-radius:10px; margin-left:85px; ; width:50px;">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hTransferencia1">Hora de Transferencia</label>
+                                <input type="time" name="hTransferencia1" id="hTransferencia1" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="hFinalització1">Hora de Finalització</label>
+                                <input type="time" name="hFinalització1" id="hFinalització1" style="border-radius:10px; margin-left:85px; ; width:100px;">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari" >
+                    <input type="hidden" id="numRecursos" name="numRecursos" value="1">
                     <button class="btn rounded-circle text-white" id="afegirRecurs" type="button" style="background: #FCC536 ">+</button>
                 </div>
             </div>

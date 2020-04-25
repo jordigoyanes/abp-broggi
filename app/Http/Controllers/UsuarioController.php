@@ -46,6 +46,7 @@ class UsuarioController extends Controller
     public function storeRecursos(Request $request)
     {
         //
+        return redirect()->action('IncidenciaController@index');
     }
 
     /**

@@ -9,7 +9,7 @@ class Municipi extends Model
     protected $table = 'municipis';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
     public $timestamps = false;
 
@@ -21,6 +21,11 @@ class Municipi extends Model
     public function comarca()
     {
         return $this->belongsTo('App\Models\Comarca', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Afectat', 'id');
     }
 
 }
