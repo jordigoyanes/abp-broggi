@@ -128,61 +128,62 @@
         </form>
       </div>
     </div>
-    <table class="table table-bordered" id="tabla-principal">
-      <thead style="background-color: #1CADC3; color:white;">
-        <tr>
-          <th>ID</th>
-          <th>LOCALITZACIÓ</th>
-          <th>HORA</th>
-          <th>DATA</th>
-          <th>TIPUS</th>
-          <th>MUNICIPI</th>
-          <th>ADREÇA</th>
-          <th>DESCRIPCIÓ</th>
-          <th>ESTAT</th>
-          <th>ALERTANT</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(incidencia, index) in incidencias" :key="index">
-          <td>#{{incidencia.id }}</td>
-          <td>{{ incidencia.localitzacio }}</td>
-          <td>{{ incidencia.hora }}</td>
-          <td>{{ incidencia.data }}</td>
-          <td>{{ incidencia.tipus_incident.tipus }}</td>
-          <td>{{ incidencia.municipi.nom }}</td>
-          <td>{{ incidencia.adreca }}</td>
-          <td>{{ incidencia.descripcio }}</td>
-          <td>{{ incidencia.estat_incidencia.estat }}</td>
-          <td>
-            <a :href="'/abp-broggi/public/alertant/' + incidencia.alertants_id">Veure alertant</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <nav aria-label="...">
-      <ul class="pagination">
-        <li aria-label="« Previous" :class="{disabled: current_page == 1 }" class="page-item">
-          <a class="page-link" href="#" tabindex="-1" @click.prevent="filtrar(current_page - 1)">‹</a>
-        </li>
-        <li
-          v-for="(page, index) in last_page"
-          :key="index"
-          :class="{active: index + 1 == current_page }"
-          class="page-item"
-        >
-          <a class="page-link" href="#" @click.prevent="filtrar(page)">{{index+1}}</a>
-        </li>
-        <li class="page-item" :class="{disabled: current_page == last_page }">
-          <a
-            aria-label="Next"
-            class="page-link"
-            href="#"
-            @click.prevent="filtrar(current_page + 1)"
-          >›</a>
-        </li>
-      </ul>
-    </nav>
+    <div v-if="incidencias == 0 || incidencias == null">
+      <div class="alert alert-warning" role="alert">Cap incidència trobada</div>
+    </div>
+    <div v-else>
+      <table class="table table-bordered" id="tabla-principal">
+        <thead style="background-color: #1CADC3; color:white;">
+          <tr>
+            <th>ID</th>
+            <th>LOCALITZACIÓ</th>
+            <th>HORA</th>
+            <th>DATA</th>
+            <th>TIPUS</th>
+            <th>MUNICIPI</th>
+            <th>ADREÇA</th>
+            <th>ALERTANT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(incidencia, index) in incidencias" :key="index">
+            <td>#{{incidencia.id }}</td>
+            <td>{{ incidencia.localitzacio }}</td>
+            <td>{{ incidencia.hora }}</td>
+            <td>{{ incidencia.data }}</td>
+            <td>{{ incidencia.tipus_incident.tipus }}</td>
+            <td>{{ incidencia.municipi.nom }}</td>
+            <td>{{ incidencia.adreca }}</td>
+            <td>
+              <a :href="'/abp-broggi/public/alertant/' + incidencia.alertants_id">Veure alertant</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li aria-label="« Previous" :class="{disabled: current_page == 1 }" class="page-item">
+            <a class="page-link" href="#" tabindex="-1" @click.prevent="filtrar(current_page - 1)">‹</a>
+          </li>
+          <li
+            v-for="(page, index) in last_page"
+            :key="index"
+            :class="{active: index + 1 == current_page }"
+            class="page-item"
+          >
+            <a class="page-link" href="#" @click.prevent="filtrar(page)">{{index+1}}</a>
+          </li>
+          <li class="page-item" :class="{disabled: current_page == last_page }">
+            <a
+              aria-label="Next"
+              class="page-link"
+              href="#"
+              @click.prevent="filtrar(current_page + 1)"
+            >›</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -207,7 +208,7 @@ export default {
 
       all_tipus_incident: null,
       municipis: null,
-      incidencias: null,
+      incidencias: [],
       provincies: null,
       tipus_alertant: null,
       all_tipus_alertant: null,
@@ -265,6 +266,7 @@ export default {
         });
     },
     filtrar(page) {
+      console.log(this.incidendias);
       let filtros = {};
       if (this.data_desde) {
         filtros.from_date = this.data_desde;
