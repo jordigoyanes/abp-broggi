@@ -16,6 +16,7 @@ use App\Models\RecursMobil;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Incidencia;
+use App\Models\IncidenciaHasRecurs;
 use Illuminate\Http\Request;
 
 class IncidenciaController extends Controller
@@ -44,8 +45,12 @@ class IncidenciaController extends Controller
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }else{
-            $incidencies = Incidencia::where('activa', true)
-                                      ->paginate(10);
+            $recursos = RecursMobil::whereIn('id_usuario', [$user->id])->get();
+            $incidenciesId = [];
+            foreach($recursos as $recurs){
+                // array_push($incidenciesId, $recurs->incidencias);
+            }
+            $incidencies = Incidencia::whereIn('id', $incidenciesId)->where('activa', true)->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }

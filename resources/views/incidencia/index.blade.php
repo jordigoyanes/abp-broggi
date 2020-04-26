@@ -62,9 +62,6 @@
             </tfoot>
         </table>
 
-
-    </div>
-
     {{-- per fer que les rows de la taula siguin links --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {

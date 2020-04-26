@@ -22,5 +22,4 @@ class RecursMobil extends Model
     {
         return $this->belongsTo('App\Models\tipusRecurs', 'tipus_recurs_id');
     }
-
 }

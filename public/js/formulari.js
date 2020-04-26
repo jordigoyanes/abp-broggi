@@ -506,7 +506,9 @@ $( document ).ready(function() {
         $.get('http://broggi.lo:8888/public/api/codiRecurs/'+ codi +'', function(data){
             var html_select = '<option value="">Selecciona un codi</option>'
             for(var i=0; i<data.length; i++)
-                html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+                if(data[i].id_usuario == null){
+                    html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+                }
                 console.log(html_select)
             $('#CodiRecursUsuari'+id_recurs).html(html_select);
         });
