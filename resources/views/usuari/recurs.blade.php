@@ -7,7 +7,7 @@
         <h2>RECURSOS MÒBILS</h2>
     </div>
 
-    <form action="{{ action('UsuarioController@storeRecursos')}}" method="post">
+    <form action="{{ action('UsuarioController@store')}}" method="post">
     @csrf
 
     <div id="accordion" class="card-body card-body-formulari">
@@ -33,6 +33,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari" >
+                    <input type="hidden" id="numRecursos" name="numRecursos" value="1">
                     <button class="btn rounded-circle text-white" id="afegirRecursUsuari" type="button" style="background: #FCC536 ">+</button>
                 </div>
             </div>

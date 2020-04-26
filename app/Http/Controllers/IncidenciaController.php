@@ -39,11 +39,13 @@ class IncidenciaController extends Controller
     {
         $user = Auth::user();
         if($user->rols_id == 2){
-            $incidencies = Incidencia::paginate(10);
+            $incidencies = Incidencia::where('activa', true)
+                                     ->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }else{
-            $incidencies = Incidencia::paginate(10);
+            $incidencies = Incidencia::where('activa', true)
+                                      ->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }

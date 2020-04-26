@@ -40,6 +40,8 @@ class AlertantController extends Controller
             }
             if($tipus_selected != "all"){
                 $alertants->where('tipus_alertant_id', '=', $tipus_selected);
+            }else{
+                $alertants->whereIn('tipus_alertant_id', [1, 4])->get();
             }
             $alertants->orderby('nom');
             $alertants = $alertants->paginate(9);
@@ -47,7 +49,7 @@ class AlertantController extends Controller
             $data['tipus_selected'] = $tipus_selected;
             $data['alertants'] = $alertants;
             $data['search'] = $search;
-            $data['tipus_list'] = TipusAlertant::all();
+            $data['tipus_list'] = TipusAlertant::whereIn('id', [1, 4])->get();
 
             return view('alertant.index', $data);
         }else

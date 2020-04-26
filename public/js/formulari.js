@@ -389,6 +389,7 @@ $( document ).ready(function() {
                 "</div>"
             ));
             actualitzarTipusRecurs();
+            $('#numRecursos').val(recursos);
         }
     })
 
@@ -419,6 +420,7 @@ $( document ).ready(function() {
     function eliminarRecurs(){
         var id_recurs = $(this).attr("id").slice(-1);
         $('#recurs'+id_recurs).remove();
+        $('#numRecursos').val(recursos);
     }
 
     // =========================================================
@@ -472,6 +474,7 @@ $( document ).ready(function() {
                 "</div>"
             ));
             actualitzarTipusRecursUsuari();
+            $('#numRecursos').val(recursosUsuari);
         }
 
     });
@@ -481,6 +484,7 @@ $( document ).ready(function() {
         var id_recurs = $(this).attr("id").slice(-1);
         $('#recursUsuari'+id_recurs).remove();
         recursosUsuari = $('.recursUsuari').length;
+        $('#numRecursos').val(recursosUsuari);
     }
 
     // Actualitzar el tipus de recurs de l'usuari
