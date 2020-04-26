@@ -19,6 +19,9 @@ use App\Models\Incidencia;
 use App\Models\IncidenciaHasRecurs;
 use Illuminate\Http\Request;
 
+use Log;
+use DB;
+
 class IncidenciaController extends Controller
 {
     /**
@@ -45,11 +48,16 @@ class IncidenciaController extends Controller
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }else{
-            $recursos = RecursMobil::whereIn('id_usuario', [$user->id])->get();
+            $recursosMobils = RecursMobil::where('id_usuario','=', $user->id)->get()->toArray();
+            $recursosId = [];
+            foreach($recursosMobils as $recurs){
+                array_push($recursosId, $recurs["id"]);
+            };
+            $incidencies = DB::table('incidencies_has_recursos')->whereIn('recursos_id', $recursosId)->select('incidencies_id')->get()->toArray();
             $incidenciesId = [];
-            foreach($recursos as $recurs){
-                // array_push($incidenciesId, $recurs->incidencias);
-            }
+            foreach($incidencies as $incidencia){
+                array_push($incidenciesId, $incidencia->incidencies_id);
+            };
             $incidencies = Incidencia::whereIn('id', $incidenciesId)->where('estats_incidencia_id', 1)->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);

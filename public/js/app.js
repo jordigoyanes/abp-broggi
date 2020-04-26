@@ -38527,7 +38527,9 @@ var render = function() {
                   "tbody",
                   _vm._l(_vm.incidencias, function(incidencia, index) {
                     return _c("tr", { key: index }, [
-                      _c("td", [_vm._v("#" + _vm._s(incidencia.id))]),
+                      _c("td", { staticClass: "text-center" }, [
+                        _vm._v(_vm._s(incidencia.id))
+                      ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(incidencia.localitzacio))]),
                       _vm._v(" "),

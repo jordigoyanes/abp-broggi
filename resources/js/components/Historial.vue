@@ -147,7 +147,7 @@
         </thead>
         <tbody>
           <tr v-for="(incidencia, index) in incidencias" :key="index">
-            <td>#{{incidencia.id }}</td>
+            <td class="text-center">{{incidencia.id }}</td>
             <td>{{ incidencia.localitzacio }}</td>
             <td>{{ incidencia.hora }}</td>
             <td>{{ incidencia.data }}</td>
