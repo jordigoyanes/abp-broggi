@@ -1885,6 +1885,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1904,7 +1905,7 @@ __webpack_require__.r(__webpack_exports__);
       tipus_incident: null,
       all_tipus_incident: null,
       municipis: null,
-      incidencias: null,
+      incidencias: [],
       provincies: null,
       tipus_alertant: null,
       all_tipus_alertant: null,
@@ -1961,6 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
     filtrar: function filtrar(page) {
       var _this3 = this;
 
+      console.log(this.incidendias);
       var filtros = {};
 
       if (this.data_desde) {
@@ -38503,141 +38505,149 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "table table-bordered",
-          attrs: { id: "tabla-principal" }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.incidencias, function(incidencia, index) {
-              return _c("tr", { key: index }, [
-                _c("td", [_vm._v("#" + _vm._s(incidencia.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.localitzacio))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.hora))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.data))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.tipus_incident.tipus))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.municipi.nom))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.adreca))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.descripcio))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incidencia.estat_incidencia.estat))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/abp-broggi/public/alertant/" +
-                          incidencia.alertants_id
-                      }
-                    },
-                    [_vm._v("Veure alertant")]
-                  )
-                ])
-              ])
-            }),
-            0
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("nav", { attrs: { "aria-label": "..." } }, [
-        _c(
-          "ul",
-          { staticClass: "pagination" },
-          [
+      _vm.incidencias == 0 || _vm.incidencias == null
+        ? _c("div", [
             _c(
-              "li",
+              "div",
+              { staticClass: "alert alert-warning", attrs: { role: "alert" } },
+              [_vm._v("Cap incidència trobada")]
+            )
+          ])
+        : _c("div", [
+            _c(
+              "table",
               {
-                staticClass: "page-item",
-                class: { disabled: _vm.current_page == 1 },
-                attrs: { "aria-label": "« Previous" }
+                staticClass: "table table-bordered",
+                attrs: { id: "tabla-principal" }
               },
               [
+                _vm._m(0),
+                _vm._v(" "),
                 _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "#", tabindex: "-1" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.filtrar(_vm.current_page - 1)
-                      }
-                    }
-                  },
-                  [_vm._v("‹")]
+                  "tbody",
+                  _vm._l(_vm.incidencias, function(incidencia, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v("#" + _vm._s(incidencia.id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(incidencia.localitzacio))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(incidencia.hora))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(incidencia.data))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(incidencia.tipus_incident.tipus))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(incidencia.municipi.nom))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(incidencia.adreca))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "/abp-broggi/public/alertant/" +
+                                incidencia.alertants_id
+                            }
+                          },
+                          [_vm._v("Veure alertant")]
+                        )
+                      ])
+                    ])
+                  }),
+                  0
                 )
               ]
             ),
             _vm._v(" "),
-            _vm._l(_vm.last_page, function(page, index) {
-              return _c(
-                "li",
-                {
-                  key: index,
-                  staticClass: "page-item",
-                  class: { active: index + 1 == _vm.current_page }
-                },
+            _c("nav", { attrs: { "aria-label": "..." } }, [
+              _c(
+                "ul",
+                { staticClass: "pagination" },
                 [
                   _c(
-                    "a",
+                    "li",
                     {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.filtrar(page)
-                        }
-                      }
+                      staticClass: "page-item",
+                      class: { disabled: _vm.current_page == 1 },
+                      attrs: { "aria-label": "« Previous" }
                     },
-                    [_vm._v(_vm._s(index + 1))]
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#", tabindex: "-1" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.filtrar(_vm.current_page - 1)
+                            }
+                          }
+                        },
+                        [_vm._v("‹")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.last_page, function(page, index) {
+                    return _c(
+                      "li",
+                      {
+                        key: index,
+                        staticClass: "page-item",
+                        class: { active: index + 1 == _vm.current_page }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page-link",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.filtrar(page)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(index + 1))]
+                        )
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "page-item",
+                      class: { disabled: _vm.current_page == _vm.last_page }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { "aria-label": "Next", href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.filtrar(_vm.current_page + 1)
+                            }
+                          }
+                        },
+                        [_vm._v("›")]
+                      )
+                    ]
                   )
-                ]
+                ],
+                2
               )
-            }),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "page-item",
-                class: { disabled: _vm.current_page == _vm.last_page }
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { "aria-label": "Next", href: "#" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.filtrar(_vm.current_page + 1)
-                      }
-                    }
-                  },
-                  [_vm._v("›")]
-                )
-              ]
-            )
-          ],
-          2
-        )
-      ])
+            ])
+          ])
     ]
   )
 }
@@ -38664,10 +38674,6 @@ var staticRenderFns = [
           _c("th", [_vm._v("MUNICIPI")]),
           _vm._v(" "),
           _c("th", [_vm._v("ADREÇA")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("DESCRIPCIÓ")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("ESTAT")]),
           _vm._v(" "),
           _c("th", [_vm._v("ALERTANT")])
         ])

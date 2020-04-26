@@ -40,7 +40,7 @@ class IncidenciaController extends Controller
     {
         $user = Auth::user();
         if($user->rols_id == 2){
-            $incidencies = Incidencia::where('activa', true)
+            $incidencies = Incidencia::where('estats_incidencia_id', 1)
                                      ->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
@@ -50,7 +50,7 @@ class IncidenciaController extends Controller
             foreach($recursos as $recurs){
                 // array_push($incidenciesId, $recurs->incidencias);
             }
-            $incidencies = Incidencia::whereIn('id', $incidenciesId)->where('activa', true)->paginate(10);
+            $incidencies = Incidencia::whereIn('id', $incidenciesId)->where('estats_incidencia_id', 1)->paginate(10);
             $datos['incidencies'] = $incidencies;
             return view('incidencia.index', $datos);
         }

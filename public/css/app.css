@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-html,
+@import url(https://fonts.googleapis.com/css?family=Nunito);html,
 body {
   min-height: 100vh;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -23,7 +22,8 @@ footer p {
   color: #657386;
 }
 
-.entrar input, .entrar select {
+.entrar input,
+.entrar select {
   all: initial;
   box-sizing: border-box;
   width: 100%;
@@ -32,9 +32,27 @@ footer p {
   color: #B09B27;
   border: 1px white solid;
 }
+
+.entrar input::-webkit-input-placeholder {
+  color: #B09B27;
+}
+
+.entrar input::-moz-placeholder {
+  color: #B09B27;
+}
+
+.entrar input:-ms-input-placeholder {
+  color: #B09B27;
+}
+
+.entrar input::-ms-input-placeholder {
+  color: #B09B27;
+}
+
 .entrar input::placeholder {
   color: #B09B27;
 }
+
 .entrar input:hover,
 .entrar input:active,
 .entrar select:hover,
@@ -43,29 +61,35 @@ footer p {
   color: #B09B27;
   border-color: #B09B27;
 }
+
 .entrar button {
   padding: 6px 80px;
   background-color: #1CADC3;
   color: #D7F0F4;
 }
+
 .entrar button:hover {
   color: #D7F0F4;
 }
+
 .entrar .cambiar {
   color: #1C687D;
   font-weight: bold;
 }
+
 .entrar .cambiar:hover {
   text-decoration: none;
 }
 
 /* --------------------FORMULARI----------------------------- */
+
 .card-formulari {
   border: none;
   background: #FFFFFF;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   border-radius: 1em;
 }
+
 .card-formulari .card-header-formulari {
   background-color: #1C687D;
   border-radius: 1em 1em 0em 0em;
@@ -73,6 +97,7 @@ footer p {
   align-items: center;
   padding: 14px 30px;
 }
+
 .card-formulari .card-header-formulari h2 {
   color: white;
   font-weight: 600;
@@ -80,9 +105,11 @@ footer p {
   padding: 0px;
   margin: 0px;
 }
+
 .card-formulari .card-body-formulari {
   padding: 0px;
 }
+
 .card-formulari .card-body-formulari .card-subheader-formulari {
   border-top: 1px solid #1C687D;
   border-bottom: 1px solid #1C687D;
@@ -90,6 +117,7 @@ footer p {
   align-items: center;
   padding: 14px 30px;
 }
+
 .card-formulari .card-body-formulari .card-subheader-formulari h3 {
   color: #1C687D;
   font-weight: 400;
@@ -97,18 +125,22 @@ footer p {
   padding: 0px;
   margin: 0px;
 }
+
 .card-formulari .card-body-formulari .card-subbody-formulari {
   background-color: #eee;
   padding: 14px 30px;
 }
+
 .card-formulari .card-body-formulari .card-subbody-formulari p {
   font-size: 14px;
   line-height: 22px;
   color: #1C2230;
 }
+
 .card-formulari .hidden {
   display: none;
 }
+
 .card-formulari .hidden1 {
   display: none;
 }
@@ -117,6 +149,7 @@ footer p {
   background-color: #DD177A;
   padding: 6px 30px;
 }
+
 .nuevaIncidencia span {
   font-size: 2.5rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -125,8 +158,8 @@ footer p {
 .tabla thead {
   background-color: #1CADC3;
 }
+
 .tabla thead th {
   font-weight: normal;
 }
 
-/*# sourceMappingURL=app.css.map */
