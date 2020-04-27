@@ -97,7 +97,7 @@ class AlertantController extends Controller
         $data['provincias'] = $provincias;
         $data['municipis'] = $municipis;
         $data['comarcas'] = $comarcas;
-        $data['all_tipus'] = TipusAlertant::all();
+        $data['all_tipus'] = TipusAlertant::whereIn('id', [1, 4])->get();
 
         return view('alertant.edit', $data);
     }
