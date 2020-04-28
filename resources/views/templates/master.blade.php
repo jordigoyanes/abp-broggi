@@ -87,18 +87,33 @@
 
 
     {{-- <div class="flex-column d-flex justify-content-between mb-5"> --}}
-        <div class="container">@yield('principal')</div>
+        <div class="container mb-5">@yield('principal')</div>
     {{-- </div> --}}
 
     <footer class="d-flex mt-auto px-5 py-3">
-        <div class="col-4 d-flex align-items-center">CA v</div>
+        <div class="col-4 d-flex align-items-center">
+            <div class="dropdown">
+                <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  CAT
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">ESP</a>
+                  <a class="dropdown-item" href="#">ENG</a>
+                </div>
+              </div>
+        </div>
         <div class="col-4 d-flex justify-content-center align-items-center mb-0">
             <p class="copyright mb-0">&copy;
                 <script>
             document.write(new Date().getFullYear())
             </script>
             Institut Moisès Broggi</p></div>
-        <div class="col-4 d-flex justify-content-end align-items-center">modo on</div>
+            <div class="col-4 d-flex justify-content-end align-items-center"><p class="my-auto">mode aprenentatge off</p>
+            <label class="switch ml-3 mt-2">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
     </footer>
 
 </body>
