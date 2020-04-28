@@ -1,4 +1,4 @@
-@extends('templates.master3')
+@extends('templates.master')
 @section('titulo')Afegeix els recursos al teu usuari @endsection
 @section('principal')
 

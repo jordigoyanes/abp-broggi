@@ -58,10 +58,14 @@ class IncidenciaController extends Controller
             foreach($incidencies as $incidencia){
                 array_push($incidenciesId, $incidencia->incidencies_id);
             };
+
             $incidencies = Incidencia::whereIn('id', $incidenciesId)->where('estats_incidencia_id', 1)->paginate(10);
+
             $datos['incidencies'] = $incidencies;
+
             return view('incidencia.index', $datos);
         }
+
     }
 
     /**

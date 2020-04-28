@@ -19,14 +19,16 @@ $( document ).ready(function() {
 
         //Formulari recurs usuari
         $('.tipusRecursUsuari').on('change', actualitzarCodiUsuari);
+
+        //Formulari nou recurs
+        $('#tipusRecursNou').on('change', actualitzarCodiNou);
     });
 
     //Formulari incidencia
     var afectats = $('.afectat').length;
     var recursos = $('.recurs').length;
 
-
-
+    
     actualitzarProvincia();
     actualitzarProvinciaAfectat();
 
@@ -48,15 +50,13 @@ $( document ).ready(function() {
 
     //Actualitzar el select de provincies al crear una incidencia
     function actualitzarProvincia(){
-        // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ '', function(data){
-            $.get('http://broggi.lo:8888/public/api/provincies', function(data){
-            var html_select = '<option value="">Selecciona una provincia</option>'
-            for(var i=0; i<data.length; i++)
-                html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
+        $.get('/abp-broggi/public/api/provincies', function(data){
+        var html_select = '<option value="">Selecciona una provincia</option>'
+        for(var i=0; i<data.length; i++)
+            html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
             $('#provinciaIncidencia').html(html_select);
             $('#provinciaAlertant').html(html_select);
-        });
+            });
     }
 
     // Actualitzar el select de comarques quan es tria la provincia
@@ -66,8 +66,7 @@ $( document ).ready(function() {
         var id_camp = $(this).attr('id');
         var apartat = id_camp.slice(("provincia").length, id_camp.length);
         // AJAX
-        //$.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
+        $.get('/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
             var html_select = '<option value="">Selecciona una comarca</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -81,9 +80,7 @@ $( document ).ready(function() {
         var comarques_id = $(this).val();
         var id_camp = $(this).attr('id');
         var apartat = id_camp.slice(("comarca").length, id_camp.length);
-        // AJAX
-        //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
+        $.get('/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
         var html_select = '<option value="">Selecciona un municipi</option>'
         for(var i=0; i<data.length; i++)
             html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -99,8 +96,7 @@ $( document ).ready(function() {
     function actualitzarCamps() {
         var id = $(this).val();
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/centreid/'+ id +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/centreid/'+ id +'', function(data){
+        $.get('/abp-broggi/public/api/centreid/'+ id +'', function(data){
             var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
             var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
             var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
@@ -137,8 +133,7 @@ $( document ).ready(function() {
         var id = $(this).val();
         // AJAX
         if(id == 1){
-            // $.get('http://localhost:80/abp-broggi/public/api/centre/'+ id +'', function(data){
-            $.get('http://broggi.lo:8888/public/api/centre/'+ id +'', function(data){
+            $.get('/abp-broggi/public/api/centre/'+ id +'', function(data){
             var html_select = '<option value="">Selecciona un Centre</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -265,8 +260,7 @@ $( document ).ready(function() {
     //Actualitzar el select de provincies al crear un afectat nou
     function actualitzarProvinciaAfectat(){
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/provincies', function(data){
-            $.get('http://broggi.lo:8888/public/api/provincies', function(data){
+            $.get('/abp-broggi/public/api/provincies', function(data){
             var html_select = '<option value="">Selecciona una provincia</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -279,8 +273,7 @@ $( document ).ready(function() {
         var id_provincia = $(this).val();
         var id_afectat = $(this).attr("id").slice(-1);
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
-            $.get('http://broggi.lo:8888/public/api/comarca/'+ id_provincia +'', function(data){
+            $.get('/abp-broggi/public/api/comarca/'+ id_provincia +'', function(data){
             var html_select = '<option value="">Selecciona una comarca</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -293,8 +286,7 @@ $( document ).ready(function() {
         var comarques_id = $(this).val();
         var id_afectat = $(this).attr("id").slice(-1);
         // AJAX
-        //$.get('http://localhost:80/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/municipi/'+ comarques_id +'', function(data){
+        $.get('/abp-broggi/public/api/municipi/'+ comarques_id +'', function(data){
         var html_select = '<option value="">Selecciona un Municipi</option>'
         for(var i=0; i<data.length; i++)
             html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
@@ -394,7 +386,7 @@ $( document ).ready(function() {
     })
 
     function actualitzarTipusRecurs(){
-        $.get('http://broggi.lo:8888/public/api/tipusRecurs', function(data){
+        $.get('/abp-broggi/public/api/tipusRecurs', function(data){
             var html_select = '<option value="">Selecciona el tipus</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].tipus +'</option>';
@@ -406,8 +398,7 @@ $( document ).ready(function() {
         var codi = $(this).val();
         var id_recurs = $(this).attr("id").slice(-1);
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/codiRecurs/'+ codi +'', function(data){
+        $.get('/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
             var html_select = '<option value="">Selecciona un codi</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
@@ -489,7 +480,7 @@ $( document ).ready(function() {
 
     // Actualitzar el tipus de recurs de l'usuari
     function actualitzarTipusRecursUsuari(){
-        $.get('http://broggi.lo:8888/public/api/tipusRecurs', function(data){
+        $.get('/abp-broggi/public/api/tipusRecurs', function(data){
             var html_select = '<option value="">Selecciona el tipus</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].tipus +'</option>';
@@ -499,11 +490,9 @@ $( document ).ready(function() {
 
     function actualitzarCodiUsuari(){
         var codi = $(this).val();
-
         var id_recurs = $(this).attr("id").slice(-1);
         // AJAX
-        // $.get('http://localhost:80/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
-        $.get('http://broggi.lo:8888/public/api/codiRecurs/'+ codi +'', function(data){
+        $.get('/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
             var html_select = '<option value="">Selecciona un codi</option>'
             for(var i=0; i<data.length; i++)
                 if(data[i].id_usuario == null){
@@ -512,6 +501,27 @@ $( document ).ready(function() {
                 console.log(html_select)
             $('#CodiRecursUsuari'+id_recurs).html(html_select);
         });
+    }
+
+    //Formulari nou recurs
+    //Funcio per crear un nou codi
+    function actualitzarCodiNou(){
+        var codi;
+        if($('#tipusRecursNou').val() == 1){
+            codi = "Mike";
+        }else if($('#tipusRecursNou').val() == 2){
+            codi = "Indi";
+        }else if($('#tipusRecursNou').val() == 3){
+            codi = "Tang";
+        }else
+            codi = "Heli";
+        var min = 10000;
+        var max = 99999;
+        var num = Math.floor(Math.random() * (max - min + 1)) + min;
+        codi+= num;
+
+        $('#codi').val(codi);
+        $('#codi2').val(codi);
     }
 
 });

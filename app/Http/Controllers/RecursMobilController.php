@@ -19,9 +19,13 @@ class RecursMobilController extends Controller
     {
         $user = Auth::user();
         if($user->rols_id == 2){
-            $recursMobils = RecursMobil::all();
+            $recursActius = RecursMobil::whereNotNull('id_usuario')->get();
 
-            $datos['recursMobils'] = $recursMobils;
+            $recursosInactius = RecursMobil::whereNull('id_usuario')->get();
+
+            $datos['recursActius'] = $recursActius;
+            $datos['recursosInactius'] = $recursosInactius;
+
 
             return view('rmobils.index', $datos);
         }else
@@ -51,9 +55,8 @@ class RecursMobilController extends Controller
     public function store(Request $request)
     {
         $recursMobil = new RecursMobil();
-        $recursMobil->tipus_recurs_id = $request->input('tipus');
+        $recursMobil->tipus_recurs_id = $request->input('tipusRecurs');
         $recursMobil->codi = $request->input('codi');
-        $recursMobil->estat = $request->input('estat');
 
         $recursMobil->save();
 

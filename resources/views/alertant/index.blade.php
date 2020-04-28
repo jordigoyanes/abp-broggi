@@ -1,4 +1,4 @@
-@extends('templates.master3')
+@extends('templates.master')
 
 @section('titulo')
 Alertants

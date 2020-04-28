@@ -1,4 +1,4 @@
-@extends('templates.master3')
+@extends('templates.master')
 
 @section('titulo')
 Recursos Mòbils
@@ -15,98 +15,30 @@ Recursos Mòbils
     @csrf
 
     <div id="accordion" class="card-body card-body-formulari">
-
         <div>
             <div class="card-subheader card-subheader-formulari" id="headingTwo" data-toggle="collapse"
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <h3 class="mb-0">Recursos mobils</h3>
+                <h3 class="mb-0">Nou recurs mòbil</h3>
             </div>
 
             <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-subbody card-subbody-formulari">
+                <div class="card-subbody card-subbody-formulari d-flex flex-nowrap">
 
+                    <div class="form-group col-6 mt-3">
+                        <label for="tipusRecursNou">Tipus</label>
+                        <select name="tipusRecurs" id="tipusRecursNou" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
+                            <option value="0" selected>Selecciona el tipus</option>
+                            @foreach ($tipusRecursos as $tipusRecurs)
+                                <option value="{{ $tipusRecurs->id }}">{{ $tipusRecurs->tipus }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-
-                    <div class="form-row">
-
-                        <div class="form-group ">
-
-                            <div class="row">
-                                <div class="col-sm-8">
-                                  <div class="card" style="border:none; background-color:#eee;">
-                                    <div class="card-body">
-                                        <table>
-                                            <thead>
-                                                <th scope="col"><img src="../img/ambulancia-medicalizada.jpg" alt="" style="width:100%;"></th>
-                                                <th scope="col"><img src="../img/ambulancia-sanitarizada.jpg" alt="" style="width:100%;"></th>
-                                                <th scope="col"><img src="../img/ambulancia-asistencial.jpg" alt="" style="width:100%;"></th>
-                                                <th scope="col"><img src="../img/helicoptero-medicalizado.jpg" alt="" style="width:100%;"></th>
-                                            </thead>
-                                            <tbody>
-
-                                            <tr>
-
-
-                                            @foreach ($tipusRecursos as $tipusRecurs)
-
-
-                                                    <td><label for="tipus" >{{ $tipusRecurs->tipus }}</label></td>
-
-                                            @endforeach
-
-                                            </tr>
-
-                                            <tr>
-
-                                            @foreach ($tipusRecursos as $tipusRecurs)
-
-                                               <td> <input type="radio" name="tipus" id="tipus" class="mr-5" value="{{ $tipusRecurs->id }}" ></td>
-
-                                            @endforeach
-
-                                            </tr>
-
-
-                                            </tbody>
-                                            </table>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                  <div class="card" style="border:none; background-color:#eee;" >
-                                    <div class="card-body">
-                                        <div class="form-group col-md-3">
-                                            <label for="codi" >Codi</label>
-                                            <br>
-                                            <input type="text" name="codi" id="codi" style="border-radius:10px; width:200px;">
-                                        </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="card" style="border:none; background-color:#eee;" >
-                                      <div class="card-body">
-                                          <div class="form-group col-md-3">
-                                            <label for="estat" >Estat</label>
-
-                                            <select name="estat" id="estat" placeholder="estat" class="custom-select input-sm chat-input mt-3" style=" width:200px;">
-                                                <option value="activa">activa</option>
-                                                <option value="espera">en espera</option>
-
-                                            </select>
-
-                                              {{-- <label for="estat" >Estat</label>
-                                              <br>
-                                              <input type="estat" name="codi" id="codi" style="border-radius:10px; width:200px;"> --}}
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                            </div>
-
-                        </div>
+                    <div class="form-group col-6 mt-3">
+                        <label for="codi" >Codi</label>
+                        <input type="text" id="codi" style="border-radius:10px; margin-left:85px; ; width:200px;" value="0" disabled>
+                        <input type="hidden" name="codi" id="codi2"value="">
+                    </div>
 
                     </div>
                 </div>
@@ -114,10 +46,10 @@ Recursos Mòbils
             </div>
         </div>
 
-    <div class="card-footer text-muted text-center">
-        <button class="btn btn-primary" type="submit">Guardar</button>
-        <a class="btn btn-primary" href=" {{ url('/rmobils') }} " role="button">CANCELAR</a>
-    </div>
+        <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
+            <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
+            <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/rmobils') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
+        </div>
 
     </form>
 </div>
