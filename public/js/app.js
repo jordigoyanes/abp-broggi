@@ -1883,9 +1883,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1927,6 +1924,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    goIncidencia: function goIncidencia() {
+      window.location.href = "/abp-broggi/public/incidencia/create";
     },
     reset: function reset() {
       this.data_desde = null;
@@ -38054,6 +38054,15 @@ var render = function() {
                   },
                   domProps: { value: _vm.search },
                   on: {
+                    keyup: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.searchIncidencia($event)
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -38526,39 +38535,36 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l(_vm.incidencias, function(incidencia, index) {
-                    return _c("tr", { key: index }, [
-                      _c("td", { staticClass: "text-center" }, [
-                        _vm._v(_vm._s(incidencia.id))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(incidencia.localitzacio))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(incidencia.hora))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(incidencia.data))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(incidencia.tipus_incident.tipus))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(incidencia.municipi.nom))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(incidencia.adreca))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href:
-                                "/abp-broggi/public/alertant/" +
-                                incidencia.alertants_id
-                            }
-                          },
-                          [_vm._v("Veure alertant")]
-                        )
-                      ])
-                    ])
+                    return _c(
+                      "tr",
+                      {
+                        key: index,
+                        on: {
+                          click: function($event) {
+                            return _vm.goIncidencia()
+                          }
+                        }
+                      },
+                      [
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(_vm._s(incidencia.id))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(incidencia.localitzacio))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(incidencia.hora))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(incidencia.data))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(incidencia.tipus_incident.tipus))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(incidencia.municipi.nom))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(incidencia.adreca))])
+                      ]
+                    )
                   }),
                   0
                 )
@@ -38675,9 +38681,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("th", [_vm._v("MUNICIPI")]),
           _vm._v(" "),
-          _c("th", [_vm._v("ADREÇA")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("ALERTANT")])
+          _c("th", [_vm._v("ADREÇA")])
         ])
       ]
     )

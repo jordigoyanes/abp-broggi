@@ -24,7 +24,7 @@ class HistorialController extends Controller
     public function index(Request $request)
     {
         if(!$request->has('page')){
-            $data['tipus_alertants'] = TipusAlertant::all();
+            $data['tipus_alertants'] = TipusAlertant::whereIn('id', [1, 4])->get();
             $data['municipis'] = Municipi::all();
             $data['tipus_incident'] = TipusIncident::all();
         }
@@ -45,35 +45,38 @@ class HistorialController extends Controller
     }
 
     public function search(Request $request){
-        return Incidencia::where('id','=',  $request->input('search'))->paginate(5); 
+        return Incidencia::with(['alertant', 'EstatIncidencia', 'TipusIncident', 'municipi'])->where('id','=',  $request->input('search'))->paginate(5); 
     }
 
     public function filter(Request $request, Incidencia $incidencias){
         $incidencias = $incidencias->newQuery();
-        if($request->has('from_date')){
-            $incidencias->where('data', '>=', $request->input('from_date'));
-        }
-        if($request->has('to_date')){
-            $incidencias->where('data', '<=', $request->input('to_date'));
-        }
-        if($request->has('from_hora')){
-            $incidencias->where('hora', '>=', $request->input('from_hora'));
-        }
-        if($request->has('to_hora')){
-            $incidencias->where('hora', '<=', $request->input('to_hora'));
-        }
-        if($request->has('municipi_id')){
-            $incidencias->where('municipis_id', 'like', $request->input('municipi_id'));
-        }
-        if($request->has('tipus_alertant')){
-            $incidencias->where('tipus_alertant_id', 'like', $request->input('tipus_alertant'));
-        }
-        if($request->has('alertant')){
-            $incidencias->where('alertants_id', '=', $request->input('alertant'));
-        }
-        if($request->has('tipus_incident')){
-            $incidencias->where('tipus_incident_id', 'like', $request->input('tipus_incident'));
-        }
+        
+            if($request->has('from_date')){
+                $incidencias->where('data', '>=', $request->input('from_date'));
+            }
+            if($request->has('to_date')){
+                $incidencias->where('data', '<=', $request->input('to_date'));
+            }
+            if($request->has('from_hora')){
+                $incidencias->where('hora', '>=', $request->input('from_hora'));
+            }
+            if($request->has('to_hora')){
+                $incidencias->where('hora', '<=', $request->input('to_hora'));
+            }
+            if($request->has('municipi_id')){
+                $incidencias->where('municipis_id', 'like', $request->input('municipi_id'));
+            }
+            if($request->has('tipus_alertant')){
+                $incidencias->where('tipus_alertant_id', 'like', $request->input('tipus_alertant'));
+            }
+            if($request->has('alertant')){
+                $incidencias->where('alertants_id', '=', $request->input('alertant'));
+            }
+            if($request->has('tipus_incident')){
+                $incidencias->where('tipus_incident_id', 'like', $request->input('tipus_incident'));
+            }
+        
+        
 
         return $incidencias->with(['alertant', 'EstatIncidencia', 'TipusIncident', 'municipi'])->paginate(5);
     }

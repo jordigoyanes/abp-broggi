@@ -11,8 +11,9 @@
             id="buscarIncidencia"
             placeholder="ID del incident..."
             v-model="search"
+            @keyup.enter="searchIncidencia"
           />
-          <button class="btn btn-primary ml-1" @click.prevent="searchIncidencia">Cerca</button>
+          <button @click.prevent="searchIncidencia" class="btn btn-primary ml-1">Cerca</button>
         </div>
       </div>
       <div class="formFiltros">
@@ -142,11 +143,10 @@
             <th>TIPUS</th>
             <th>MUNICIPI</th>
             <th>ADREÇA</th>
-            <th>ALERTANT</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(incidencia, index) in incidencias" :key="index">
+          <tr @click="goIncidencia()" v-for="(incidencia, index) in incidencias" :key="index">
             <td class="text-center">{{incidencia.id }}</td>
             <td>{{ incidencia.localitzacio }}</td>
             <td>{{ incidencia.hora }}</td>
@@ -154,9 +154,6 @@
             <td>{{ incidencia.tipus_incident.tipus }}</td>
             <td>{{ incidencia.municipi.nom }}</td>
             <td>{{ incidencia.adreca }}</td>
-            <td>
-              <a :href="'/abp-broggi/public/alertant/' + incidencia.alertants_id">Veure alertant</a>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -232,6 +229,9 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    goIncidencia() {
+      window.location.href = "/abp-broggi/public/incidencia/create";
     },
     reset() {
       this.data_desde = null;
