@@ -263,11 +263,15 @@ $( document ).ready(function() {
     //Actualitzar el select de provincies al crear un afectat nou
     function actualitzarProvinciaAfectat(){
         // AJAX
-            $.get('/abp-broggi/public/api/provincies', function(data){
+        $.get('/abp-broggi/public/api/provincies', function(data){
             var html_select = '<option value="">Selecciona una provincia</option>'
+
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-            $('#provinciaAfectat'+afectats).html(html_select);
+
+            for(var j=1; j<=afectats; j++)
+                $('#provinciaAfectat'+j).html(html_select);
+
         });
     }
 
@@ -341,49 +345,49 @@ $( document ).ready(function() {
                                 "<option value=''>Selecciona un codi</option>"+
                             "</select>"+
                         "</div>"+
-                    "</div>"+
 
-                    "<div class='form-row'>"+
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hActivacio'>Hora d'Activació</label>"+
-                            "<input type='time' name='hActivacio' id='hActivacio' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+
+                        "<div class='form-row'>"+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hActivacio'>Hora d'Activació</label>"+
+                                "<input type='time' name='hActivacio' id='hActivacio' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                            "</div>"+
+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hMovilitzacio'>Hora de Movilització</label>"+
+                                "<input type='time' name='hMovilitzacio' id='hMovilitzacio' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                            "</div>"+
+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hAssistencia'>Hora d'Assistencia</label>"+
+                                "<input type='time' name='hAssistencia' id='hAssistencia' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                            "</div>"+
                         "</div>"+
 
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hMovilitzacio'>Hora de Movilització</label>"+
-                            "<input type='time' name='hMovilitzacio' id='hMovilitzacio' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                        "<div class='form-row'>"+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hTransport'>Hora de Transport</label>"+
+                                "<input type='time' name='hTransport' id='hTransport' style='border-radius:10px; margin-left:85px; ; width:80px;'>"+
+                            "</div>"+
+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hArribada'>Hora d'Arribada al Hospital</label>"+
+                                "<input type='time' name='hArribada' id='hArribada' style='border-radius:10px; margin-left:85px; ; width:50px;'>"+
+                            "</div>"+
+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hTransferencia'>Hora de Transferencia</label>"+
+                                "<input type='time' name='hTransferencia' id='hTransferencia' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                            "</div>"+
                         "</div>"+
 
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hAssistencia'>Hora d'Assistencia</label>"+
-                            "<input type='time' name='hAssistencia' id='hAssistencia' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                        "<div class='form-row'>"+
+                            "<div class='form-group col-md-4'>"+
+                                "<label for='hFinalització'>Hora de Finalització</label>"+
+                                "<input type='time' name='hFinalització' id='hFinalització' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
+                            "</div>"+
                         "</div>"+
-                    "</div>"+
-
-                    "<div class='form-row'>"+
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hTransport'>Hora de Transport</label>"+
-                            "<input type='time' name='hTransport' id='hTransport' style='border-radius:10px; margin-left:85px; ; width:80px;'>"+
-                        "</div>"+
-
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hArribada'>Hora d'Arribada al Hospital</label>"+
-                            "<input type='time' name='hArribada' id='hArribada' style='border-radius:10px; margin-left:85px; ; width:50px;'>"+
-                        "</div>"+
-
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hTransferencia'>Hora de Transferencia</label>"+
-                            "<input type='time' name='hTransferencia' id='hTransferencia' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
-                        "</div>"+
-                    "</div>"+
-
-                    "<div class='form-row'>"+
-                        "<div class='form-group col-md-4'>"+
-                            "<label for='hFinalització'>Hora de Finalització</label>"+
-                            "<input type='time' name='hFinalització' id='hFinalització' style='border-radius:10px; margin-left:85px; ; width:100px;'>"+
-                        "</div>"+
-                    "</div>"+
-                "</div>"
+                    "</div>"
             ));
             actualitzarTipusRecurs();
             $('#numRecursos').val(recursos);
@@ -395,7 +399,8 @@ $( document ).ready(function() {
             var html_select = '<option value="">Selecciona el tipus</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].tipus +'</option>';
-            $('#tipusRecurs'+recursos).html(html_select);
+            for(var j=1; j<=recursos; j++)
+                $('#tipusRecurs'+j).html(html_select);
         });
     }
 
@@ -406,7 +411,7 @@ $( document ).ready(function() {
         $.get('/abp-broggi/public/api/codiRecurs/'+ codi +'', function(data){
             var html_select = '<option value="">Selecciona un codi</option>'
             for(var i=0; i<data.length; i++)
-                html_select += '<option value="'+ data[i].id +'">'+ data[i].codi +'</option>';
+                html_select += '<option value="'+ data[i].codi +'">'+ data[i].codi +'</option>';
                 console.log(html_select)
             $('#CodiRecurs'+id_recurs).html(html_select);
         });

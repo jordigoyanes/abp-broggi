@@ -111,10 +111,10 @@ class IncidenciaController extends Controller
         // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
 
         $id_tipus_alertant = $request->input('tipusAlertant');
-        $id_alertant;
+        $id_alertant = null;
 
         if($id_tipus_alertant != 1){
-            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant') || $request->input('tipusAlertant')==2)
+            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant'))
             {
                 $alertant = new Alertant();
 
@@ -230,10 +230,14 @@ class IncidenciaController extends Controller
         $incidencia = Incidencia::find($id);
         $tipusIncident = TipusIncident::all();
         $tipusAlertant = TipusAlertant::all();
-        // $afectats = Afectats::whereIn('id', $indencia->);
+        $afectats = $incidencia->afectats()->get();
+        $recursos = $incidencia->recursosMobils()->get();
+
         $data['incidencia'] = $incidencia;
         $data['tipusIncident'] = $tipusIncident;
         $data['tipusAlertant'] = $tipusAlertant;
+        $data['afectats'] = $afectats;
+        $data['recursos'] = $recursos;
 
         return view('incidencia.editarIncidencia', $data);
     }
@@ -245,11 +249,178 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Incidencia $incidencia)
+    public function update(Request $request, $id)
     {
-        //
+        // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
 
+        // $id_tipus_alertant = $request->input('tipusAlertant');
+        // $id_alertant = null;
+
+        // if($id_tipus_alertant != 1){
+        //     if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant'))
+        //     {
+        //         $alertant = new Alertant();
+
+        //         $alertant->nom = $request->input('nomAlertant');
+        //         $alertant->cognoms = $request->input('cognomAlertant');
+        //         $alertant->adreca = $request->input('adreçaAlertant');
+        //         $alertant->municipis_id = $request->input('municipiAlertant');
+        //         $alertant->telefon = $request->input('telefonAlertant');
+        //         $alertant->tipus_alertant_id = $request->input('tipusAlertant');
+        //         $alertant->save();
+        //         $alertant = Alertant::find($alertant->id);
+        //         $id_alertant = $alertant->id;
+        //     }
+        // }else{
+        //     $id_alertant = $request->input('centreSanitari');
+        // }
+
+        // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
+        // $id = $incidencia->id;
+        $incidencia = Incidencia::find($id);
+
+        $incidencia->localitzacio =  $request->input('localitzacioIncidencia');
+
+        $incidencia->telefon_alertant = $request->input('telefonIncidencia');
+        $incidencia->data = $request->input('dataIncidencia');
+        $incidencia->hora = $request->input('horaIncidencia');
+        $incidencia->adreca = $request->input('adreçaIncidencia');
+        $incidencia->complement_adreca = $request->input('indicacionsIncidencia');
+        $incidencia->descripcio = $request->input('descripcioIncidencia');
+
+        $incidencia->municipis_id = $request->input('municipiIncidencia');
+        $incidencia->tipus_incident_id = $request->input('tipusIncidencia');
+        $incidencia->estats_incidencia_id = $request->input('estatIncidencia');
+        $incidencia->tipus_alertant_id = $request->input('tipusAlertant');
+        // $incidencia->alertants_id = $id_alertant;
+
+
+        $incidencia->save();
+
+        $usuaris = $incidencia->usuari()->get();
+
+        $trobat = false;
+        foreach($usuaris as $usuari){
+            if($usuari->id == Auth::id()){
+                $trobat=true;
+            }
+        }
+        if(!$trobat){$incidencia->usuari()->save(Auth::user());}
+
+        // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
+
+        $numAfectats = $request->input('numAfectats');
+
+        for($i = 1; $i <= $numAfectats; $i++){
+
+            $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
+            $afectat;
+
+            if($afectat_tarjeta == 0 || !$request->input(('CipAfectat').$i)){
+                if($request->input(('nomAfectat').$i) && $request->input(('cognomAfectat').$i)){
+                    $afectat = Afectat::where('nom', $request->input(('nomAfectat').$i))
+                                      ->where('cognoms', $request->input(('cognomAfectat').$i))->first();
+                    if(!$afectat){
+                        $afectat = new Afectat();
+                        $afectat->nom = $request->input(('nomAfectat').$i);
+                        $afectat->cognoms = $request->input(('cognomAfectat').$i);
+
+                    }
+                }
+                $afectat->cip = null;
+            }
+            else{
+                $afectat = Afectat::where('cip', $request->input(('CipAfectat').$i))->first();
+                if(!$afectat){
+                    if($request->input(('nomAfectat').$i) && $request->input(('cognomAfectat').$i)){
+                        $afectat = Afectat::where('nom', $request->input(('nomAfectat').$i))
+                                          ->where('cognoms', $request->input(('cognomAfectat').$i))->first();
+                        if(!$afectat){
+                            $afectat = new Afectat();
+                            $afectat->nom = $request->input(('nomAfectat').$i);
+                            $afectat->cognoms = $request->input(('cognomAfectat').$i);
+
+                        }
+                    }
+
+                    $afectat->cip = $request->input(('CipAfectat').$i);
+                }
+                $afectat->nom = $request->input(('nomAfectat').$i);
+                $afectat->cognoms = $request->input(('cognomAfectat').$i);
+
+            }
+            $afectat->telefon = $request->input(('telefonAfectat').$i);
+            $afectat->sexe = $request->input(('sexeAfectat').$i);
+            $afectat->edat = $request->input(('edatAfectat').$i);
+            $afectat->tenir_tarjeta = $afectat_tarjeta;
+            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+            $afectat->save();
+
+            $afectat = Afectat::find($afectat)->first();
+
+            $afectatsIncidencia = $incidencia->afectats()->get();
+
+            $trobat = false;
+            foreach($afectatsIncidencia as $afectatIn){
+                if($afectatIn->id == $afectat->id){
+                    $trobat=true;
+                }
+            }
+            if(!$trobat){$incidencia->afectats()->save($afectat);}
+        }
+
+        // INTRODUIR RECURSOS BASE DE DADES--------------------------------------------
+        $numRecursos = $request->input('numRecursos');
+
+        for($i = 1; $i <= $numRecursos; $i++){
+
+            $codi = $request->input('CodiRecurs'.$i);
+
+            $recurs = RecursMobil::where('codi', $codi)->first();
+
+            $recursos = $incidencia->recursosMobils()->get();
+
+            $trobat = false;
+
+            foreach($recursos as $rec){
+                if($rec->id == $recurs->id){
+                    $trobat=true;
+                }
+            }
+
+            if(!$trobat){
+                $incidencia->recursosMobils()->attach($recurs,
+                [
+                    'prioritat' =>$request->input('prioritat'.$i),
+                    'hora_acitvacio' => $request->input('hActivacio'.$i),
+                    'hora_mobilitzacio' => $request->input('hMovilitzacio'.$i),
+                    'hora_assistencia' => $request->input('hAssistencia'.$i),
+                    'hora_transport' => $request->input('hTransport'.$i),
+                    'hora_arribada_hospital' => $request->input('hArribada'.$i),
+                    'hora_transferencia' => $request->input('hTransferencia'.$i),
+                    'hora_finalitzacio' => $request->input('hFinalització'.$i)
+                ]);
+            }else{
+                $incidencia->recursosMobils()->detach($recurs);
+                $incidencia->recursosMobils()->attach($recurs,
+                [
+                    'prioritat' =>$request->input('prioritat'.$i),
+                    'hora_acitvacio' => $request->input('hActivacio'.$i),
+                    'hora_mobilitzacio' => $request->input('hMovilitzacio'.$i),
+                    'hora_assistencia' => $request->input('hAssistencia'.$i),
+                    'hora_transport' => $request->input('hTransport'.$i),
+                    'hora_arribada_hospital' => $request->input('hArribada'.$i),
+                    'hora_transferencia' => $request->input('hTransferencia'.$i),
+                    'hora_finalitzacio' => $request->input('hFinalització'.$i)
+                ]);
+            }
+
+
+        }
+
+        // QUAN ACABEM D'INTRODUIR LES DADES REDIRECCIONEM AL INDEX------------------------------
         return redirect()->action('IncidenciaController@index');
+
     }
 
     /**

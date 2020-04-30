@@ -14,7 +14,7 @@ class Afectat extends Model
     public $timestamps = false;
 
     public function municipi(){
-        return $this->belongsTo('App\Models\Municipi','id');
+        return $this->belongsTo('App\Models\Municipi','municipis_id');
     }
 
     public function incidencies()

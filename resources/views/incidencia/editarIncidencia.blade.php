@@ -7,7 +7,7 @@
         <h2>INCIDENCIA</h2>
     </div>
 
-    <form action="{{ action('IncidenciaController@update', $incidencia)}}" method="post">
+    <form action="{{ action('IncidenciaController@update', $incidencia->id)}}" method="post">
         {{ method_field('put') }}
         {{ csrf_field() }}
 
@@ -107,10 +107,8 @@
                         <div class="form-group col-md-6">
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                                <option value="">Selecciona l'estat</option>
-                                {{-- <@foreach ($estatsIncidencia as $estat)
-                                        <option value="{{ $estat->id }}"> {{ $estat->estat }} </option>
-                                    @endforeach --}}
+                                <option value="1" @if($incidencia->estats_incidencia_id ==1 )selected @endif>Activa</option>
+                                <option value="3" @if($incidencia->estats_incidencia_id ==3 )selected @endif>Inactiva</option>
                             </select>
                         </div>
                     </div>
@@ -263,13 +261,14 @@
             </div>
 
             <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="afectats card-subbody-formulari">
-
-                    <div class="afectat">
+                <div class="afectats card-subbody-formulari p-0">
+                    @php $i=1; @endphp
+                    @foreach ($afectats as $afectat)
+                    <div class="afectat p-5" style='border-top: solid 1px #1C687D'>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
-                                <select name="tenir_tarjeta1" id="tenir_tarjeta1" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
+                                <label for="tenir_tarjeta{{$i}}">Te tarjeta S.S ?</label>
+                                <select name="tenir_tarjeta{{$i}}" id="tenir_tarjeta{{$i}}" style="border-radius:10px; margin-left:100px; ; width:300px;" class="tenirTarjeta">
                                     <option value="1" selected>Si</option>
                                     <option value="0">No</option>
                                 </select>
@@ -277,76 +276,82 @@
 
                             <div class="form-group col-md-6">
                                 <div class="" id="cip1">
-                                    <label for="CipAfectat1">CIP</label>
-                                    <input type="text" name="CipAfectat1" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
+                                    <label for="CipAfectat{{$i}}">CIP</label>
+                                    <input type="text" name="CipAfectat{{$i}}" id="CipAfectat{{$i}}" style="border-radius:10px; margin-left:85px; ; width:300px;" value="@if($afectat->cip){{$afectat->cip}}@endif">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="telefonAfectat1">Telefon</label>
-                                <input type="text" name="telefonAfectat1" id="telefonAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
+                                <label for="telefonAfectat{{$i}}">Telefon</label>
+                                <input type="text" name="telefonAfectat{{$i}}" id="telefonAfectat{{$i}}" style="border-radius:10px; margin-left:150px; ; width:300px;" value="@if($afectat->telefon){{$afectat->telefon}}@endif">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="nomAfectat1">Nom</label>
-                                <input type="text" name="nomAfectat1" id="nomAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
+                                <label for="nomAfectat{{$i}}">Nom</label>
+                                <input type="text" name="nomAfectat{{$i}}" id="nomAfectat{{$i}}" style="border-radius:10px; margin-left:150px; ; width:300px;" value="@if($afectat->nom){{$afectat->nom}}@endif">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="cognomAfectat1">Cognom</label>
-                                <input type="text" name="cognomAfectat1" id="cognomAfectat1" style="border-radius:10px; margin-left:150px; ; width:300px;" value="">
+                                <label for="cognomAfectat{{$i}}">Cognom</label>
+                                <input type="text" name="cognomAfectat{{$i}}" id="cognomAfectat{{$i}}" style="border-radius:10px; margin-left:150px; ; width:300px;" value="@if($afectat->cognoms){{$afectat->cognoms}}@endif">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="sexeAfectat1">Sexe</label>
-                                <select name="sexeAfectat1" id="sexeAfectat1" style="border-radius:10px; margin-left:100px; ; width:100px;">
-                                    <option value="" selected>Selecciona</option>
-                                    <option value="Home">Home</option>
-                                    <option value="Dona">Dona</option>
-                                    <option value="Altres">Altres</option>
+                                <label for="sexeAfectat{{$i}}">Sexe</label>
+                                <select name="sexeAfectat{{$i}}" id="sexeAfectat{{$i}}" style="border-radius:10px; margin-left:100px; ; width:100px;">
+                                    <option value="" @if(!$afectat->sexe) selected @endif>Selecciona</option>
+                                    <option value="Home" @if($afectat->sexe == "Home") selected @endif>Home</option>
+                                    <option value="Dona" @if($afectat->sexe == "Dona") selected @endif>Dona</option>
+                                    <option value="Altres" @if($afectat->sexe == "Altres") selected @endif>Altres</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="edatAfectat1">Edat</label>
-                                <input type="number" name="edatAfectat1" id="edatAfectat1" style="border-radius:10px; margin-left:50px; ; width:50px;" value="">
+                                <label for="edatAfectat{{$i}}">Edat</label>
+                                <input type="number" name="edatAfectat{{$i}}" id="edatAfectat{{$i}}" style="border-radius:10px; margin-left:50px; ; width:50px;" value="@if($afectat->edat){{$afectat->edat}}@endif">
                             </div>
                         </div>
 
                         <div class="form-row">
                             {{-- PROVINCIA AFECTAT --}}
                             <div class="form-group col-md-3">
-                                <label for="provinciaAfectat1">Provincia</label>
-                                <select name="provinciaAfectat1" id="provinciaAfectat1" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
+                                <label for="provinciaAfectat{{$i}}">Provincia</label>
+                                <select name="provinciaAfectat{{$i}}" id="provinciaAfectat{{$i}}" style="border-radius:10px; margin-left:50px; ; width:130px;" class="provinciaAfectat provincia">
                                 </select>
                             </div>
 
                             {{-- COMARCA AFECTAT --}}
                             <div class="form-group col-md-4 col-sm-4">
-                                <label for="comarcaAfectat1" style="margin-left:10px;">Comarca</label>
-                                <select name="comarcaAfectat1" id="comarcaAfectat1" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
+                                <label for="comarcaAfectat{{$i}}" style="margin-left:10px;">Comarca</label>
+                                <select name="comarcaAfectat{{$i}}" id="comarcaAfectat{{$i}}" style="border-radius:10px; margin-left:60px;  width:180px;" class="comarcaAfectat">
                                     <option value="">Selecciona una comarca</option>
                                 </select>
                             </div>
 
                             {{-- MUNICIPI AFECTAT--}}
                             <div class="form-group col-md-5 col-sm-4">
-                                <label for="municipiAfectat1">Municipi</label>
-                                <select name="municipiAfectat1" id="municipiAfectat1" style="border-radius:10px; margin-left:70px; ; width:290px;">
-                                    <option value="">Selecciona un municipi</option>
+                                <label for="municipiAfectat{{$i}}">Municipi</label>
+                                <select name="municipiAfectat{{$i}}" id="municipiAfectat{{$i}}" style="border-radius:10px; margin-left:70px; ; width:290px;">
+                                    @if($afectat->municipi)
+                                        <option value="{{$afectat->municipis_id}}" selected>{{$afectat->municipi->nom}} </option>
+                                    @else
+                                        <option value="">Selecciona un municipi</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
                     </div>
+                    @php $i++; @endphp
+                    @endforeach
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari p-4">
-                    <input type="hidden" id="numAfectats" name="numAfectats" value="1">
+                <input type="hidden" id="numAfectats" name="numAfectats" value="{{count($afectats)}}">
                     <p class="my-auto mr-3 afegirp">Afegir afectat</p>
                     <button class="afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm" id="afegirAfectat" type="button">
                         <span class="align-self-center my-auto text-white">+</span>
@@ -363,21 +368,31 @@
             </div>
 
             <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-subbody-formulari recursos">
-                    <div class="recurs">
+                <div class="card-subbody-formulari recursos p-0">
+                    @php $i=1; @endphp
+                    @foreach($recursos as $recurs)
+                    @php
+                        $hores = DB::table('incidencies_has_recursos')->where('recursos_id', $recurs->id)
+                                                                      ->where('incidencies_id', $incidencia->id)->first();
+                    @endphp
+                    <div class="recurs p-5" style='border-top: solid 1px #1C687D'>
                         {{-- TIPUS I CODI DE RECURS MOBIL --}}
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="tipusRecurs1">Tipus</label>
-                                <select name="tipusRecurs1" id="tipusRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
+                                <label for="tipusRecurs{{$i}}">Tipus</label>
+                                <select name="tipusRecurs{{$i}}" id="tipusRecurs{{$i}}" style="border-radius:10px; margin-left:85px; ; width:200px;" class="tipusRecurs">
                                     <option value="0" selected>Selecciona el tipus</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="CodiRecurs1">Codi</label>
-                                <select name="CodiRecurs1" id="CodiRecurs1" style="border-radius:10px; margin-left:85px; ; width:200px;">
-                                    <option value="">Selecciona un codi</option>
+                                <label for="CodiRecurs{{$i}}">Codi</label>
+                                <select name="CodiRecurs{{$i}}" id="CodiRecurs{{$i}}" style="border-radius:10px; margin-left:85px; ; width:200px;">
+                                    @if($recurs->codi)
+                                        <option value="{{$recurs->codi}}" selected>{{$recurs->codi}}</option>
+                                    @else
+                                        <option value="">Selecciona un municipi</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -385,49 +400,54 @@
                         {{-- HORES DEL RECURS MOBIL --}}
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="hActivacio1">Hora d'Activació</label>
-                                <input type="time" name="hActivacio1" id="hActivacio1" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hActivacio{{$i}}">Hora d'Activació</label>
+                                <input type="time" name="hActivacio{{$i}}" id="hActivacio{{$i}}" style="border-radius:10px; margin-left:85px; ; width:100px;" value="@if($hores->hora_acitvacio != null){{ $hores->hora_acitvacio }}@endif">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="hMovilitzacio1">Hora de Movilització</label>
-                                <input type="time" name="hMovilitzacio1" id="hMovilitzacio1" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hMovilitzacio{{$i}}">Hora de Movilització</label>
+                                <input type="time" name="hMovilitzacio{{$i}}" id="hMovilitzacio{{$i}}" style="border-radius:10px; margin-left:85px; ; width:100px;"value="@if($hores->hora_mobilitzacio != null){{ $hores->hora_mobilitzacio }}@endif">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="hAssistencia1">Hora d'Assistencia</label>
-                                <input type="time" name="hAssistencia1" id="hAssistencia1" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="hTransport1">Hora de Transport</label>
-                                <input type="time" name="hTransport1" id="hTransport1" style="border-radius:10px; margin-left:85px; ; width:80px;">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="hArribada1">Hora d'Arribada al Hospital</label>
-                                <input type="time" name="hArribada1" id="hArribada1" style="border-radius:10px; margin-left:85px; ; width:50px;">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="hTransferencia1">Hora de Transferencia</label>
-                                <input type="time" name="hTransferencia1" id="hTransferencia1" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hAssistencia{{$i}}">Hora d'Assistencia</label>
+                                <input type="time" name="hAssistencia{{$i}}" id="hAssistencia{{$i}}" style="border-radius:10px; margin-left:85px; ; width:100px;" value="@if($hores->hora_assistencia != null){{ $hores->hora_assistencia }}@endif">>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="hFinalització1">Hora de Finalització</label>
-                                <input type="time" name="hFinalització1" id="hFinalització1" style="border-radius:10px; margin-left:85px; ; width:100px;">
+                                <label for="hTransport{{$i}}">Hora de Transport</label>
+                                <input type="time" name="hTransport{{$i}}" id="hTransport{{$i}}" style="border-radius:10px; margin-left:85px; ; width:80px;"value="@if($hores->hora_transport != null){{ $hores->hora_transport }}@endif">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hArribada{{$i}}">Hora d'Arribada al Hospital</label>
+                                <input type="time" name="hArribada{{$i}}" id="hArribada{{$i}}" style="border-radius:10px; margin-left:85px; ; width:50px;"value="@if($hores->hora_arribada_hospital != null){{ $hores->hora_arribada_hospital }}@endif">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="hTransferencia{{$i}}">Hora de Transferencia</label>
+                                <input type="time" name="hTransferencia{{$i}}" id="hTransferencia{{$i}}" style="border-radius:10px; margin-left:85px; ; width:100px;"value="@if($hores->hora_transferencia != null){{ $hores->hora_transferencia }}@endif">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="hFinalització{{$i}}">Hora de Finalització</label>
+                                <input type="time" name="hFinalització{{$i}}" id="hFinalització{{$i}}" style="border-radius:10px; margin-left:85px; ; width:100px;"value="@if($hores->hora_finalitzacio != null){{ $hores->hora_finalitzacio }}@endif">
                             </div>
                         </div>
                     </div>
+                    @php $i++; @endphp
+                    @endforeach
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari" >
-                    <input type="hidden" id="numRecursos" name="numRecursos" value="1">
-                    <button class="btn rounded-circle text-white" id="afegirRecurs" type="button" style="background: #FCC536 ">+</button>
+                    <input type="hidden" id="numRecursos" name="numRecursos" value="{{count($recursos)}}">
+                    <p class="my-auto mr-3 afegirp">Afegir recurs</p>
+                    <button class="afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm" id="afegirRecurs" type="button">
+                        <span class="align-self-center my-auto text-white">+</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -435,7 +455,7 @@
 
     <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
         <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
-        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/incidencia') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
+        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/incidencia') }}" style="border: 1px solid #1C687D; color: #1C687D;" type="button">Cancelar</button>
     </div>
 
     </form>
