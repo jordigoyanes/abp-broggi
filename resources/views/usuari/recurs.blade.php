@@ -7,7 +7,7 @@
         <h2>RECURSOS MÒBILS</h2>
     </div>
 
-    <form action="{{ action('UsuarioController@store')}}" method="post">
+    <form action="{{ action('UsuarioController@store') }}" method="post">
     @csrf
 
     <div id="accordion" class="card-body card-body-formulari">
@@ -34,7 +34,10 @@
                 </div>
                 <div class="d-flex justify-content-center card-subbody-formulari" >
                     <input type="hidden" id="numRecursos" name="numRecursos" value="1">
-                    <button class="btn rounded-circle text-white" id="afegirRecursUsuari" type="button" style="background: #FCC536 ">+</button>
+                    <p class="my-auto mr-3 afegirp">Afegir recurs</p>
+                    <button class="afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm" id="afegirRecursUsuari" type="button">
+                        <span class="align-self-center my-auto text-white">+</span>
+                    </button>
                 </div>
             </div>
         </div>

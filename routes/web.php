@@ -23,12 +23,14 @@ Route::get('/register', 'Auth\RegisterController@showRegister')->name('register'
 Route::post('/register', 'Auth\RegisterController@register');
 
 
-
-
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/afegirRecursos', function(){
-        return view('usuari.recurs');
+        $user = Auth::user();
+        if($user->rols_id == 1){
+            return view('usuari.recurs');
+        }else
+            return redirect('/incidencia');
     });
 
     Route::resource('/incidencia', 'IncidenciaController');
@@ -44,13 +46,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/novaIncidencia', function(){
         return view('Incidencia');
     });
-    
+
     Route::get('/formacio', function () {
         return view('formacio');
     })->name('formacio');
 
+    Route::resource('/usuario', 'UsuarioController');
+
 });
 
-
-Route::resource('/usuario', 'UsuarioController');
 

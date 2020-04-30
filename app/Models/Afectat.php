@@ -16,4 +16,9 @@ class Afectat extends Model
     public function municipi(){
         return $this->belongsTo('App\Models\Municipi','id');
     }
+
+    public function incidencies()
+    {
+        return $this->belongsToMany('App\Models\Incidencia','incidencies_has_afectats', 'afectats_id', 'incidencies_id');
+    }
 }

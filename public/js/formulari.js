@@ -28,7 +28,7 @@ $( document ).ready(function() {
     var afectats = $('.afectat').length;
     var recursos = $('.recurs').length;
 
-    
+
     actualitzarProvincia();
     actualitzarProvinciaAfectat();
 
@@ -160,7 +160,10 @@ $( document ).ready(function() {
             afectats++;
             $('.afectats').append($(
                 "<div class='card-subbody card-subbody-formulari afectat' style='border-top: solid 1px #1C687D' id='afectat"+afectats+"'>"+
-                    "<div id='brossaAfectat"+afectats+"' class='d-flex justify-content-end eliminarAfectat'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
+                    "<div class='d-flex justify-content-end py-3'>"+
+                    "<button id='brossaAfectat"+afectats+"' class='afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm eliminarAfectat' type='button' style='padding:7px 10px 12px'>"+
+                        "<span class='align-self-center my-auto text-white'>-</span>"+
+                    "</button></div>"+
                     "<div class='form-row'>" +
                         "<div class='form-group col-md-6'>" +
                             "<label for='tenir_tarjeta"+afectats+"'>Te tarjeta S.S ?</label>" +
@@ -318,8 +321,10 @@ $( document ).ready(function() {
             recursos++;
             $('.recursos').append($(
             "<div id='recurs"+recursos+"' class='card-subbody-formulari recurs' style='border-top: solid 1px black'>"+
-                    "<div id='brossaRecurs"+recursos+"'class='d-flex justify-content-end eliminarRecurs'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
-                    "<div class='form-row'>"+
+                "<div class='d-flex justify-content-end py-3'>"+
+                    "<button id='brossaRecurs"+recursos+"' class='afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm eliminarRecurs' type='button' style='padding:7px 10px 12px'>"+
+                        "<span class='align-self-center my-auto text-white'>-</span>"+
+                    "</button></div>"+
                         "<div class='form-group col-md-4'>"+
                             "<label for='tipusRecurs"+recursos+"'>Tipus</label>"+
                             "<select name='tipusRecurs' id='tipusRecurs"+recursos+"' style='border-radius:10px; margin-left:85px; ; width:200px;' class='tipusRecurs'>"+
@@ -446,7 +451,10 @@ $( document ).ready(function() {
             recursosUsuari++;
             $('.recursos').append($(
                 "<div class='recursUsuari' style='border-top: solid 1px #1C687D' id='recursUsuari"+recursosUsuari+"'>"+
-                    "<div id='brossaRecurs"+recursosUsuari+"'class='d-flex justify-content-end eliminarRecursUsuari'><div class='rounded-circle bg-white d-flex justify-content-center' style='width:40px; height:40px'><img src='../img/delete2.png' class='w-50 my-auto'></div></div>"+
+                    "<div class='d-flex justify-content-end py-3'>"+
+                    "<button id='brossaRecurs"+recursosUsuari+"' class='afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm eliminarRecursUsuari' type='button' style='padding:7px 10px 12px'>"+
+                        "<span class='align-self-center my-auto text-white'>-</span>"+
+                    "</button></div>"+
                     "<div class='form-row'>"+
                         "<div class='form-group col-6'>"+
                             "<label for='tipusRecursUsuari"+recursosUsuari+"'>Tipus</label>"+

@@ -39,17 +39,16 @@ Recursos Mòbils
                         <input type="text" id="codi" style="border-radius:10px; margin-left:85px; ; width:200px;" value="0" disabled>
                         <input type="hidden" name="codi" id="codi2"value="">
                     </div>
-
-                    </div>
                 </div>
-
             </div>
-        </div>
 
-        <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
-            <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
-            <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/rmobils') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
         </div>
+    </div>
+
+    <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
+        <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
+        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/rmobils') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
+    </div>
 
     </form>
 </div>

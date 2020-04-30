@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Incidencia;
 use App\Models\IncidenciaHasRecurs;
+use App\Models\IncidenciaHasAfectats;
 use Illuminate\Http\Request;
 
 use Log;
@@ -113,46 +114,22 @@ class IncidenciaController extends Controller
         $id_alertant;
 
         if($id_tipus_alertant != 1){
+            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant') || $request->input('tipusAlertant')==2)
+            {
+                $alertant = new Alertant();
 
-            $alertant = new Alertant();
-
-            $alertant->id = $id_alertant = rand(1,1000);
-            $alertant->nom = $request->input('nomAlertant');
-            $alertant->cognoms = $request->input('cognomAlertant');
-            $alertant->adreca = $request->input('adreçaAlertant');
-            $alertant->municipis_id = 2;
-            $alertant->telefon = $request->input('telefonAlertant');
-            $alertant->tipus_alertant_id = $request->input('tipusAlertant');
-
-            $alertant->save();
+                $alertant->nom = $request->input('nomAlertant');
+                $alertant->cognoms = $request->input('cognomAlertant');
+                $alertant->adreca = $request->input('adreçaAlertant');
+                $alertant->municipis_id = $request->input('municipiAlertant');
+                $alertant->telefon = $request->input('telefonAlertant');
+                $alertant->tipus_alertant_id = $request->input('tipusAlertant');
+                $alertant->save();
+                $alertant = Alertant::find($alertant->id);
+                $id_alertant = $alertant->id;
+            }
         }else{
             $id_alertant = $request->input('centreSanitari');
-        }
-
-        // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
-
-        $numAfectats = $request->input('numAfectats');
-
-        for($i = 1; $i <= $numAfectats; $i++){
-
-            $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
-            $afectat = new Afectat();
-
-            if($afectat_tarjeta == 2){
-                $afectat->cip = $request->input(null);
-            }
-            else{
-                $afectat->cip = $request->input(('CipAfectat').$i);
-            }
-            $afectat->telefon = $request->input(('telefonAfectat').$i);
-            $afectat->nom = $request->input(('nomAfectat').$i);
-            $afectat->cognoms = $request->input(('cognomAfectat').$i);
-            $afectat->sexe = $request->input(('sexeAfectat').$i);
-            $afectat->edat = $request->input(('edatAfectat').$i);
-            $afectat->tenir_tarjeta = $afectat_tarjeta;
-            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
-
-            $afectat->save();
         }
 
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
@@ -161,7 +138,7 @@ class IncidenciaController extends Controller
         $incidencia->localitzacio =  $request->input('localitzacioIncidencia');
 
 
-        $incidencia->num_incidencia = rand(1,1000);
+        $incidencia->num_incidencia = rand( 100000 , 999999 );
 
         $incidencia->telefon_alertant = $request->input('telefonIncidencia');
         $incidencia->data = $request->input('dataIncidencia');
@@ -177,7 +154,38 @@ class IncidenciaController extends Controller
         $incidencia->alertants_id = $id_alertant;
 
         $incidencia->save();
+        $user = Auth::user();
+        $incidencia->usuari()->save($user);
 
+        // INTRODUIR AFECTATS BASE DE DADES--------------------------------------------
+
+        $numAfectats = $request->input('numAfectats');
+
+        for($i = 1; $i <= $numAfectats; $i++){
+
+            $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
+            $afectat = new Afectat();
+
+            if($afectat_tarjeta == 0){
+                $afectat->cip = $request->input(null);
+            }
+            else{
+                $afectat->cip = $request->input(('CipAfectat').$i);
+            }
+            $afectat->telefon = $request->input(('telefonAfectat').$i);
+            $afectat->nom = $request->input(('nomAfectat').$i);
+            $afectat->cognoms = $request->input(('cognomAfectat').$i);
+            $afectat->sexe = $request->input(('sexeAfectat').$i);
+            $afectat->edat = $request->input(('edatAfectat').$i);
+            $afectat->tenir_tarjeta = $afectat_tarjeta;
+            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+            $afectat->save();
+
+            $afectatIncidencia = Afectat::find($afectat->id);
+            $incidencia->afectats()->save($afectatIncidencia);
+        }
+
+        // INTRODUIR RECURSOS BASE DE DADES--------------------------------------------
         $numRecursos = $request->input('numRecursos');
 
         for($i = 1; $i <= $numRecursos; $i++){
@@ -217,9 +225,17 @@ class IncidenciaController extends Controller
      * @param  \App\Models\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Incidencia $incidencia)
+    public function edit($id)
     {
-        //
+        $incidencia = Incidencia::find($id);
+        $tipusIncident = TipusIncident::all();
+        $tipusAlertant = TipusAlertant::all();
+        // $afectats = Afectats::whereIn('id', $indencia->);
+        $data['incidencia'] = $incidencia;
+        $data['tipusIncident'] = $tipusIncident;
+        $data['tipusAlertant'] = $tipusAlertant;
+
+        return view('incidencia.editarIncidencia', $data);
     }
 
     /**
@@ -232,6 +248,8 @@ class IncidenciaController extends Controller
     public function update(Request $request, Incidencia $incidencia)
     {
         //
+
+        return redirect()->action('IncidenciaController@index');
     }
 
     /**

@@ -31,26 +31,42 @@
 
             @foreach ($incidencies as $incidencia)
             {{-- ha de portar al formulari ple --}}
-                <tr data-href="{{ action('IncidenciaController@create') }}">
-                    <td> {{ $incidencia->id }} </td>
-                    <td class="esconder-xs"> {{ $incidencia->localitzacio }} </td>
-                    <td> {{ $incidencia->hora }} </td>
+            <form action="{{action('IncidenciaController@edit', ['incidencia'=>$incidencia])}}" method="get">
+                <tr {{--data-href="{{url('/incidencia', $incidencia->id)}}"--}}>
+                {{-- <tr data-href=""> --}}
                     <td>
-                        @if ($incidencia->tipus_incident_id!=null)
+                        {{-- {{ $incidencia->id }}  --}}
+                        <button type="submit" name="editarIncidencia" class="border-0">INC{{ $incidencia->num_incidencia }}</button>
+                    </td>
+                    <td class="esconder-xs"> @if($incidencia->localitzacio) {{$incidencia->localitzacio}} @else - @endif</td>
+                    <td> @if($incidencia->hora){{ $incidencia->hora }} @else - @endif </td>
+                    <td>
+                        @if ($incidencia->tipus_incident_id)
                         {{ $incidencia->TipusIncident->tipus }}
-                        @endif
+                        @else - @endif
                     </td>
                     <td>
-                        @if ($incidencia->municipis_id!=null)
+                        @if ($incidencia->municipis_id)
                         {{ $incidencia->municipi->nom }}
-                        @endif
+                        @else - @endif
                     </td>
-
-                    <td> {{ $incidencia->adreca }} </td>
-                    <td class="esconder-sm"> {{ $incidencia->descripcio }} </td>
+                    <td> @if($incidencia->adreca) {{ $incidencia->adreca }} @else - @endif</td>
+                    <td class="esconder-sm">@if($incidencia->descripcio) {{ $incidencia->descripcio }} @else - @endif</td>
                 </tr>
+            </form>
             @endforeach
 
+            @for($i=0; $i<(10-count($incidencies)); $i++)
+                <tr style="height: 40px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            @endfor
         </tbody>
         <tfoot>
             <tr class="p-0">

@@ -112,6 +112,19 @@ footer p {
 .card-formulari .hidden1 {
   display: none;
 }
+.card-formulari .afegirp {
+  font-size: 1em !important;
+  color: #FCC536 !important;
+}
+.card-formulari .afegir {
+  background-color: #FCC536;
+  padding: 9px 8px;
+}
+.card-formulari .afegir span {
+  line-height: 12px;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 .nuevaIncidencia {
   background-color: #DD177A;

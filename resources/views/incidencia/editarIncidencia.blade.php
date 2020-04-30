@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('titulo')NOVA INCIDENCIA @endsection
+@section('titulo')Editar incidencia @endsection
 @section('principal')
 
 <div class="card card-formulari">
@@ -7,8 +7,9 @@
         <h2>INCIDENCIA</h2>
     </div>
 
-    <form action="{{ action('IncidenciaController@store')}}" method="post">
-    @csrf
+    <form action="{{ action('IncidenciaController@update', $incidencia)}}" method="post">
+        {{ method_field('put') }}
+        {{ csrf_field() }}
 
     <div id="accordion" class="card-body card-body-formulari">
 
@@ -25,8 +26,8 @@
                     <div class="form-row">
                         {{-- DATA --}}
                         <div class="form-group col-md-6 col-sm-4">
-                            <label for="dataIncidencia" style="width:100px">Data</label>
-                            <input type="date" name="dataIncidencia" id="dataIncidencia" style="border-radius:10px; margin-left:35px; ; width:300px;">
+                            <label for="dataIncidenciaEdit" style="width:100px">Data</label>
+                            <input type="date" name="dataIncidencia" id="dataIncidenciaEdit" style="border-radius:10px; margin-left:35px; ; width:300px;" value="{{$incidencia->data}}">
                         </div>
 
                         {{-- PROVINCIA --}}
@@ -41,8 +42,8 @@
                     <div class="form-row">
                         {{-- HORA --}}
                         <div class="form-group col-md-6 col-sm-4">
-                            <label for="horaIncidencia">Hora</label>
-                            <input type="time" name="horaIncidencia" id="horaIncidencia" style="border-radius:10px; margin-left:100px; ; width:300px;">
+                            <label for="horaIncidenciaEdit">Hora</label>
+                            <input type="time" name="horaIncidencia" id="horaIncidenciaEdit" style="border-radius:10px; margin-left:100px; ; width:300px;" value="{{$incidencia->hora}}">
                         </div>
 
                         {{-- COMARCA --}}
@@ -59,9 +60,13 @@
                             {{-- TIPUS --}}
                             <label for="tipusIncidencia">Tipus</label>
                             <select name="tipusIncidencia" id="tipusIncidencia" style="border-radius:10px; margin-left:95px; ; width:300px;">
-                                <option value="" selected>Selecciona el tipus</option>
-                                <@foreach ($tipusIncident as $tipus)
-                                    <option value="{{ $tipus->id }}"> {{ $tipus->tipus }} </option>
+                                <option value="" @if($incidencia->tipus_incident_id) selected @endif>Selecciona un tipus</option>
+                                @foreach ($tipusIncident as $tipus)
+                                    @if($incidencia->tipus_incident_id == $tipus->id)
+                                        <option value="{{$tipus->id}}" selected> {{ $tipus->tipus }}</option>
+                                    @else
+                                    <option value="{{$tipus->id}}"> {{ $tipus->tipus }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -70,7 +75,11 @@
                             {{-- MUNICIPI --}}
                             <label for="municipiIncidencia">Municipi</label>
                             <select name="municipiIncidencia" id="municipiIncidencia" style="border-radius:10px; margin-left:100px; ; width:300px;">
+                                @if($incidencia->municipi)
+                                    <option value="{{$incidencia->municipi->id}} " selected>{{$incidencia->municipi->nom}} </option>
+                                @else
                                     <option value="">Selecciona un municipi</option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -80,26 +89,28 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="adreçaIncidencia">Adreça</label>
-                            <input type="text" name="adreçaIncidencia" id="adreçaIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
+                            <input type="text" name="adreçaIncidencia" id="adreçaIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="{{$incidencia->adreca}}">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="indicacionsIncidencia">Indicacions</label>
-                            <input type="text" name="indicacionsIncidencia" id="indicacionsIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
+                            <input type="text" name="indicacionsIncidencia" id="indicacionsIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="{{$incidencia->complement_adreca}}">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefonIncidencia">Telefon</label>
-                            <input type="text" name="telefonIncidencia" id="telefonIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
+                            <input type="text" name="telefonIncidencia" id="telefonIncidencia" style="border-radius:10px; margin-left:85px; ; width:300px;" value="{{$incidencia->telefon_alertant}}">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
-                                <option value="1" selected>Activa</option>
-                                <option value="3">Inactiva</option>
+                                <option value="">Selecciona l'estat</option>
+                                {{-- <@foreach ($estatsIncidencia as $estat)
+                                        <option value="{{ $estat->id }}"> {{ $estat->estat }} </option>
+                                    @endforeach --}}
                             </select>
                         </div>
                     </div>
@@ -107,15 +118,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="localitzacioIncidencia">Localitzacio</label>
-                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:55px; ; width:800px;" value="">
+                            <input type="text" name="localitzacioIncidencia" id="localitzacioIncidencia" style="border-radius:10px; margin-left:55px; ; width:800px;" value="{{$incidencia->localitzacio}}">
                         </div>
                     </div>
 
                     <div class="form-row">
                         {{-- DESCRIPCIO --}}
-                        <div class="form-group col-md-4 col-sm-4">
+                        <div class="form-group w-100">
                             <label for="descripcioIncidencia">Descripcio</label>
-                            <textarea name="descripcioIncidencia" id="descripcioIncidencia" cols="120" rows="3" style="border-radius:10px;" value=""></textarea>
+                            <textarea name="descripcioIncidencia" id="descripcioIncidencia" class="w-100 p-2" rows="3" style="border-radius:10px;">{{$incidencia->descripcio}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -137,9 +148,13 @@
                             {{-- TIPUS  --}}
                             <label for="tipusAlertant">Tipus d'Alertant</label>
                             <select name="tipusAlertant" id="tipusAlertant" style="border-radius:10px; margin-left:95px; ; width:300px;">
-                                <option value="" selected>Selecciona el tipus</option>
-                                <@foreach ($tipusAlertant as $tipus)
-                                    <option value="{{ $tipus->id }}"> {{ $tipus->tipus }} </option>
+                                <option value="" @if($incidencia->tipus_alertant_id) selected @endif>Selecciona el tipus</option>
+                                @foreach ($tipusAlertant as $tipus)
+                                    @if($incidencia->tipus_alertant_id == $tipus->id)
+                                        <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
+                                    @else
+                                        <option value="{{$tipus->id}}"> {{ $tipus->tipus }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -248,8 +263,9 @@
             </div>
 
             <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="afectats card-subbody-formulari p-0">
-                    <div class="afectat p-5">
+                <div class="afectats card-subbody-formulari">
+
+                    <div class="afectat">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="tenir_tarjeta1">Te tarjeta S.S ?</label>
@@ -329,7 +345,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="d-flex justify-content-center card-subbody-formulari p-4">
                     <input type="hidden" id="numAfectats" name="numAfectats" value="1">
                     <p class="my-auto mr-3 afegirp">Afegir afectat</p>
@@ -410,13 +425,9 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="d-flex justify-content-center card-subbody-formulari p-4">
+                <div class="d-flex justify-content-center card-subbody-formulari" >
                     <input type="hidden" id="numRecursos" name="numRecursos" value="1">
-                    <p class="my-auto mr-3 afegirp">Afegir recurs</p>
-                    <button class="afegir rounded-circle border-0 d-flex flex-row align-items-center btn-sm" id="afegirRecurs" type="button">
-                        <span class="align-self-center my-auto text-white">+</span>
-                    </button>
+                    <button class="btn rounded-circle text-white" id="afegirRecurs" type="button" style="background: #FCC536 ">+</button>
                 </div>
             </div>
         </div>

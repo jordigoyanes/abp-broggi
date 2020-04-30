@@ -37,8 +37,11 @@ Recursos Mòbils
                             <tr>
                                 <td> {{ $ra->tipusRecurs->tipus }} </td>
                                 <td> {{ $ra->codi }} </td>
-                                <td> {{$ra->id_usuario}} </td>
-                                <td>incidencia</td>
+                                <td> {{$ra->usuaris->nom}} </td>
+                                <td>@if($ra->incidencias()->first())
+                                    {{$ra->incidencias()->first()->id}}
+                                    @else - @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -62,15 +65,14 @@ Recursos Mòbils
                     </thead>
                     <tbody>
                         @foreach ($recursosInactius as $ri)
-                        @php
-                            $incidencies = DB::table('incidencies_has_recursos')->where('recursos_id', $ri->id)->select('incidencies_id')->first();
-                            // print_r($incidencies);
-                        @endphp
                             <tr>
                                 <td> {{ $ri->tipusRecurs->tipus }} </td>
                                 <td> {{ $ri->codi }} </td>
                                 <td>-</td>
-                                <td>-</td>
+                                <td>@if($ri->incidencias()->first())
+                                    {{$ri->incidencias()->first()->id}}
+                                    @else - @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

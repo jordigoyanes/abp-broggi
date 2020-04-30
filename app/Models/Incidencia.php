@@ -23,9 +23,14 @@ class Incidencia extends Model
         return $this->belongsToMany('App\Models\RecursMobil','incidencies_has_recursos','incidencies_id', 'recursos_id');
     }
 
-    public function incidenciaUsuari()
+    public function afectats()
     {
-        return $this->belongsTo('App\Models\RecursMobil','incidencies_has_recursos','incidencies_id', 'recursos_id');
+        return $this->belongsToMany('App\Models\Afectat','incidencies_has_afectats','incidencies_id', 'afectats_id');
+    }
+
+    public function usuari()
+    {
+        return $this->belongsToMany('App\Usuario','incidencies_has_usuaris','incidencies_id', 'usuaris_id');
     }
 
     public function EstatIncidencia()

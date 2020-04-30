@@ -22,4 +22,8 @@ class RecursMobil extends Model
     {
         return $this->belongsTo('App\Models\tipusRecurs', 'tipus_recurs_id');
     }
+
+    public function usuaris(){
+        return $this->belongsTo('App\Usuario', 'id_usuario');
+    }
 }

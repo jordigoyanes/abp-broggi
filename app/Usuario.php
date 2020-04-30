@@ -24,4 +24,9 @@ class Usuario extends Authenticatable
         return $this->belongsTo('App\Rol','rols_id');
     }
 
+    public function incidencia()
+    {
+        return $this->belongsToMany('App\Model\Incidencia','incidencies_has_usuaris', 'usuaris_id', 'incidencies_id');
+    }
+
 }
