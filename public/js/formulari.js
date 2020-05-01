@@ -5,7 +5,7 @@ $( document ).ready(function() {
         $('#provinciaIncidencia').on('change', actualitzarComarca);
         $('#comarcaIncidencia').on('change', actualitzarMunicipi);
 
-        $('#CentreSanitari').on('change', actualitzarCamps);
+        // $('#CentreSanitari').on('change', actualitzarCamps);
         $('#provinciaAlertant').on('change', actualitzarComarca);
         $('#comarcaAlertant').on('change', actualitzarMunicipi);
         $('#tipusAlertant').on('change', crearCentre);
@@ -28,6 +28,7 @@ $( document ).ready(function() {
     var afectats = $('.afectat').length;
     var recursos = $('.recurs').length;
 
+    crearCentre();
 
     actualitzarProvincia();
     actualitzarProvinciaAfectat();
@@ -93,51 +94,47 @@ $( document ).ready(function() {
     // =========================================================
 
     // Actualitza els camps del tipus d'alertant
-    function actualitzarCamps() {
-        var id = $(this).val();
-        // AJAX
-        $.get('/abp-broggi/public/api/centreid/'+ id +'', function(data){
-            var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
-            var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
-            var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
-            $('#centreSanitari').html(Nom);
-            $('#telefonCentre').html(telefon);
-            $('#adreçaCentre').html(direccio);
-        });
-    }
+    // function actualitzarCamps() {
+    //     var id = $(this).val();
+    //     // AJAX
+    //     $.get('/abp-broggi/public/api/centreid/'+ id +'', function(data){
+    //         var Nom = '<option value="'+ data[0].id +'">'+ data[0].nom +'</option>';
+    //         var telefon = '<option value="'+ data[0].id +'">'+ data[0].telefon +'</option>';
+    //         var direccio = '<option value="'+ data[0].id +'">'+ data[0].adreca +'</option>';
+    //         $('#centreSanitari').html(Nom);
+    //         $('#telefonCentre').html(telefon);
+    //         $('#adreçaCentre').html(direccio);
+    //     });
+    // }
 
+    //Canviar els camps a plenar segons el tipus d'alertant
     function crearCentre(){
-        var id = $(this).val();
+        var id = $('#tipusAlertant').val();
+
         if(id == 1){
-            $(".hidden1").removeClass("hidden1");
-            $("#nomAlertant").addClass("hidden2");
-            $("#cognomAlertant").addClass("hidden2");
-            $("#adreçaAlertant").addClass("hidden2");
-            $("#telefonAlertant").addClass("hidden2");
-            $(".amagar").css("display", "none");
-        }
-       else{
-            $("#centre").addClass("hidden1");
-            $("#metge").addClass("hidden1");
-            $("#adreçaCentre").addClass("hidden1");
-            $("#telefonCentre").addClass("hidden1");
-            $("#nomAlertant").removeClass("hidden2");
-            $("#cognomAlertant").removeClass("hidden2");
-            $("#adreçaAlertant").removeClass("hidden2");
-            $("#telefonAlertant").removeClass("hidden2");
-            $(".amagar").css("display", "flex");
+            $('.centre_san_si').css("display", "inline-block");
+            $('.centre_san_no').css("display", "none");
+        }else if(id==2){
+            $('.centre_san_si').css("display", "none");
+            $('.centre_san_no').css("display", "none");
+        }else{
+            $('.centre_san_si').css("display", "none");
+            $('.centre_san_no').css("display", "block");
         }
     }
 
+    //Plenar el select de nom del centre en cas de l'alertant sigui centre
     function actualitzarCentre(){
         var id = $(this).val();
+
         // AJAX
         if(id == 1){
             $.get('/abp-broggi/public/api/centre/'+ id +'', function(data){
             var html_select = '<option value="">Selecciona un Centre</option>'
             for(var i=0; i<data.length; i++)
                 html_select += '<option value="'+ data[i].id +'">'+ data[i].nom +'</option>';
-            $('#CentreSanitari').html(html_select);
+                console.log(html_select);
+            $('#centreSanitari').html(html_select);
             });
         }
     }

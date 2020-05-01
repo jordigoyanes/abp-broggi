@@ -144,97 +144,71 @@
                             </select>
                         </div>
 
-                        {{-- CENTRE SANITARI EN EL CAS DE QUE L'ALERTANT SIGUI AQUEST --}}
-                        <div class="form-group col-md-6 col-sm-4">
-                            <div class="hidden1" id="centre">
+                        <div class="centre_san_si">
+                            {{-- CENTRE SANITARI EN EL CAS DE QUE L'ALERTANT SIGUI AQUEST --}}
+                            <div class="form-group d-flex centre_san_si">
                                 <label for="centreSanitari">Nom del Centre Sanitari</label>
                                 <select name="centreSanitari" id="centreSanitari" style="border-radius:10px; margin-left:60px;  width:180px;">
                                     <option value="">Selecciona una Centre</option>
                                 </select>
                             </div>
                         </div>
+
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="hidden1" id="metge">
-                                <label for="NomMetge">Nom del Metge</label>
-                                <input type="text" name="NomMetge" id="NomMetge" style="border-radius:10px; margin-left:85px; ; width:300px;">
-                            </div>
-                        </div>
+                    <div class="centre_san_no">
 
-                        <div class="form-group col-md-6">
-                            <div class="" id="nomAlertant">
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
                                 <label for="nomAlertant">Nom del Alertant</label>
                                 <input type="text" name="nomAlertant" id="nomAlertant" style="border-radius:10px; margin-left:85px; ; width:300px;">
                             </div>
-                        </div>
 
-                        <div class="form-group col-md-6">
-                            <div class="" id="cognomAlertant">
+                            <div class="form-group col-md-6">
                                 <label for="cognomAlertant">Cognom del Alertant</label>
                                 <input type="text" name="cognomAlertant" id="cognomAlertant" style="border-radius:10px; margin-left:50px; ; width:200px;">
-
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="" id="adreçaAlertant">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
                                 <label for="adreçaAlertant">Adreça del Alertant</label>
                                 <input type="text" name="adreçaAlertant" id="adreçaAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
                             </div>
-                        </div>
 
-                        <div class="form-group col-md-6">
-                            <div class="" id="telefonAlertant">
+                            <div class="form-group col-md-6">
                                 <label for="telefonAlertant">Telefon del Alertant</label>
                                 <input type="text" name="telefonAlertant" id="telefonAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
                             </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <div class="hidden1" id="telefonCentre1">
-                                <label for="telefonCentre">Telefon del Centre</label>
-                                <select name="telefonCentre" id="telefonCentre" style="border-radius:10px; margin-left:60px;  width:200px;" disabled>
-                                    <option value=""></option>
+                        <div class="form-row">
+                            {{-- PROVINCIA ALERTANT --}}
+                            <div class="form-group col-md-4">
+                                <label for="provinciaAlertant">Provincia</label>
+                                <select name="provinciaAlertant" id="provinciaAlertant" style="border-radius:10px; margin-left:50px; ; width:130px;">
+                                    <option value="">Selecciona una provincia</option>
                                 </select>
+                            </div>
+
+                            {{-- COMARCA --}}
+                            <div class="form-group col-md-4">
+                                <label for="comarcaAlertant">Comarca</label>
+                                <select name="comarcaAlertant" id="comarcaAlertant" style="border-radius:10px; margin-left:60px;  width:180px;">
+                                    <option value="">Selecciona una comarca</option>
+                                </select>
+                            </div>
+
+                            {{-- MUNICIPI ALERTANT--}}
+                            <div class="form-group col-md-4 col-sm-4">
+                                <label for="municipiAlertant">Municipi</label>
+                                <select name="municipiAlertant" id="municipiAlertant" style="border-radius:10px; margin-left:70px; ; width:200px;">
+                                    <option value="">Selecciona un municipi</option>
+                            </select>
                             </div>
                         </div>
 
-                        <div class="hidden1" id="adreçaCentre1">
-                            <label for="adreçaCentre">Adreça del Centre</label>
-                            <select name="adreçaCentre" id="adreçaCentre" style="border-radius:10px; margin-left:60px;  width:350px;" disabled>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row amagar">
-                        {{-- PROVINCIA ALERTANT --}}
-                        <div class="form-group col-md-4">
-                            <label for="provinciaAlertant">Provincia</label>
-                            <select name="provinciaAlertant" id="provinciaAlertant" style="border-radius:10px; margin-left:50px; ; width:130px;">
-                                <option value="">Selecciona una provincia</option>
-                            </select>
-                        </div>
-
-                        {{-- COMARCA --}}
-                        <div class="form-group col-md-4">
-                            <label for="comarcaAlertant">Comarca</label>
-                            <select name="comarcaAlertant" id="comarcaAlertant" style="border-radius:10px; margin-left:60px;  width:180px;">
-                                <option value="">Selecciona una comarca</option>
-                            </select>
-                        </div>
-
-                        {{-- MUNICIPI ALERTANT--}}
-                        <div class="form-group col-md-4 col-sm-4">
-                            <label for="municipiAlertant">Municipi</label>
-                            <select name="municipiAlertant" id="municipiAlertant" style="border-radius:10px; margin-left:70px; ; width:200px;">
-                                <option value="">Selecciona un municipi</option>
-                        </select>
-                        </div>
                     </div>
                 </div>
             </div>

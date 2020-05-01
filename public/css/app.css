@@ -106,10 +106,7 @@ footer p {
   line-height: 22px;
   color: #1C2230;
 }
-.card-formulari .hidden {
-  display: none;
-}
-.card-formulari .hidden1 {
+.card-formulari .centre_san_si {
   display: none;
 }
 .card-formulari .afegirp {

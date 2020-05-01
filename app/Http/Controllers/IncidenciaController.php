@@ -31,15 +31,6 @@ class IncidenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function index()
-    // {
-    //     $incidencies = Incidencia::all();
-
-    //     $datos['incidencies'] = $incidencies;
-
-    //     return view('incidencia.index', $datos);
-    // }
-
     public function index(Request $request)
     {
         $user = Auth::user();
@@ -113,9 +104,19 @@ class IncidenciaController extends Controller
         $id_tipus_alertant = $request->input('tipusAlertant');
         $id_alertant = null;
 
-        if($id_tipus_alertant != 1){
-            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant'))
-            {
+        if($id_tipus_alertant == 1){
+            $id_alertant = $request->input('centreSanitari');
+        } else if($id_tipus_alertant == 2){
+            $alertant = new Alertant();
+            $alertant->nom = "Dades de l'afectat";
+            $alertant->tipus_alertant_id = $id_tipus_alertant;
+            $alertant->save();
+            $alertant = Alertant::find($alertant->id);
+            $id_alertant = $alertant->id;
+
+        }else{
+            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant')) {
+
                 $alertant = new Alertant();
 
                 $alertant->nom = $request->input('nomAlertant');
@@ -128,9 +129,8 @@ class IncidenciaController extends Controller
                 $alertant = Alertant::find($alertant->id);
                 $id_alertant = $alertant->id;
             }
-        }else{
-            $id_alertant = $request->input('centreSanitari');
         }
+
 
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         $incidencia = new Incidencia();
@@ -164,25 +164,66 @@ class IncidenciaController extends Controller
         for($i = 1; $i <= $numAfectats; $i++){
 
             $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
-            $afectat = new Afectat();
+            $afectat = null;
 
-            if($afectat_tarjeta == 0){
-                $afectat->cip = $request->input(null);
+            if($afectat_tarjeta == 0 || !$request->input(('CipAfectat').$i)){
+                if($request->input(('nomAfectat').$i) && $request->input(('cognomAfectat').$i)){
+                    $afectat = Afectat::where('nom', $request->input(('nomAfectat').$i))
+                                      ->where('cognoms', $request->input(('cognomAfectat').$i))->first();
+                    if(!$afectat){
+                        $afectat = new Afectat();
+                        $afectat->nom = $request->input(('nomAfectat').$i);
+                        $afectat->cognoms = $request->input(('cognomAfectat').$i);
+
+                    }
+                    $afectat->cip = null;
+                    $afectat->telefon = $request->input(('telefonAfectat').$i);
+                    $afectat->sexe = $request->input(('sexeAfectat').$i);
+                    $afectat->edat = $request->input(('edatAfectat').$i);
+                    $afectat->tenir_tarjeta = $afectat_tarjeta;
+                    $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+                    $afectat->save();
+                }
             }
             else{
-                $afectat->cip = $request->input(('CipAfectat').$i);
-            }
-            $afectat->telefon = $request->input(('telefonAfectat').$i);
-            $afectat->nom = $request->input(('nomAfectat').$i);
-            $afectat->cognoms = $request->input(('cognomAfectat').$i);
-            $afectat->sexe = $request->input(('sexeAfectat').$i);
-            $afectat->edat = $request->input(('edatAfectat').$i);
-            $afectat->tenir_tarjeta = $afectat_tarjeta;
-            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
-            $afectat->save();
+                $afectat = Afectat::where('cip', $request->input(('CipAfectat').$i))->first();
+                if(!$afectat){
+                    if($request->input(('nomAfectat').$i) && $request->input(('cognomAfectat').$i)){
+                        $afectat = Afectat::where('nom', $request->input(('nomAfectat').$i))
+                                          ->where('cognoms', $request->input(('cognomAfectat').$i))->first();
+                        if(!$afectat){
+                            $afectat = new Afectat();
+                            $afectat->nom = $request->input(('nomAfectat').$i);
+                            $afectat->cognoms = $request->input(('cognomAfectat').$i);
 
-            $afectatIncidencia = Afectat::find($afectat->id);
-            $incidencia->afectats()->save($afectatIncidencia);
+                        }
+                    }
+
+                    $afectat->cip = $request->input(('CipAfectat').$i);
+                }
+                $afectat->nom = $request->input(('nomAfectat').$i);
+                $afectat->cognoms = $request->input(('cognomAfectat').$i);
+                $afectat->telefon = $request->input(('telefonAfectat').$i);
+                $afectat->sexe = $request->input(('sexeAfectat').$i);
+                $afectat->edat = $request->input(('edatAfectat').$i);
+                $afectat->tenir_tarjeta = $afectat_tarjeta;
+                $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+                $afectat->save();
+
+            }
+            if($afectat){
+                $afectat = Afectat::find($afectat)->first();
+                $afectatsIncidencia = $incidencia->afectats()->get();
+
+                $trobat = false;
+                foreach($afectatsIncidencia as $afectatIn){
+                    if($afectatIn->id == $afectat->id){
+                        $trobat=true;
+                    }
+                }
+                if(!$trobat){$incidencia->afectats()->save($afectat);}
+            }
+
         }
 
         // INTRODUIR RECURSOS BASE DE DADES--------------------------------------------
@@ -190,7 +231,11 @@ class IncidenciaController extends Controller
 
         for($i = 1; $i <= $numRecursos; $i++){
 
-            $incidencia->recursosMobils()->attach($request->input('CodiRecurs'.$i),
+            $codi = $request->input('CodiRecurs'.$i);
+
+            $recurs = RecursMobil::where('codi', $codi)->first();
+
+            $incidencia->recursosMobils()->attach($recurs,
             [
                 'prioritat' =>$request->input('prioritat'.$i),
                 'hora_acitvacio' => $request->input('hActivacio'.$i),
@@ -253,27 +298,36 @@ class IncidenciaController extends Controller
     {
         // INTRODUIR ALERTANTS BASE DE DADES-----------------------------------------------
 
-        // $id_tipus_alertant = $request->input('tipusAlertant');
-        // $id_alertant = null;
+        $id_tipus_alertant = $request->input('tipusAlertant');
+        $id_alertant = null;
 
-        // if($id_tipus_alertant != 1){
-        //     if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant'))
-        //     {
-        //         $alertant = new Alertant();
+        if($id_tipus_alertant == 1){
+            $id_alertant = $request->input('centreSanitari');
+        } else if($id_tipus_alertant == 2){
+            $alertant = new Alertant();
+            $alertant->nom = "Dades de l'afectat";
+            $alertant->tipus_alertant_id = $id_tipus_alertant;
+            $alertant->save();
+            $alertant = Alertant::find($alertant->id);
+            $id_alertant = $alertant->id;
 
-        //         $alertant->nom = $request->input('nomAlertant');
-        //         $alertant->cognoms = $request->input('cognomAlertant');
-        //         $alertant->adreca = $request->input('adreçaAlertant');
-        //         $alertant->municipis_id = $request->input('municipiAlertant');
-        //         $alertant->telefon = $request->input('telefonAlertant');
-        //         $alertant->tipus_alertant_id = $request->input('tipusAlertant');
-        //         $alertant->save();
-        //         $alertant = Alertant::find($alertant->id);
-        //         $id_alertant = $alertant->id;
-        //     }
-        // }else{
-        //     $id_alertant = $request->input('centreSanitari');
-        // }
+        }else{
+            if($request->input('nomAlertant') || $request->input('cognomAlertant') || $request->input('telefonAlertant')) {
+
+                $alertant = new Alertant();
+
+                $alertant->nom = $request->input('nomAlertant');
+                $alertant->cognoms = $request->input('cognomAlertant');
+                $alertant->adreca = $request->input('adreçaAlertant');
+                $alertant->municipis_id = $request->input('municipiAlertant');
+                $alertant->telefon = $request->input('telefonAlertant');
+                $alertant->tipus_alertant_id = $request->input('tipusAlertant');
+                $alertant->save();
+                $alertant = Alertant::find($alertant->id);
+                $id_alertant = $alertant->id;
+            }
+        }
+
 
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         // $id = $incidencia->id;
@@ -314,7 +368,7 @@ class IncidenciaController extends Controller
         for($i = 1; $i <= $numAfectats; $i++){
 
             $afectat_tarjeta = $request->input(('tenir_tarjeta').$i);
-            $afectat;
+            $afectat = null;
 
             if($afectat_tarjeta == 0 || !$request->input(('CipAfectat').$i)){
                 if($request->input(('nomAfectat').$i) && $request->input(('cognomAfectat').$i)){
@@ -326,8 +380,14 @@ class IncidenciaController extends Controller
                         $afectat->cognoms = $request->input(('cognomAfectat').$i);
 
                     }
+                    $afectat->cip = null;
+                    $afectat->telefon = $request->input(('telefonAfectat').$i);
+                    $afectat->sexe = $request->input(('sexeAfectat').$i);
+                    $afectat->edat = $request->input(('edatAfectat').$i);
+                    $afectat->tenir_tarjeta = $afectat_tarjeta;
+                    $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+                    $afectat->save();
                 }
-                $afectat->cip = null;
             }
             else{
                 $afectat = Afectat::where('cip', $request->input(('CipAfectat').$i))->first();
@@ -347,26 +407,27 @@ class IncidenciaController extends Controller
                 }
                 $afectat->nom = $request->input(('nomAfectat').$i);
                 $afectat->cognoms = $request->input(('cognomAfectat').$i);
+                $afectat->telefon = $request->input(('telefonAfectat').$i);
+                $afectat->sexe = $request->input(('sexeAfectat').$i);
+                $afectat->edat = $request->input(('edatAfectat').$i);
+                $afectat->tenir_tarjeta = $afectat_tarjeta;
+                $afectat->municipis_id = $request->input(('municipiAfectat').$i);
+                $afectat->save();
 
             }
-            $afectat->telefon = $request->input(('telefonAfectat').$i);
-            $afectat->sexe = $request->input(('sexeAfectat').$i);
-            $afectat->edat = $request->input(('edatAfectat').$i);
-            $afectat->tenir_tarjeta = $afectat_tarjeta;
-            $afectat->municipis_id = $request->input(('municipiAfectat').$i);
-            $afectat->save();
+            if($afectat){
+                $afectat = Afectat::find($afectat)->first();
+                $afectatsIncidencia = $incidencia->afectats()->get();
 
-            $afectat = Afectat::find($afectat)->first();
-
-            $afectatsIncidencia = $incidencia->afectats()->get();
-
-            $trobat = false;
-            foreach($afectatsIncidencia as $afectatIn){
-                if($afectatIn->id == $afectat->id){
-                    $trobat=true;
+                $trobat = false;
+                foreach($afectatsIncidencia as $afectatIn){
+                    if($afectatIn->id == $afectat->id){
+                        $trobat=true;
+                    }
                 }
+                if(!$trobat){$incidencia->afectats()->save($afectat);}
             }
-            if(!$trobat){$incidencia->afectats()->save($afectat);}
+
         }
 
         // INTRODUIR RECURSOS BASE DE DADES--------------------------------------------
