@@ -39,7 +39,7 @@ Recursos Mòbils
                                 <td> {{ $ra->codi }} </td>
                                 <td> {{$ra->usuaris->nom}} </td>
                                 <td>@if($ra->incidencias()->first())
-                                    {{$ra->incidencias()->first()->id}}
+                                    {{'INC'.$ra->incidencias()->first()->num_incidencia}}
                                     @else - @endif
                                 </td>
                             </tr>
@@ -70,7 +70,7 @@ Recursos Mòbils
                                 <td> {{ $ri->codi }} </td>
                                 <td>-</td>
                                 <td>@if($ri->incidencias()->first())
-                                    {{$ri->incidencias()->first()->id}}
+                                    {{'INC'.$ri->incidencias()->first()->num_incidencia}}
                                     @else - @endif
                                 </td>
                             </tr>

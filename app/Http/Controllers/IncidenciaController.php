@@ -131,7 +131,6 @@ class IncidenciaController extends Controller
             }
         }
 
-
         // INTRODUIR NOVA INCIDENCIA A LA BASE DE DADES------------------------------------
         $incidencia = new Incidencia();
 
@@ -212,7 +211,6 @@ class IncidenciaController extends Controller
 
             }
             if($afectat){
-                $afectat = Afectat::find($afectat)->first();
                 $afectatsIncidencia = $incidencia->afectats()->get();
 
                 $trobat = false;
@@ -277,12 +275,14 @@ class IncidenciaController extends Controller
         $tipusAlertant = TipusAlertant::all();
         $afectats = $incidencia->afectats()->get();
         $recursos = $incidencia->recursosMobils()->get();
+        $alertant = Alertant::find($incidencia->alertants_id);
 
         $data['incidencia'] = $incidencia;
         $data['tipusIncident'] = $tipusIncident;
         $data['tipusAlertant'] = $tipusAlertant;
         $data['afectats'] = $afectats;
         $data['recursos'] = $recursos;
+        $data['alertant'] = $alertant;
 
         return view('incidencia.editarIncidencia', $data);
     }
@@ -387,6 +387,7 @@ class IncidenciaController extends Controller
                     $afectat->tenir_tarjeta = $afectat_tarjeta;
                     $afectat->municipis_id = $request->input(('municipiAfectat').$i);
                     $afectat->save();
+                    $id = $afectat->id;
                 }
             }
             else{
@@ -415,8 +416,8 @@ class IncidenciaController extends Controller
                 $afectat->save();
 
             }
+
             if($afectat){
-                $afectat = Afectat::find($afectat)->first();
                 $afectatsIncidencia = $incidencia->afectats()->get();
 
                 $trobat = false;

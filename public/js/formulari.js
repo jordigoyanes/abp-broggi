@@ -205,6 +205,7 @@ $( document ).ready(function() {
                             "<option value='' selected>Selecciona</option>"+
                                 "<option value='Home'>Home</option>"+
                                 "<option value='Dona'>Dona</option>"+
+                                "<option value='Altres'>Altres</option>"+
                             "</select>"+
                        " </div>"+
 
@@ -250,10 +251,9 @@ $( document ).ready(function() {
         var id_afectat = $(this).attr("id").slice(-1);
 
         if(te_tarjeta == '1'){
-            $(".hidden").removeClass("hidden");
-        }
-        if(te_tarjeta == '2'){
-            $("#cip"+id_afectat).addClass("hidden");
+            $("#cip"+id_afectat).css("display", "block");
+        }else{
+            $("#cip"+id_afectat).css("display", "none");
         }
     }
 

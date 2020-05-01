@@ -108,7 +108,7 @@
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
                                 <option value="1" @if($incidencia->estats_incidencia_id ==1 )selected @endif>Activa</option>
-                                <option value="3" @if($incidencia->estats_incidencia_id ==3 )selected @endif>Inactiva</option>
+                                <option value="2" @if($incidencia->estats_incidencia_id ==3 )selected @endif>Inactiva</option>
                             </select>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                             {{-- TIPUS  --}}
                             <label for="tipusAlertant">Tipus d'Alertant</label>
                             <select name="tipusAlertant" id="tipusAlertant" style="border-radius:10px; margin-left:95px; ; width:300px;">
-                                <option value="" @if($incidencia->tipus_alertant_id) selected @endif>Selecciona el tipus</option>
+                                <option value="" @if(!$incidencia->tipus_alertant_id) selected @endif>Selecciona el tipus</option>
                                 @foreach ($tipusAlertant as $tipus)
                                     @if($incidencia->tipus_alertant_id == $tipus->id)
                                         <option value="{{ $tipus->id }}" selected> {{ $tipus->tipus }} </option>
@@ -162,7 +162,10 @@
                             <div class="form-group d-flex centre_san_si">
                                 <label for="centreSanitari">Nom del Centre Sanitari</label>
                                 <select name="centreSanitari" id="centreSanitari" style="border-radius:10px; margin-left:60px;  width:180px;">
-                                    <option value="">Selecciona una Centre</option>
+                                    <option value="" @if(!$alertant || !$alertant->id) selected @endif>Selecciona el tipus</option>
+                                    @if($alertant && $alertant->id)
+                                        <option value="{{ $alertant->id }}" selected> {{ $alertant->id }} </option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -175,24 +178,24 @@
 
                             <div class="form-group col-md-6">
                                 <label for="nomAlertant">Nom del Alertant</label>
-                                <input type="text" name="nomAlertant" id="nomAlertant" style="border-radius:10px; margin-left:85px; ; width:300px;">
+                                <input type="text" name="nomAlertant" id="nomAlertant" style="border-radius:10px; margin-left:85px; ; width:300px;" @if($alertant && $alertant->nom) value="{{$alertant->nom}}" @endif>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="cognomAlertant">Cognom del Alertant</label>
-                                <input type="text" name="cognomAlertant" id="cognomAlertant" style="border-radius:10px; margin-left:50px; ; width:200px;">
+                                <input type="text" name="cognomAlertant" id="cognomAlertant" style="border-radius:10px; margin-left:50px; ; width:200px;" @if($alertant && $alertant->cognom) value="{{$alertant->cognom}}" @endif>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="adreçaAlertant">Adreça del Alertant</label>
-                                <input type="text" name="adreçaAlertant" id="adreçaAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
+                                <input type="text" name="adreçaAlertant" id="adreçaAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;" @if($alertant && $alertant->adreca) value="{{$alertant->adreca}}" @endif>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="telefonAlertant">Telefon del Alertant</label>
-                                <input type="text" name="telefonAlertant" id="telefonAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;">
+                                <input type="text" name="telefonAlertant" id="telefonAlertant" style="border-radius:10px; margin-left:50px; ; width:300px;" @if($alertant && $alertant->telefon) value="{{$alertant->telefon}}" @endif>
                             </div>
                         </div>
 
@@ -217,8 +220,12 @@
                             <div class="form-group col-md-4 col-sm-4">
                                 <label for="municipiAlertant">Municipi</label>
                                 <select name="municipiAlertant" id="municipiAlertant" style="border-radius:10px; margin-left:70px; ; width:200px;">
-                                    <option value="">Selecciona un municipi</option>
-                            </select>
+                                    {{-- <option value="">Selecciona un municipi</option> --}}
+                                    <option value="" @if(!$alertant || !$alertant->municipis_id) selected @endif>Selecciona el tipus</option>
+                                    @if($alertant && $alertant->municipis_id)
+                                        <option value="{{ $alertant->municipis_id }}" selected> {{ $alertant->municipis_id }} </option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
 
@@ -430,7 +437,7 @@
 
     <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
         <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
-        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/incidencia') }}" style="border: 1px solid #1C687D; color: #1C687D;" type="button">Cancelar</button>
+        <a href="{{ url('/incidencia') }}"><div class="btn rounded-pill text-uppercase bg-white px-5 ml-4" style="border: 1px solid #1C687D; color: #1C687D;" type="button">Cancelar</div></a>
     </div>
 
     </form>

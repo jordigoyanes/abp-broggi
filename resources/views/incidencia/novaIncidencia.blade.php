@@ -99,7 +99,7 @@
                             <label for="estatIncidencia">Estat </label>
                             <select name="estatIncidencia" id="estatIncidencia" style="border-radius:10px; margin-left:85px; ; width:100px;">
                                 <option value="1" selected>Activa</option>
-                                <option value="3">Inactiva</option>
+                                <option value="2">Inactiva</option>
                             </select>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <div class="" id="cip1">
+                                <div  id="cip1">
                                     <label for="CipAfectat1">CIP</label>
                                     <input type="text" name="CipAfectat1" id="CipAfectat1" style="border-radius:10px; margin-left:85px; ; width:300px;" value="">
                                 </div>
@@ -398,7 +398,7 @@
 
     <div class="card-footer text-muted text-center p-3" style="border-top: 1px solid #1C687D;">
         <button class="btn rounded-pill text-uppercase px-5 text-white" type="submit" style="background-color: #1C687D;">Guardar</button>
-        <button class="btn rounded-pill text-uppercase bg-white px-5 ml-4" href="{{ url('/incidencia') }}" style="border: 1px solid #1C687D; color: #1C687D;">Cancelar</button>
+        <a href="{{ url('/incidencia') }}"><div class="btn rounded-pill text-uppercase bg-white px-5 ml-4" style="border: 1px solid #1C687D; color: #1C687D;" type="button">Cancelar</div></a>
     </div>
 
     </form>

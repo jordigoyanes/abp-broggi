@@ -131,7 +131,7 @@ CREATE TABLE `estats_incidencia` (
 LOCK TABLES `estats_incidencia` WRITE;
 /*!40000 ALTER TABLE `estats_incidencia` DISABLE KEYS */;
 INSERT INTO estats_incidencia(id,estat) VALUES(1,'Activa');
-INSERT INTO estats_incidencia(id,estat) VALUES(2,'Espera');
+INSERT INTO estats_incidencia(id,estat) VALUES(2,'Inactiva');
 /*!40000 ALTER TABLE `estats_incidencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,15 +171,7 @@ CREATE TABLE `incidencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `incidencies`
---
 
-LOCK TABLES `incidencies` WRITE;
-/*!40000 ALTER TABLE `incidencies` DISABLE KEYS */;
-INSERT INTO incidencies VALUES (1,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(2,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(3,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(4,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(5,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(6,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(7,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(8,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(9,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1),(10,'H. Sant Pau',1,23242,'12-04-2020','12:30','C/Sicilia 115','subcalle1','Dona salta del terrat i cau sobre un nen de 15 anys...',91,1,1,1,1);
-/*!40000 ALTER TABLE `incidencies` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `incidencies_has_afectats`
@@ -223,7 +215,7 @@ CREATE TABLE `incidencies_has_recursos` (
   `hora_mobilitzacio` time DEFAULT NULL,
   `hora_assistencia` time DEFAULT NULL,
   `hora_transport` time DEFAULT NULL,
-  `hora_arribada_hospital` datetime DEFAULT NULL,
+  `hora_arribada_hospital` time DEFAULT NULL,
   `hora_transferencia` time DEFAULT NULL,
   `hora_finalitzacio` time DEFAULT NULL,
   PRIMARY KEY (`incidencies_id`,`recursos_id`),
@@ -234,16 +226,6 @@ CREATE TABLE `incidencies_has_recursos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `incidencies_has_recursos`
---
-
-LOCK TABLES `incidencies_has_recursos` WRITE;
-/*!40000 ALTER TABLE `incidencies_has_recursos` DISABLE KEYS */;
-INSERT into `incidencies_has_recursos` values (1,1,3,'1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00');
-INSERT into `incidencies_has_recursos` values (1,2,4,'1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00','1000-01-01 00:00:00');
-/*!40000 ALTER TABLE `incidencies_has_recursos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `incidencies_has_usuaris`
@@ -344,15 +326,6 @@ CREATE TABLE `recursos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `recursos`
---
-
-LOCK TABLES `recursos` WRITE;
-/*!40000 ALTER TABLE `recursos` DISABLE KEYS */;
-INSERT into `recursos` values (1,'AMB2456','activa',1,1),(2,'AMB2456','activa',1,1),(3,'AMB2456','activa',1,1),(4,'AMB2456','activa',1,1),(5,'AMB2456','activa',1,1),(6,'AMB2456','activa',1,1);
-/*!40000 ALTER TABLE `recursos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `rols`

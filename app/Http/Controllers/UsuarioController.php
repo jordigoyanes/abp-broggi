@@ -48,8 +48,10 @@ class UsuarioController extends Controller
             for($i = 1; $i <= $numRecursos; $i++){
                 $codiRecurs = $request->input('CodiRecursUsuari'.$i);
                 $recurs = RecursMobil::find($codiRecurs);
-                $recurs->id_usuario = Auth::user()->id;
-                $recurs->save();
+                if($recurs){
+                    $recurs->id_usuario = Auth::user()->id;
+                    $recurs->save();
+                }
             }
         }
         return redirect()->action('IncidenciaController@index');
